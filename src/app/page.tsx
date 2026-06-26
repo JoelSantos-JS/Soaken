@@ -53,16 +53,6 @@ function WindowsIcon() {
   );
 }
 
-function DownloadIcon() {
-  return (
-    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3v12" />
-      <path d="m7 11 5 5 5-5" />
-      <path d="M5 21h14" />
-    </svg>
-  );
-}
-
 function PlayIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -109,8 +99,8 @@ export default function Home() {
             </h1>
             <p className="lead">{t('hero.lead')}</p>
             <div className="hero-cta">
-              <a className="btn btn-primary btn-lg" href="#download">
-                <DownloadIcon />
+              <a className="btn btn-primary btn-lg" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+                <WindowsIcon />
                 <span>{t('hero.cta')}</span>
               </a>
               <a className="btn btn-ghost btn-lg" href="#how">
