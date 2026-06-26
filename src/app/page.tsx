@@ -45,6 +45,14 @@ function CheckIcon() {
   );
 }
 
+function WindowsIcon() {
+  return (
+    <svg className="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 4.6 11 3.49v7.92H3V4.6Zm9-1.25L21 2v9.41h-9V3.35ZM3 12.59h8v7.92L3 19.4v-6.81Zm9 0h9V22l-9-1.25v-8.16Z" />
+    </svg>
+  );
+}
+
 function DownloadIcon() {
   return (
     <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -340,7 +348,7 @@ export default function Home() {
                 <p>{t('cta.p')}</p>
                 <div className="hero-cta" style={{ marginTop: 30 }}>
                   <a className="btn btn-primary btn-lg" href={DOWNLOAD_URL} target="_blank" rel="noopener">
-                    <DownloadIcon />
+                    <WindowsIcon />
                     <span>{t('cta.btn')}</span>
                   </a>
                 </div>
