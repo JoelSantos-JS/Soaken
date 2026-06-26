@@ -21,8 +21,19 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>('pt');
 
   useEffect(() => {
+    // 1) Escolha manual salva sempre vence.
     const saved = localStorage.getItem('soaken_lang') as Lang | null;
-    if (saved === 'pt' || saved === 'en') setLangState(saved);
+    if (saved === 'pt' || saved === 'en') {
+      setLangState(saved);
+      document.documentElement.lang = saved;
+      return;
+    }
+    // 2) Sem escolha: detecta pelo idioma do navegador.
+    //    Brasil/português (pt-*) abre em PT; qualquer outro abre em EN.
+    const nav = navigator.languages?.[0] || navigator.language || 'en';
+    const detected: Lang = nav.toLowerCase().startsWith('pt') ? 'pt' : 'en';
+    setLangState(detected);
+    document.documentElement.lang = detected;
   }, []);
 
   const setLang = useCallback((l: Lang) => {
