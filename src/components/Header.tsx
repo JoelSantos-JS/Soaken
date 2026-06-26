@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useI18n } from '@/lib/i18n-context';
+import { DOWNLOAD_URL } from '@/lib/config';
 
 export default function Header() {
   const { lang, setLang, t } = useI18n();
@@ -44,7 +45,7 @@ export default function Header() {
               EN
             </button>
           </div>
-          <a className="btn btn-primary" href="#download">
+          <a className="btn btn-primary" href={DOWNLOAD_URL} target="_blank" rel="noopener">
             {t('nav.download')}
           </a>
         </div>

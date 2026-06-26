@@ -5,9 +5,20 @@ import { useI18n } from '@/lib/i18n-context';
 
 const N = 84;
 
-function env(i: number) {
-  const x = (i / (N - 1)) * 2 - 1;
-  return Math.exp(-(x * x) * 2.0);
+// Suaviza só as pontas (fica curto nas bordas, cheio no meio) — full-width.
+function edge(i: number) {
+  const x = i / (N - 1);
+  return Math.pow(Math.sin(Math.PI * x), 0.55);
+}
+
+// Amplitude da "onda viajando": várias senoides com fases que andam no tempo.
+function amp(i: number, t: number) {
+  const x = i / (N - 1);
+  const w =
+    Math.sin(x * 8 - t * 2.4) * 0.5 +
+    Math.sin(x * 17 + t * 1.7) * 0.3 +
+    Math.sin(x * 4 - t * 3.2) * 0.4;
+  return (w + 1.2) / 2.4; // ~0..1
 }
 
 export default function Waveform() {
@@ -19,26 +30,21 @@ export default function Waveform() {
   const initialHeights = useMemo(
     () =>
       Array.from({ length: N }, (_, i) =>
-        (8 + env(i) * 56 * (0.55 + 0.45 * Math.abs(Math.sin(i * 1.3)))).toFixed(0) + 'px'
+        (6 + edge(i) * 70 * (0.3 + 0.7 * amp(i, 0))).toFixed(0) + 'px'
       ),
     []
   );
 
   useEffect(() => {
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-
     let tt = 0;
     function frame() {
-      tt += 0.045;
+      tt += 0.022;
       for (let i = 0; i < N; i++) {
         const b = barsRef.current[i];
         if (!b) continue;
-        const e = env(i);
-        const wob = 0.5 + 0.5 * Math.sin(i * 0.55 + tt * 2.1);
-        const noise = 0.55 + 0.45 * Math.sin(i * 1.7 - tt * 3.4);
-        const h = 6 + e * 66 * (0.4 + 0.6 * wob * noise);
-        b.style.height = h.toFixed(1) + 'px';
+        const a = amp(i, tt);
+        b.style.height = (6 + edge(i) * 70 * (0.3 + 0.7 * a)).toFixed(1) + 'px';
+        b.style.opacity = (0.4 + 0.6 * a).toFixed(2);
       }
       rafRef.current = requestAnimationFrame(frame);
     }

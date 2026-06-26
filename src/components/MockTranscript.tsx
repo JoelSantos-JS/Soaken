@@ -12,7 +12,6 @@ export default function MockTranscript() {
     const cur = curRef.current;
     const prev = prevRef.current;
     if (!cur || !prev) return;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const phrases = [
       "I didn't see that coming.",

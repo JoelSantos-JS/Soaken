@@ -1,6 +1,7 @@
 'use client';
 
 import { useI18n } from '@/lib/i18n-context';
+import { DOWNLOAD_URL } from '@/lib/config';
 import Header from '@/components/Header';
 import MockTranscript from '@/components/MockTranscript';
 import Waveform from '@/components/Waveform';
@@ -338,7 +339,7 @@ export default function Home() {
                 <h2>{t('cta.h2')}</h2>
                 <p>{t('cta.p')}</p>
                 <div className="hero-cta" style={{ marginTop: 30 }}>
-                  <a className="btn btn-primary btn-lg" href="#">
+                  <a className="btn btn-primary btn-lg" href={DOWNLOAD_URL} target="_blank" rel="noopener">
                     <DownloadIcon />
                     <span>{t('cta.btn')}</span>
                   </a>
