@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33A6A4"></stop>
+      <stop offset="0.55" stop-color="#1F8A8A"></stop>
+      <stop offset="1" stop-color="#16706F"></stop>
+    </linearGradient>
+    <linearGradient id="drop" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="1" stop-color="#E8F4F2"></stop>
+    </linearGradient>
+    <radialGradient id="sheen" cx="0.32" cy="0.26" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"></stop>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="114" fill="url(#bg)"></rect>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" opacity="0.16">
+    <path d="M150 392 q106 40 212 0" stroke-width="11"></path>
+    <path d="M186 420 q70 26 140 0" stroke-width="10" opacity="0.8"></path>
+  </g>
+  <rect x="3" y="3" width="506" height="506" rx="111" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="6"></rect>
+  <path d="M256 96 C 320 196, 372 246, 372 308 A 116 116 0 1 1 140 308 C 140 246, 192 196, 256 96 Z" fill="url(#drop)"></path>
+  <path d="M256 96 C 320 196, 372 246, 372 308 A 116 116 0 1 1 140 308 C 140 246, 192 196, 256 96 Z" fill="url(#sheen)"></path>
+  <text x="257" y="372" font-family="Georgia, &#39;Times New Roman&#39;, serif" font-weight="600" font-size="190" fill="#16706F" text-anchor="middle">S</text>
+</svg>
