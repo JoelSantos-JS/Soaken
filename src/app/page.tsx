@@ -308,7 +308,7 @@ export default function Home() {
               <h2 className="h2" style={{ marginTop: 14 }}>{t('faq.h2')}</h2>
             </div>
             <div className="faq">
-              {[1, 2, 3, 4, 5].map((n) => (
+              {[1, 2, 3, 4].map((n) => (
                 <details key={n} className="qa" open={n === 1}>
                   <summary>
                     {t(`faq.q${n}`)}
