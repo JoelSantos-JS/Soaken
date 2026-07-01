@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { useI18n } from '@/lib/i18n-context';
 import { DOWNLOAD_URL } from '@/lib/config';
 
@@ -26,15 +27,16 @@ export default function Header() {
   return (
     <header className="hdr" id="hdr">
       <div className="wrap hdr-in">
-        <a className="logo" href="#top">
+        <a className="logo" href="/#top">
           <img src="/icon/soaken-128.png" alt="Soaken" />
           <span className="nm">Soaken</span>
         </a>
         <nav className="nav">
-          <a href="#how">{t('nav.how')}</a>
-          <a href="#features">{t('nav.features')}</a>
-          <a href="#why">{t('nav.why')}</a>
-          <a href="#faq">{t('nav.faq')}</a>
+          <a href="/#how">{t('nav.how')}</a>
+          <a href="/#features">{t('nav.features')}</a>
+          <a href="/#why">{t('nav.why')}</a>
+          <a href="/#faq">{t('nav.faq')}</a>
+          <Link href="/changelog">{t('nav.changelog')}</Link>
         </nav>
         <div className="hdr-cta">
           <div className="lang">

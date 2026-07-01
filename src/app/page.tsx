@@ -366,6 +366,7 @@ export default function Home() {
                 <a href="#how">{t('ft.how')}</a>
                 <a href="#features">{t('ft.features')}</a>
                 <a href="#langs">{t('ft.langs')}</a>
+                <a href="/changelog">{t('nav.changelog')}</a>
                 <a href="#download">{t('ft.download')}</a>
               </div>
               <div className="ft-col">
