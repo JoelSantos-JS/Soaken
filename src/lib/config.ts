@@ -1,2 +1,2 @@
 // URL do instalador do Soaken (link curto -> release do GitHub).
-export const DOWNLOAD_URL = 'https://bit.ly/4aqL3kG';
+export const DOWNLOAD_URL = 'https://bit.ly/3RkTQ17';
