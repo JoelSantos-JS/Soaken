@@ -1,12 +1,21 @@
 'use client';
 
+import { Fragment, type ReactNode } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { useI18n } from '@/lib/i18n-context';
 import { CHANGELOG } from '@/lib/changelog';
 
+// Converte **negrito** em <strong>.
+function fmt(s: string): ReactNode {
+  return s.split('**').map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : <Fragment key={i}>{part}</Fragment>
+  );
+}
+
 export default function ChangelogPage() {
   const { t, lang } = useI18n();
+  const pick = (o: { pt: string; en: string }) => (lang === 'pt' ? o.pt : o.en);
 
   return (
     <>
@@ -23,21 +32,35 @@ export default function ChangelogPage() {
 
         <section className="section" style={{ paddingTop: 0 }}>
           <div className="wrap narrow cl-list">
-            {CHANGELOG.map((r) => (
-              <article key={r.version} className="cl-rel">
+            {CHANGELOG.map((r, ri) => (
+              <article key={r.version ?? `r${ri}`} className="cl-rel">
                 <div className="cl-rel-head">
-                  <span className="cl-ver">v{r.version}</span>
+                  <span className="cl-ver">{r.title ? pick(r.title) : `v${r.version}`}</span>
                   {r.latest && <span className="cl-latest">{t('cl.latest')}</span>}
-                  {r.date !== '—' && <span className="cl-date">{r.date}</span>}
+                  {r.date && <span className="cl-date">{r.date}</span>}
                 </div>
-                <div className="cl-items">
-                  {r.changes.map((c, i) => (
-                    <div key={i} className="cl-item">
-                      <span className={`cl-chip ${c.type}`}>{t(`cl.${c.type}`)}</span>
-                      <span>{lang === 'pt' ? c.pt : c.en}</span>
-                    </div>
-                  ))}
-                </div>
+
+                {r.groups.map((g, gi) => (
+                  <div key={gi} className="cl-group">
+                    {g.category !== 'note' && (
+                      <span className={`cl-cat ${g.category}`}>{t(`cl.${g.category}`)}</span>
+                    )}
+                    <ul className="cl-items">
+                      {g.items.map((it, ii) => (
+                        <li key={ii} className="cl-item">
+                          <span>{fmt(pick(it.text))}</span>
+                          {it.sub && (
+                            <ul className="cl-sub">
+                              {it.sub.map((s, si) => (
+                                <li key={si}>{fmt(pick(s))}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </article>
             ))}
 

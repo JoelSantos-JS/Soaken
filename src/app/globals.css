@@ -312,15 +312,25 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.02em;l
 .cl-ver{font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--ink);}
 .cl-latest{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   color:var(--bg);background:var(--accent);padding:4px 10px;border-radius:var(--r-full);}
-.cl-date{color:var(--muted);font-size:14px;}
-.cl-items{display:flex;flex-direction:column;gap:12px;}
-.cl-item{display:flex;gap:12px;align-items:flex-start;color:var(--ink-2);font-size:15.5px;line-height:1.5;}
-.cl-chip{flex-shrink:0;margin-top:3px;font-size:10.5px;font-weight:700;letter-spacing:.04em;
-  text-transform:uppercase;padding:3px 9px;border-radius:var(--r-full);min-width:82px;text-align:center;}
-.cl-chip.new{background:rgba(127,227,207,.16);color:var(--accent);}
-.cl-chip.improved{background:rgba(62,123,182,.22);color:#8bb8e6;}
-.cl-chip.fixed{background:rgba(224,163,107,.18);color:var(--sand);}
-.cl-back{display:inline-flex;align-items:center;gap:8px;margin-top:40px;
+.cl-date{color:var(--muted);font-size:14px;font-family:var(--font-mono);}
+.cl-group{margin-bottom:22px;}
+.cl-group:last-child{margin-bottom:0;}
+.cl-cat{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 10px;border-radius:var(--r-full);margin-bottom:12px;}
+.cl-cat.added{background:rgba(127,227,207,.16);color:var(--accent);}
+.cl-cat.changed{background:rgba(62,123,182,.22);color:#8bb8e6;}
+.cl-cat.fixed{background:rgba(224,163,107,.18);color:var(--sand);}
+.cl-cat.removed{background:rgba(197,86,79,.2);color:#e39a94;}
+.cl-items{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.cl-item{position:relative;padding-left:18px;color:var(--ink-2);font-size:15.5px;line-height:1.55;}
+.cl-item::before{content:"";position:absolute;left:1px;top:9px;width:5px;height:5px;
+  border-radius:50%;background:var(--accent);opacity:.55;}
+.cl-item strong{color:var(--ink);font-weight:600;}
+.cl-sub{list-style:none;margin:8px 0 2px;display:flex;flex-direction:column;gap:6px;}
+.cl-sub li{position:relative;padding-left:16px;font-size:14.5px;color:var(--muted);line-height:1.5;}
+.cl-sub li::before{content:"–";position:absolute;left:0;top:0;color:var(--muted);}
+.cl-sub li strong{color:var(--ink-2);font-weight:600;}
+.cl-back{display:inline-flex;align-items:center;gap:8px;margin-top:44px;
   color:var(--accent);font-weight:600;font-size:15px;transition:gap .15s;}
 .cl-back:hover{gap:12px;}
 
