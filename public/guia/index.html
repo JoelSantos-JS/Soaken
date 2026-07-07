@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,8 @@
   <a class="brand" href="#top"><span class="logo">S</span> Soaken</a>
   <div class="navlinks"><a href="#ch0" data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</a><a href="#ch1" data-pt="Começando" data-en="Getting started">Começando</a><a href="#chkeys" data-pt="Pegar as chaves" data-en="Getting the keys">Pegar as chaves</a><a href="#ch2" data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</a><a href="#ch3" data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</a><a href="#ch4" data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</a><a href="#ch5" data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</a><a href="#ch6" data-pt="Início & Séries" data-en="Home & Series">Início & Séries</a><a href="#ch7" data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</a></div>
   <div class="seg" role="tablist" aria-label="Idioma">
-    <button id="pt" class="on" aria-pressed="true">PT</button>
-    <button id="en" aria-pressed="false">EN</button>
+    <button id="pt" aria-pressed="false">PT</button>
+    <button id="en" class="on" aria-pressed="true">EN</button>
   </div>
 </nav>
 <div class="wrap" id="top">
@@ -422,7 +422,7 @@
 
 <script>
   (function(){
-    var lang='pt';
+    var lang='en';
     function apply(){
       document.querySelectorAll('[data-'+lang+']').forEach(function(el){ var v=el.getAttribute('data-'+lang); if(el.tagName==='IMG'){el.src=v;} else {el.textContent=v;} });
       document.querySelectorAll('[data-'+lang+'-html]').forEach(function(el){ el.innerHTML=decodeURIComponent(el.getAttribute('data-'+lang+'-html')); });
