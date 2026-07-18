@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Soaken — visualizador</title>
+<style>
+  :root{
+    --bg:#0f1413; --panel:#161d1c; --card:#1b2423; --edge:#2a3634;
+    --edge2:#384845; --fg:#eaf3f1; --mut:#9fb3af; --brand:#16a394; --brand-ink:#0a1615;
+    --gold:#f0b429; --new:#7c3aed; --shadow:0 12px 40px rgba(0,0,0,.45);
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#eef3f2; --panel:#ffffff; --card:#ffffff; --edge:#e0e8e6; --edge2:#cdd8d5;
+      --fg:#132420; --mut:#5a6d69; --brand:#12897b; --brand-ink:#ffffff; --shadow:0 12px 40px rgba(20,50,45,.14); }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  a{color:var(--brand)}
+  .wrap{max-width:1200px;margin:0 auto;padding:22px 20px 60px}
+  header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .logo{width:40px;height:40px;border-radius:11px;background:var(--brand);color:var(--brand-ink);
+    display:grid;place-items:center;font-weight:800;font-size:20px}
+  h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-.01em}
+  .sub{color:var(--mut);font-size:12.5px;margin-top:2px}
+  .spacer{flex:1}
+  .seg{display:inline-flex;background:var(--card);border:1px solid var(--edge);border-radius:999px;padding:3px}
+  .seg button{border:0;background:transparent;color:var(--mut);font-weight:700;font-size:13px;
+    padding:6px 14px;border-radius:999px;cursor:pointer}
+  .seg button.on{background:var(--brand);color:var(--brand-ink)}
+  .btn{border:1px solid var(--edge2);background:var(--card);color:var(--fg);font-weight:700;
+    font-size:13px;padding:8px 14px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+  .btn:hover{border-color:var(--brand)}
+  .stage{background:var(--panel);border:1px solid var(--edge);border-radius:16px;box-shadow:var(--shadow);
+    overflow:hidden;margin-bottom:18px}
+  .stagebar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--edge);flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--brand)}
+  .stepno{font-size:12px;color:var(--mut);font-variant-numeric:tabular-nums}
+  .cap{font-weight:700;font-size:14.5px}
+  .newbadge{background:var(--new);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;letter-spacing:.03em}
+  .imgwrap{position:relative;background:#0b0f0e;display:grid;place-items:center;min-height:340px}
+  @media (prefers-color-scheme: light){ .imgwrap{background:#dfe8e5} }
+  .imgwrap img{max-width:100%;max-height:70vh;display:block}
+  .nav{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--edge)}
+  .nav .spacer{flex:1}
+  .film{display:flex;gap:8px;overflow-x:auto;padding:14px 2px 4px}
+  .thumb{flex:0 0 auto;width:132px;border:2px solid var(--edge);border-radius:10px;overflow:hidden;
+    cursor:pointer;background:var(--card);position:relative}
+  .thumb.on{border-color:var(--brand)}
+  .thumb img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+  .thumb .t{font-size:10px;color:var(--mut);padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .thumb .dot{position:absolute;top:5px;right:5px;width:9px;height:9px;border-radius:50%;background:var(--new)}
+  .sec{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);
+    margin:20px 2px 8px;display:flex;align-items:center;gap:8px}
+  .sec::after{content:"";flex:1;height:1px;background:var(--edge)}
+  .videocard{background:var(--panel);border:1px solid var(--edge);border-radius:16px;box-shadow:var(--shadow);
+    overflow:hidden;margin:8px 0 6px}
+  .videocard video{width:100%;display:block;background:#000}
+  .videohead{padding:12px 16px;border-bottom:1px solid var(--edge);font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center}
+  .foot{color:var(--mut);font-size:12px;margin-top:26px;line-height:1.7}
+  kbd{background:var(--card);border:1px solid var(--edge2);border-bottom-width:2px;border-radius:6px;
+    padding:1px 6px;font:12px ui-monospace,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">S</div>
+    <div>
+      <h1>Guia Soaken</h1>
+      <div class="sub" id="sub">Prints gerados pelo Playwright · <span id="count"></span> passos</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="seg" role="group" aria-label="idioma">
+      <button id="lpt" class="on" onclick="setLang('pt')">Português</button>
+      <button id="len" onclick="setLang('en')">English</button>
+    </div>
+    <button class="btn" id="play" onclick="togglePlay()">▶ Slideshow</button>
+  </header>
+
+  <!-- vídeo demo -->
+  <div class="videocard">
+    <div class="videohead">🎬 <span id="vidlabel">Vídeo demo — Tutor Board em uso</span></div>
+    <video src="../../videos/soaken-tutorboard-demo.mp4" controls muted loop playsinline preload="metadata"></video>
+  </div>
+
+  <!-- palco principal -->
+  <div class="stage">
+    <div class="stagebar">
+      <span class="pill" id="section">—</span>
+      <span class="cap" id="caption">—</span>
+      <span class="newbadge" id="new" style="display:none">NOVO</span>
+      <div class="spacer"></div>
+      <span class="stepno" id="stepno">—</span>
+    </div>
+    <div class="imgwrap"><img id="shot" alt="" src=""></div>
+    <div class="nav">
+      <button class="btn" onclick="go(-1)">← Anterior</button>
+      <button class="btn" onclick="go(1)">Próximo →</button>
+      <div class="spacer"></div>
+      <span class="stepno" id="hint">Use ← → no teclado</span>
+    </div>
+  </div>
+
+  <div id="strip"></div>
+
+  <p class="foot">
+    Fonte: <code>e2e/screenshots/guide/&lt;pt|en&gt;/*.png</code> — gerados por <code>guide-*.spec.ts</code> (Playwright).
+    As 3 features novas estão marcadas com <span style="color:var(--new);font-weight:800">●</span>.
+    Este HTML é só um visualizador local (referencia os PNGs por caminho relativo) — abra-o na pasta onde está.
+  </p>
+</div>
+
+<script>
+const STEPS = [
+  {f:'01-add-key',            s:'Setup',        pt:'Adicione a chave de API (BYOK)',            en:'Add your API key (BYOK)'},
+  {f:'02-transcription-model',s:'Setup',        pt:'Escolha o modelo de transcrição',          en:'Choose the transcription model'},
+  {f:'03-analysis-model',     s:'Setup',        pt:'Escolha o modelo de análise e professor',  en:'Choose the analysis & tutor model'},
+  {f:'04-guide-button',       s:'Setup',        pt:'Onde abrir o guia completo',               en:'Where the full guide opens'},
+  {f:'10-tb-sentence',        s:'Tutor Board',  pt:'A frase capturada, com leitura e tradução',en:'The captured sentence, with reading & translation'},
+  {f:'11-tb-vocab',           s:'Tutor Board',  pt:'Vocabulário da frase (toque pra ouvir)',   en:'Sentence vocabulary (tap to hear)'},
+  {f:'12-tb-practice',        s:'Tutor Board',  pt:'Grave sua fala e receba uma nota',         en:'Record yourself and get a score'},
+  {f:'13-tb-natural',         s:'Tutor Board',  pt:'Dizer com naturalidade (camadas de tradução)',en:'Say it naturally (translation layers)'},
+  {f:'14-recall-hidden',      s:'Tutor Board',  pt:'Esconder até acertar 100% — repetir de memória',en:'Hide until 100% — recite from memory',n:1},
+  {f:'15-segment-pick',       s:'Tutor Board',  pt:'Repetir só um trecho da frase',            en:'Repeat just a segment of the sentence',n:1},
+  {f:'20-tb-clean',           s:'Tutor Board',  pt:'Card completo',                            en:'Full card'},
+  {f:'21-caption',            s:'Tutor Board',  pt:'Legenda ao vivo',                          en:'Live caption'},
+  {f:'30-pron-speak',         s:'Pronúncia',    pt:'Leia em voz alta e toque em Falar',        en:'Read aloud and tap Speak'},
+  {f:'31-pron-focus',         s:'Pronúncia',    pt:'A dica mostra o foco (sons r / th)',       en:'The hint shows the focus (r / th sounds)'},
+  {f:'40-review-card',        s:'Revisão',      pt:'Revisão espaçada (SRS)',                   en:'Spaced repetition (SRS)'},
+  {f:'41-review-grade',       s:'Revisão',      pt:'Avalie o quanto lembrou',                  en:'Grade how well you recalled'},
+  {f:'50-get-key',            s:'Chaves',       pt:'Pegue a chave — de graça',                 en:'Get your key — for free'},
+  {f:'51-paste-key',          s:'Chaves',       pt:'Cole a chave no app',                      en:'Paste the key into the app'},
+  {f:'60-dash-stats',         s:'Dashboard',    pt:'Seu progresso e a sequência',              en:'Your progress and streak'},
+  {f:'61-dash-series',        s:'Dashboard',    pt:'Sessões agrupadas por série',              en:'Sessions grouped by series'},
+  {f:'62-sessions',           s:'Dashboard',    pt:'Aba Sessões: sua biblioteca de aulas',     en:'Sessions tab: your lesson library',n:1},
+  {f:'70-prof-question',      s:'Professor',    pt:'O professor puxa a conversa (por voz)',    en:'The teacher starts the chat (voice)'},
+  {f:'71-prof-feedback',      s:'Professor',    pt:'Feedback + forma melhor de responder',     en:'Feedback + a better way to answer'},
+  {f:'80-onb-language',       s:'Onboarding',   pt:'Escolha o que aprender + o nível',         en:'Pick what to learn + your level'},
+  {f:'81-onb-key',            s:'Onboarding',   pt:'Conecte a chave pra começar',              en:'Connect a key to start'},
+];
+let lang='pt', i=0, timer=null;
+const $=id=>document.getElementById(id);
+document.getElementById('count').textContent = STEPS.length;
+
+function render(){
+  const st=STEPS[i];
+  $('shot').src = `${lang}/${st.f}.png`;
+  $('shot').alt = st[lang];
+  $('section').textContent = st.s;
+  $('caption').textContent = st[lang];
+  $('new').style.display = st.n ? '' : 'none';
+  $('stepno').textContent = `${i+1} / ${STEPS.length}`;
+  document.querySelectorAll('.thumb').forEach((t,k)=>t.classList.toggle('on',k===i));
+  const on=document.querySelector('.thumb.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+}
+function go(d){ i=(i+d+STEPS.length)%STEPS.length; render(); }
+function setLang(l){
+  lang=l; document.documentElement.lang=l;
+  $('lpt').classList.toggle('on',l==='pt'); $('len').classList.toggle('on',l==='en');
+  $('sub').firstChild.textContent = l==='pt' ? 'Prints gerados pelo Playwright · ' : 'Screenshots generated by Playwright · ';
+  $('vidlabel').textContent = l==='pt' ? 'Vídeo demo — Tutor Board em uso' : 'Demo video — Tutor Board in use';
+  $('hint').textContent = l==='pt' ? 'Use ← → no teclado' : 'Use ← → keys';
+  buildStrip(); render();
+}
+function togglePlay(){
+  if(timer){ clearInterval(timer); timer=null; $('play').textContent='▶ Slideshow'; }
+  else { timer=setInterval(()=>go(1),2200); $('play').textContent='⏸ Pausar'; go(1); }
+}
+function buildStrip(){
+  const strip=$('strip'); strip.innerHTML='';
+  let cur='';
+  STEPS.forEach((st,k)=>{
+    if(st.s!==cur){ cur=st.s; const h=document.createElement('div'); h.className='sec'; h.textContent=st.s; strip.appendChild(h);
+      const row=document.createElement('div'); row.className='film'; row.dataset.sec=st.s; strip.appendChild(row); }
+    const row=strip.querySelector(`.film[data-sec="${CSS.escape(st.s)}"]`);
+    const d=document.createElement('div'); d.className='thumb'; d.onclick=()=>{i=k;render();};
+    d.innerHTML=`<img src="${lang}/${st.f}.png" alt="">${st.n?'<span class="dot"></span>':''}<div class="t">${st[lang]}</div>`;
+    row.appendChild(d);
+  });
+}
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight')go(1); if(e.key==='ArrowLeft')go(-1); });
+buildStrip(); render();
+</script>
+</body>
+</html>
