@@ -39,6 +39,10 @@ function parseLang(md: string, lang: string): RawRelease[] {
   let rel: RawRelease | null = null;
   let group: RawGroup | null = null;
   let item: RawItem | null = null;
+  // Continuação de linha: um item escrito à mão quebra em várias linhas indentadas
+  // ("- Texto longo…\n  que continua aqui."). Precisamos saber se a última coisa
+  // adicionada foi o item ou um subitem, para emendar no lugar certo.
+  let lastWasSub = false;
 
   for (const raw of md.split(/\r?\n/)) {
     const line = raw.replace(/\s+$/, '');
@@ -70,6 +74,7 @@ function parseLang(md: string, lang: string): RawRelease[] {
     if (sub) {
       if (!item) throw new Error(`changelog ${lang}: subitem sem item pai → "${sub[1]}"`);
       (item.sub ??= []).push(sub[1].trim());
+      lastWasSub = true;
       continue;
     }
 
@@ -78,9 +83,19 @@ function parseLang(md: string, lang: string): RawRelease[] {
       if (!group) throw new Error(`changelog ${lang}: item sem categoria (###) → "${top[1]}"`);
       item = { text: top[1].trim() };
       group.items.push(item);
+      lastWasSub = false;
       continue;
     }
-    // linhas em branco e o "# Changelog" do topo são ignoradas
+
+    // Linha INDENTADA sem "-": continuação do bullet anterior (texto quebrado à mão,
+    // como o Typora exporta com hard wrap). Emenda com espaço no item ou no último sub.
+    const cont = line.match(/^\s+(\S.*)$/);
+    if (cont && item) {
+      if (lastWasSub && item.sub?.length) item.sub[item.sub.length - 1] += ` ${cont[1].trim()}`;
+      else item.text += ` ${cont[1].trim()}`;
+      continue;
+    }
+    // linhas em branco, "# Changelog", "---" e prosa de introdução (coluna 0) são ignoradas
   }
 
   return releases;

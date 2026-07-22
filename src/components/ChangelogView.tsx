@@ -6,11 +6,16 @@ import Header from '@/components/Header';
 import { useI18n } from '@/lib/i18n-context';
 import type { Release } from '@/lib/changelog-types';
 
-// Converte **negrito** em <strong>.
+// Converte a marcação inline usada no changelog: **negrito**, *itálico* e `código`.
+// A ordem das alternativas importa: `**…**` antes de `*…*`, senão o negrito viraria
+// dois itálicos vazios.
 function fmt(s: string): ReactNode {
-  return s.split('**').map((part, i) =>
-    i % 2 === 1 ? <strong key={i}>{part}</strong> : <Fragment key={i}>{part}</Fragment>
-  );
+  return s.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g).map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>;
+    if (part.startsWith('`') && part.endsWith('`')) return <code key={i}>{part.slice(1, -1)}</code>;
+    if (part.startsWith('*') && part.endsWith('*') && part.length > 2) return <em key={i}>{part.slice(1, -1)}</em>;
+    return <Fragment key={i}>{part}</Fragment>;
+  });
 }
 
 export default function ChangelogView({ releases }: { releases: Release[] }) {
