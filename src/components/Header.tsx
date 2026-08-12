@@ -35,6 +35,7 @@ export default function Header() {
           <a href="/#how">{t('nav.how')}</a>
           <a href="/#features">{t('nav.features')}</a>
           <a href="/#why">{t('nav.why')}</a>
+          <a href="/#pricing">{t('nav.pricing')}</a>
           <a href="/#faq">{t('nav.faq')}</a>
           <Link href="/changelog">{t('nav.changelog')}</Link>
         </nav>

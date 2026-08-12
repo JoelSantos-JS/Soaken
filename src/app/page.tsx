@@ -300,6 +300,57 @@ export default function Home() {
           </div>
         </section>
 
+        {/* PRICING */}
+        <section className="section" id="pricing">
+          <div className="wrap">
+            <div style={{ textAlign: 'center', maxWidth: '34ch', margin: '0 auto' }}>
+              <span className="eyebrow">{t('pricing.eyebrow')}</span>
+              <h2 className="h2" style={{ marginTop: 14 }}>{t('pricing.h2')}</h2>
+            </div>
+            <p className="lead" style={{ textAlign: 'center', maxWidth: '54ch', margin: '16px auto 0' }}>
+              {t('pricing.lead')}
+            </p>
+            <div className="price-grid">
+              <Reveal>
+                <div className="price-card">
+                  <div className="price-name">{t('price.free.name')}</div>
+                  <div className="price-val">
+                    {t('price.free.val')}<span className="price-per">{t('price.free.per')}</span>
+                  </div>
+                  <p className="price-desc">{t('price.free.desc')}</p>
+                  <ul className="price-feats">
+                    {[1, 2, 3, 4].map((n) => (
+                      <li key={n}><i className="good"><CheckIcon /></i>{t(`price.free.f${n}`)}</li>
+                    ))}
+                  </ul>
+                  <a className="btn btn-ghost btn-block" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+                    {t('price.free.cta')}
+                  </a>
+                </div>
+              </Reveal>
+              <Reveal>
+                <div className="price-card pro">
+                  <span className="price-badge">{t('price.pro.badge')}</span>
+                  <div className="price-name">{t('price.pro.name')}</div>
+                  <div className="price-val">
+                    {t('price.pro.val')}<span className="price-per">{t('price.pro.per')}</span>
+                  </div>
+                  <p className="price-desc">{t('price.pro.desc')}</p>
+                  <ul className="price-feats">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <li key={n}><i className="good"><CheckIcon /></i>{t(`price.pro.f${n}`)}</li>
+                    ))}
+                  </ul>
+                  <a className="btn btn-primary btn-block" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+                    {t('price.pro.cta')}
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+            <p className="price-note">{t('pricing.note')}</p>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="section" id="faq">
           <div className="wrap">
