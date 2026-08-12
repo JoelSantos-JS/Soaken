@@ -319,7 +319,7 @@ export default function Home() {
                   </div>
                   <p className="price-desc">{t('price.free.desc')}</p>
                   <ul className="price-feats">
-                    {[1, 2, 3, 4].map((n) => (
+                    {[1, 2, 3, 4, 5].map((n) => (
                       <li key={n}><i className="good"><CheckIcon /></i>{t(`price.free.f${n}`)}</li>
                     ))}
                   </ul>
@@ -337,7 +337,7 @@ export default function Home() {
                   </div>
                   <p className="price-desc">{t('price.pro.desc')}</p>
                   <ul className="price-feats">
-                    {[1, 2, 3, 4, 5].map((n) => (
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
                       <li key={n}><i className="good"><CheckIcon /></i>{t(`price.pro.f${n}`)}</li>
                     ))}
                   </ul>
