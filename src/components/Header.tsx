@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useI18n } from '@/lib/i18n-context';
 import { DOWNLOAD_URL } from '@/lib/config';
 
@@ -37,7 +36,6 @@ export default function Header() {
           <a href="/#why">{t('nav.why')}</a>
           <a href="/#pricing">{t('nav.pricing')}</a>
           <a href="/#faq">{t('nav.faq')}</a>
-          <Link href="/changelog">{t('nav.changelog')}</Link>
         </nav>
         <div className="hdr-cta">
           <div className="lang">
