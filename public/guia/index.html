@@ -1,212 +1,287 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Soaken — Guia / Guide</title>
+<meta name="description" content="Guia do Soaken passo a passo: baixar, instalar, conectar sua chave de IA grátis e transformar o que você assiste em estudo de idiomas.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>*{box-sizing:border-box}html,body{margin:0}</style>
 </head>
 <body>
 <nav class="topbar">
   <a class="brand" href="#top"><span class="logo">S</span> Soaken</a>
-  <div class="navlinks"><a href="#ch0" data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</a><a href="#ch1" data-pt="Começando" data-en="Getting started">Começando</a><a href="#chkeys" data-pt="Pegar as chaves" data-en="Getting the keys">Pegar as chaves</a><a href="#ch2" data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</a><a href="#ch3" data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</a><a href="#ch4" data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</a><a href="#ch5" data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</a><a href="#ch6" data-pt="Início & Séries" data-en="Home & Series">Início & Séries</a><a href="#ch7" data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</a></div>
-  <div class="seg" role="tablist" aria-label="Idioma">
-    <button id="pt" aria-pressed="false">PT</button>
-    <button id="en" class="on" aria-pressed="true">EN</button>
+  <div class="navlinks"><a href="#chdl" data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</a><a href="#chfirst" data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</a><a href="#chkeys" data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</a><a href="#chmodels" data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</a><a href="#chlive" data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</a><a href="#chboard" data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</a><a href="#chpron" data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</a><a href="#chsrs" data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</a><a href="#chhome" data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início & Séries</a><a href="#chtutor" data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</a></div>
+  <div class="seg" role="group" aria-label="Idioma / Language">
+    <button id="pt" class="on" aria-pressed="true">PT</button>
+    <button id="en" aria-pressed="false">EN</button>
   </div>
 </nav>
 <div class="wrap" id="top">
   <header class="hero">
     <h1 data-pt="Guia de uso" data-en="How to use">Guia de uso</h1>
-    <p class="sub" data-pt="Aprenda idiomas com o que você já assiste. Um passo a passo com imagens — use os tópicos acima pra navegar." data-en="Learn languages from what you already watch. A step-by-step with pictures — use the topics above to jump around.">Aprenda idiomas com o que você já assiste.</p>
+    <p class="sub" data-pt="Aprenda idiomas com o que você já assiste. Um passo a passo com imagens — do download até a primeira conversa." data-en="Learn languages from what you already watch. A step-by-step with pictures — from download to your first conversation.">Aprenda idiomas com o que você já assiste. Um passo a passo com imagens — do download até a primeira conversa.</p>
+    <nav class="toc" aria-label="Índice">
+      <div class="toc-col">
+        <span class="toc-h" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
+        <ol class="toc-list">
+          <li><a href="#chdl"><span class="toc-k">01</span><span data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</span></a></li>
+          <li><a href="#chfirst"><span class="toc-k">02</span><span data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</span></a></li>
+          <li><a href="#chkeys"><span class="toc-k">03</span><span data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</span></a></li>
+          <li><a href="#chmodels"><span class="toc-k">04</span><span data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</span></a></li>
+        </ol>
+      </div>
+      <div class="toc-col">
+        <span class="toc-h" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
+        <ol class="toc-list">
+          <li><a href="#chlive"><span class="toc-k">05</span><span data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</span></a></li>
+          <li><a href="#chboard"><span class="toc-k">06</span><span data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</span></a></li>
+          <li><a href="#chpron"><span class="toc-k">07</span><span data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</span></a></li>
+          <li><a href="#chsrs"><span class="toc-k">08</span><span data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</span></a></li>
+          <li><a href="#chhome"><span class="toc-k">09</span><span data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início & Séries</span></a></li>
+          <li><a href="#chtutor"><span class="toc-k">10</span><span data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</span></a></li>
+        </ol>
+      </div>
+    </nav>
   </header>
-  
-  <div class="chapter" id="ch0">
+
+  <div class="part">
+    <span class="part-k" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
+    <span class="part-note" data-pt="Uns cinco minutos, do zero até a primeira frase capturada." data-en="About five minutes, from zero to your first captured sentence.">Uns cinco minutos, do zero até a primeira frase capturada.</span>
+  </div>
+
+  <section class="chapter" id="chdl">
     <div class="chap-head">
       <span class="chap-k">01</span>
+      <h2 data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</h2>
+    </div>
+    <p class="intro" data-pt-html="O%20Soaken%20%C3%A9%20um%20programa%20para%20%3Cb%3EWindows%3C%2Fb%3E.%20S%C3%A3o%20uns%20dois%20minutos%3A%20baixar%2C%20instalar%20e%20abrir.%20%3Cb%3EN%C3%A3o%20precisa%20de%20cart%C3%A3o.%3C%2Fb%3E" data-en-html="Soaken%20is%20a%20%3Cb%3EWindows%3C%2Fb%3E%20app.%20It%20takes%20about%20two%20minutes%3A%20download%2C%20install%2C%20open.%20%3Cb%3ENo%20card%20required.%3C%2Fb%3E">O Soaken é um programa para <b>Windows</b>. São uns dois minutos: baixar, instalar e abrir. <b>Não precisa de cartão.</b></p>
+  <section class="step">
+    <div class="step-body">
+      <span class="num">01</span>
+      <h3 data-pt="Baixe o instalador" data-en="Download the installer">Baixe o instalador</h3>
+      <p class="lead" data-pt-html="Clique%20no%20bot%C3%A3o%20abaixo%20%E2%80%94%20o%20download%20come%C3%A7a%20na%20hora.%20O%20arquivo%20%C3%A9%20um%20%3Cb%3E.exe%3C%2Fb%3E%20e%20fica%20na%20pasta%20%3Cb%3EDownloads%3C%2Fb%3E%20do%20seu%20computador." data-en-html="Click%20the%20button%20below%20%E2%80%94%20the%20download%20starts%20right%20away.%20The%20file%20is%20an%20%3Cb%3E.exe%3C%2Fb%3E%20and%20lands%20in%20your%20%3Cb%3EDownloads%3C%2Fb%3E%20folder.">Clique no botão abaixo — o download começa na hora. O arquivo é um <b>.exe</b> e fica na pasta <b>Downloads</b> do seu computador.</p>
+      <p class="btnrow">
+        <a class="dlbtn" href="https://bit.ly/4pxi5Wt" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10 4.6v6.9H3V5.5Zm8-1.05L21 3v8.5h-10V4.45ZM3 12.5h7v6.9l-7-.9v-6ZM11 12.5h10V21l-10-1.4v-7.1Z"/></svg>
+          <span data-pt="Baixar para Windows" data-en="Download for Windows">Baixar para Windows</span>
+        </a>
+        <span class="btnmeta" data-pt="Windows 10 e 11 · grátis" data-en="Windows 10 and 11 · free">Windows 10 e 11 · grátis</span>
+      </p>
+    </div>
+
+  </section>
+  <section class="step">
+    <div class="step-body">
+      <span class="num">02</span>
+      <h3 data-pt="Instale — e o aviso do Windows" data-en="Install it — and the Windows warning">Instale — e o aviso do Windows</h3>
+      <p class="lead" data-pt-html="Abra%20o%20arquivo%20baixado.%20Como%20o%20Soaken%20ainda%20%C3%A9%20novo%2C%20o%20Windows%20pode%20mostrar%20a%20tela%20azul%20%3Cb%3E%E2%80%9CO%20Windows%20protegeu%20o%20seu%20PC%E2%80%9D%3C%2Fb%3E.%20%C3%89%20normal%3A%20clique%20em%20%3Cb%3EMais%20informa%C3%A7%C3%B5es%3C%2Fb%3E%20e%20depois%20em%20%3Cb%3EExecutar%20assim%20mesmo%3C%2Fb%3E.%20A%20instala%C3%A7%C3%A3o%20leva%20alguns%20segundos." data-en-html="Open%20the%20file%20you%20just%20downloaded.%20Because%20Soaken%20is%20still%20new%2C%20Windows%20may%20show%20the%20blue%20%3Cb%3E%E2%80%9CWindows%20protected%20your%20PC%E2%80%9D%3C%2Fb%3E%20screen.%20That%20is%20expected%3A%20click%20%3Cb%3EMore%20info%3C%2Fb%3E%2C%20then%20%3Cb%3ERun%20anyway%3C%2Fb%3E.%20Installing%20takes%20a%20few%20seconds.">Abra o arquivo baixado. Como o Soaken ainda é novo, o Windows pode mostrar a tela azul <b>“O Windows protegeu o seu PC”</b>. É normal: clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>. A instalação leva alguns segundos.</p>
+      <div class="callout">
+        <span class="callout-k" data-pt="Se aparecer o aviso" data-en="If the warning shows up">Se aparecer o aviso</span>
+        <span class="callout-steps" data-pt-html="%3Cb%3EMais%20informa%C3%A7%C3%B5es%3C%2Fb%3E%20%E2%86%92%20%3Cb%3EExecutar%20assim%20mesmo%3C%2Fb%3E" data-en-html="%3Cb%3EMore%20info%3C%2Fb%3E%20%E2%86%92%20%3Cb%3ERun%20anyway%3C%2Fb%3E"><b>Mais informações</b> → <b>Executar assim mesmo</b></span>
+      </div>
+    </div>
+
+  </section>
+  <section class="step">
+    <div class="step-body">
+      <span class="num">03</span>
+      <h3 data-pt="Abra o Soaken" data-en="Open Soaken">Abra o Soaken</h3>
+      <p class="lead" data-pt-html="Quando%20terminar%2C%20o%20Soaken%20abre%20sozinho%20%E2%80%94%20e%20o%20atalho%20fica%20no%20%3Cb%3Emenu%20Iniciar%3C%2Fb%3E%20pras%20pr%C3%B3ximas%20vezes.%20Na%20primeira%20abertura%20ele%20te%20guia%20pelo%20resto%20da%20configura%C3%A7%C3%A3o%2C%20que%20%C3%A9%20o%20pr%C3%B3ximo%20cap%C3%ADtulo." data-en-html="When%20it%20finishes%2C%20Soaken%20opens%20by%20itself%20%E2%80%94%20and%20the%20shortcut%20stays%20in%20your%20%3Cb%3EStart%20menu%3C%2Fb%3E%20for%20next%20time.%20On%20first%20launch%20it%20walks%20you%20through%20the%20rest%20of%20the%20setup%2C%20which%20is%20the%20next%20chapter.">Quando terminar, o Soaken abre sozinho — e o atalho fica no <b>menu Iniciar</b> pras próximas vezes. Na primeira abertura ele te guia pelo resto da configuração, que é o próximo capítulo.</p>
+    </div>
+
+  </section>
+  </section>
+
+  <section class="chapter" id="chfirst">
+    <div class="chap-head">
+      <span class="chap-k">02</span>
       <h2 data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</h2>
     </div>
-    <p class="intro" data-pt-html="Ao%20abrir%20o%20Soaken%20pela%20primeira%20vez%2C%20um%20passo%20a%20passo%20r%C3%A1pido%20te%20ajuda%20a%20configurar%20tudo%3A%20escolher%20o%20que%20voc%C3%AA%20quer%20aprender%20e%20conectar%20sua%20chave%20(gr%C3%A1tis%20pra%20come%C3%A7ar)." data-en-html="The%20first%20time%20you%20open%20Soaken%2C%20a%20quick%20walkthrough%20gets%20you%20set%20up%3A%20choose%20what%20you%20want%20to%20learn%20and%20connect%20your%20key%20(free%20to%20start).">Ao abrir o Soaken pela primeira vez, um passo a passo rápido te ajuda a configurar tudo: escolher o que você quer aprender e conectar sua chave (grátis pra começar).</p>
-    
-    
-    
+    <p class="intro" data-pt-html="Ao%20abrir%20o%20Soaken%20pela%20primeira%20vez%2C%20um%20passo%20a%20passo%20r%C3%A1pido%20te%20ajuda%20a%20configurar%20tudo%3A%20escolher%20o%20que%20voc%C3%AA%20quer%20aprender%20e%20conectar%20sua%20chave." data-en-html="The%20first%20time%20you%20open%20Soaken%2C%20a%20quick%20walkthrough%20gets%20you%20set%20up%3A%20choose%20what%20you%20want%20to%20learn%20and%20connect%20your%20key.">Ao abrir o Soaken pela primeira vez, um passo a passo rápido te ajuda a configurar tudo: escolher o que você quer aprender e conectar sua chave.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
       <h3 data-pt="Escolha seus idiomas e nível" data-en="Pick your languages and level">Escolha seus idiomas e nível</h3>
       <p class="lead" data-pt-html="Marque%20um%20ou%20mais%20%3Cb%3Eidiomas%20que%20voc%C3%AA%20quer%20aprender%3C%2Fb%3E%20e%20diga%20seu%20%3Cb%3En%C3%ADvel%3C%2Fb%3E%20em%20cada%20um%20%E2%80%94%20o%20Soaken%20adapta%20o%20vocabul%C3%A1rio%20e%20as%20explica%C3%A7%C3%B5es.%20E%20as%20explica%C3%A7%C3%B5es%20aparecem%20no%20%3Cb%3Eseu%3C%2Fb%3E%20idioma." data-en-html="Select%20one%20or%20more%20%3Cb%3Elanguages%20you%20want%20to%20learn%3C%2Fb%3E%20and%20set%20your%20%3Cb%3Elevel%3C%2Fb%3E%20in%20each%20%E2%80%94%20Soaken%20adapts%20the%20vocabulary%20and%20explanations.%20And%20explanations%20show%20up%20in%20%3Cb%3Eyour%3C%2Fb%3E%20language.">Marque um ou mais <b>idiomas que você quer aprender</b> e diga seu <b>nível</b> em cada um — o Soaken adapta o vocabulário e as explicações. E as explicações aparecem no <b>seu</b> idioma.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/80-onb-language.png" data-pt="/guia/img/pt/80-onb-language.png" data-en="/guia/img/en/80-onb-language.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/80-onb-language.png" data-pt="/guia/img/pt/80-onb-language.png" data-en="/guia/img/en/80-onb-language.png" data-pt-alt="Tela de boas-vindas do Soaken com a lista de idiomas e o seletor de nível" data-en-alt="Soaken welcome screen with the language list and level picker" alt="Tela de boas-vindas do Soaken com a lista de idiomas e o seletor de nível" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
       <span class="num">02</span>
-      <h3 data-pt="Conecte sua chave — de graça" data-en="Connect your key — for free">Conecte sua chave — de graça</h3>
-      <p class="lead" data-pt-html="O%20Soaken%20usa%20a%20%3Cb%3Esua%3C%2Fb%3E%20chave%20(BYOK).%20O%20pr%C3%B3prio%20onboarding%20traz%20um%20%3Cb%3Epasso%20a%20passo%3C%2Fb%3E%20e%20atalhos%20pros%20provedores%20com%20%3Cb%3Eplano%20gr%C3%A1tis%3C%2Fb%3E%20(Groq%20e%20Gemini)%20%E2%80%94%20sem%20cart%C3%A3o%20pra%20come%C3%A7ar.%20Cole%20a%20chave%20nas%20Configura%C3%A7%C3%B5es%20e%20pronto." data-en-html="Soaken%20uses%20%3Cb%3Eyour%3C%2Fb%3E%20key%20(BYOK).%20The%20onboarding%20itself%20shows%20a%20%3Cb%3Estep-by-step%3C%2Fb%3E%20and%20shortcuts%20to%20providers%20with%20a%20%3Cb%3Efree%20tier%3C%2Fb%3E%20(Groq%20and%20Gemini)%20%E2%80%94%20no%20card%20to%20start.%20Paste%20the%20key%20in%20Settings%20and%20you%E2%80%99re%20set.">O Soaken usa a <b>sua</b> chave (BYOK). O próprio onboarding traz um <b>passo a passo</b> e atalhos pros provedores com <b>plano grátis</b> (Groq e Gemini) — sem cartão pra começar. Cole a chave nas Configurações e pronto.</p>
+      <h3 data-pt="Conecte sua chave" data-en="Connect your key">Conecte sua chave</h3>
+      <p class="lead" data-pt-html="O%20Soaken%20usa%20a%20%3Cb%3Esua%3C%2Fb%3E%20chave%20de%20IA%20(BYOK)%20%E2%80%94%20seus%20tokens%2C%20sob%20seu%20controle.%20O%20onboarding%20j%C3%A1%20traz%20atalhos%20pros%20provedores%20com%20%3Cb%3Eplano%20gr%C3%A1tis%3C%2Fb%3E.%20Se%20preferir%20fazer%20isso%20com%20calma%2C%20o%20%3Cb%3Epr%C3%B3ximo%20cap%C3%ADtulo%3C%2Fb%3E%20mostra%20o%20caminho%20inteiro." data-en-html="Soaken%20uses%20%3Cb%3Eyour%3C%2Fb%3E%20AI%20key%20(BYOK)%20%E2%80%94%20your%20tokens%2C%20under%20your%20control.%20The%20onboarding%20has%20shortcuts%20to%20providers%20with%20a%20%3Cb%3Efree%20tier%3C%2Fb%3E.%20If%20you%20would%20rather%20take%20it%20slow%2C%20the%20%3Cb%3Enext%20chapter%3C%2Fb%3E%20walks%20the%20whole%20path.">O Soaken usa a <b>sua</b> chave de IA (BYOK) — seus tokens, sob seu controle. O onboarding já traz atalhos pros provedores com <b>plano grátis</b>. Se preferir fazer isso com calma, o <b>próximo capítulo</b> mostra o caminho inteiro.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/81-onb-key.png" data-pt="/guia/img/pt/81-onb-key.png" data-en="/guia/img/en/81-onb-key.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/81-onb-key.png" data-pt="/guia/img/pt/81-onb-key.png" data-en="/guia/img/en/81-onb-key.png" data-pt-alt="Passo do onboarding pedindo a chave de API, com atalhos para os provedores" data-en-alt="Onboarding step asking for the API key, with provider shortcuts" alt="Passo do onboarding pedindo a chave de API, com atalhos para os provedores" loading="lazy"></figure>
   </section>
-  </div>
-  <div class="chapter" id="ch1">
+  </section>
+
+  <section class="chapter" id="chkeys">
     <div class="chap-head">
-      <span class="chap-k">02</span>
-      <h2 data-pt="Começando" data-en="Getting started">Começando</h2>
+      <span class="chap-k">03</span>
+      <h2 data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</h2>
     </div>
-    
-    
-    
-    
+    <p class="intro" data-pt-html="O%20Soaken%20n%C3%A3o%20cobra%20por%20uso%3A%20ele%20fala%20com%20o%20provedor%20de%20IA%20usando%20%3Cb%3Ea%20sua%20chave%3C%2Fb%3E%20(%C3%A9%20o%20que%20chamam%20de%20BYOK).%20Voc%C3%AA%20cria%20a%20chave%20no%20site%20do%20provedor%2C%20cola%20no%20Soaken%20e%20pronto%20%E2%80%94%20%3Cb%3EGroq%3C%2Fb%3E%20e%20%3Cb%3EGemini%3C%2Fb%3E%20t%C3%AAm%20plano%20gr%C3%A1tis%20e%20n%C3%A3o%20pedem%20cart%C3%A3o.%20S%C3%A3o%20tr%C3%AAs%20passos%3A" data-en-html="Soaken%20doesn%E2%80%99t%20charge%20per%20use%3A%20it%20talks%20to%20the%20AI%20provider%20with%20%3Cb%3Eyour%20own%20key%3C%2Fb%3E%20(that%E2%80%99s%20BYOK).%20You%20create%20the%20key%20on%20the%20provider%E2%80%99s%20site%2C%20paste%20it%20into%20Soaken%2C%20and%20you%E2%80%99re%20done%20%E2%80%94%20%3Cb%3EGroq%3C%2Fb%3E%20and%20%3Cb%3EGemini%3C%2Fb%3E%20have%20a%20free%20tier%20and%20ask%20for%20no%20card.%20Three%20steps%3A">O Soaken não cobra por uso: ele fala com o provedor de IA usando <b>a sua chave</b> (é o que chamam de BYOK). Você cria a chave no site do provedor, cola no Soaken e pronto — <b>Groq</b> e <b>Gemini</b> têm plano grátis e não pedem cartão. São três passos:</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
-      <h3 data-pt="Adicione sua chave de API" data-en="Add your API key">Adicione sua chave de API</h3>
-      <p class="lead" data-pt-html="O%20Soaken%20usa%20a%20%3Cb%3Esua%3C%2Fb%3E%20chave%20(BYOK)%20%E2%80%94%20seus%20tokens%2C%20sob%20seu%20controle.%20Em%20%3Cb%3EConfigura%C3%A7%C3%B5es%3C%2Fb%3E%2C%20clique%20em%20%3Cb%3EAdicionar%3C%2Fb%3E%20no%20provedor%20que%20preferir%20e%20cole%20a%20chave.%20Pra%20come%C3%A7ar%20de%20gra%C3%A7a%3A%20%3Cb%3EGroq%3C%2Fb%3E%20ou%20%3Cb%3EGemini%3C%2Fb%3E%20t%C3%AAm%20camada%20gratuita." data-en-html="Soaken%20uses%20%3Cb%3Eyour%3C%2Fb%3E%20key%20(BYOK)%20%E2%80%94%20your%20tokens%2C%20under%20your%20control.%20In%20%3Cb%3ESettings%3C%2Fb%3E%2C%20click%20%3Cb%3EAdd%3C%2Fb%3E%20on%20the%20provider%20you%20prefer%20and%20paste%20the%20key.%20To%20start%20free%3A%20%3Cb%3EGroq%3C%2Fb%3E%20or%20%3Cb%3EGemini%3C%2Fb%3E%20have%20a%20free%20tier.">O Soaken usa a <b>sua</b> chave (BYOK) — seus tokens, sob seu controle. Em <b>Configurações</b>, clique em <b>Adicionar</b> no provedor que preferir e cole a chave. Pra começar de graça: <b>Groq</b> ou <b>Gemini</b> têm camada gratuita.</p>
+      <h3 data-pt="Em Configurações, clique em Adicionar" data-en="In Settings, click Add">Em Configurações, clique em Adicionar</h3>
+      <p class="lead" data-pt-html="Abra%20as%20%3Cb%3EConfigura%C3%A7%C3%B5es%3C%2Fb%3E%20e%20procure%20a%20se%C3%A7%C3%A3o%20%3Cb%3EProvedores%20de%20IA%3C%2Fb%3E.%20Escolha%20um%20provedor%20e%20clique%20em%20%3Cb%3EAdicionar%3C%2Fb%3E.%20Na%20d%C3%BAvida%2C%20comece%20pelo%20%3Cb%3EGroq%3C%2Fb%3E%3A%20%C3%A9%20gr%C3%A1tis%20e%20%C3%A9%20o%20melhor%20pra%20transcri%C3%A7%C3%A3o." data-en-html="Open%20%3Cb%3ESettings%3C%2Fb%3E%20and%20find%20the%20%3Cb%3EAI%20providers%3C%2Fb%3E%20section.%20Pick%20a%20provider%20and%20click%20%3Cb%3EAdd%3C%2Fb%3E.%20If%20in%20doubt%2C%20start%20with%20%3Cb%3EGroq%3C%2Fb%3E%3A%20it%E2%80%99s%20free%20and%20it%E2%80%99s%20the%20best%20one%20for%20transcription.">Abra as <b>Configurações</b> e procure a seção <b>Provedores de IA</b>. Escolha um provedor e clique em <b>Adicionar</b>. Na dúvida, comece pelo <b>Groq</b>: é grátis e é o melhor pra transcrição.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/01-add-key.png" data-pt="/guia/img/pt/01-add-key.png" data-en="/guia/img/en/01-add-key.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/01-add-key.png" data-pt="/guia/img/pt/01-add-key.png" data-en="/guia/img/en/01-add-key.png" data-pt-alt="Lista de provedores de IA nas Configurações, com o botão Adicionar" data-en-alt="AI provider list in Settings, with the Add button" alt="Lista de provedores de IA nas Configurações, com o botão Adicionar" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
       <span class="num">02</span>
-      <h3 data-pt="Escolha o modelo de transcrição" data-en="Choose the transcription model">Escolha o modelo de transcrição</h3>
-      <p class="lead" data-pt-html="Em%20%3Cb%3EModelos%20por%20tarefa%20%E2%86%92%20Transcri%C3%A7%C3%A3o%3C%2Fb%3E%2C%20escolha%20qual%20modelo%20transforma%20a%20%3Cb%3Efala%20em%20texto%3C%2Fb%3E.%20S%C3%B3%20aparecem%20os%20modelos%20dos%20provedores%20que%20voc%C3%AA%20configurou.%20%3Cb%3EWhisper%20Large%20v3%3C%2Fb%3E%20(Groq)%20%C3%A9%20o%20mais%20preciso%20pras%20legendas." data-en-html="In%20%3Cb%3EModels%20per%20task%20%E2%86%92%20Transcription%3C%2Fb%3E%2C%20choose%20which%20model%20turns%20%3Cb%3Espeech%20into%20text%3C%2Fb%3E.%20Only%20your%20configured%20providers%20show%20up.%20%3Cb%3EWhisper%20Large%20v3%3C%2Fb%3E%20(Groq)%20is%20the%20most%20accurate%20for%20captions.">Em <b>Modelos por tarefa → Transcrição</b>, escolha qual modelo transforma a <b>fala em texto</b>. Só aparecem os modelos dos provedores que você configurou. <b>Whisper Large v3</b> (Groq) é o mais preciso pras legendas.</p>
+      <h3 data-pt="Pegue a chave no site do provedor" data-en="Get the key on the provider’s site">Pegue a chave no site do provedor</h3>
+      <p class="lead" data-pt-html="O%20link%20%3Cb%3EObter%20chave%3C%2Fb%3E%2C%20embaixo%20do%20nome%20do%20provedor%2C%20abre%20o%20site%20dele%20j%C3%A1%20na%20p%C3%A1gina%20certa.%20Fa%C3%A7a%20login%2C%20crie%20a%20chave%20e%20%3Cb%3Ecopie%3C%2Fb%3E.%20Ela%20aparece%20uma%20vez%20s%C3%B3%20%E2%80%94%20copie%20antes%20de%20fechar%20a%20p%C3%A1gina." data-en-html="The%20%3Cb%3EGet%20key%3C%2Fb%3E%20link%20under%20the%20provider%E2%80%99s%20name%20opens%20its%20site%20right%20on%20the%20correct%20page.%20Sign%20in%2C%20create%20the%20key%20and%20%3Cb%3Ecopy%20it%3C%2Fb%3E.%20It%E2%80%99s%20shown%20only%20once%20%E2%80%94%20copy%20it%20before%20closing%20the%20page.">O link <b>Obter chave</b>, embaixo do nome do provedor, abre o site dele já na página certa. Faça login, crie a chave e <b>copie</b>. Ela aparece uma vez só — copie antes de fechar a página.</p>
+      <p class="minihead" data-pt="Onde pegar cada uma" data-en="Where to get each one">Onde pegar cada uma</p>
+      <div class="provgrid">
+        <div class="provcard" style="--pc:#f55036">
+          <div class="provhead">
+            <span class="provdot"></span>
+            <span class="provname">Groq</span>
+            <span class="provfree" data-pt="Grátis" data-en="Free">Grátis</span>
+          </div>
+          <p class="provsteps" data-pt-html="Entre%20%E2%86%92%20%3Cb%3ECreate%20API%20Key%3C%2Fb%3E%20%E2%86%92%20copie.%20Gr%C3%A1tis%20pra%20come%C3%A7ar%2C%20%3Cb%3Esem%20cart%C3%A3o%3C%2Fb%3E." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20API%20Key%3C%2Fb%3E%20%E2%86%92%20copy.%20Free%20to%20start%2C%20%3Cb%3Eno%20card%3C%2Fb%3E.">Entre → <b>Create API Key</b> → copie. Grátis pra começar, <b>sem cartão</b>.</p>
+          <div class="provfoot">
+            <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer">console.groq.com/keys</a>
+            <code>gsk_…</code>
+          </div>
+        </div>
+        <div class="provcard" style="--pc:#4285f4">
+          <div class="provhead">
+            <span class="provdot"></span>
+            <span class="provname">Google Gemini</span>
+            <span class="provfree" data-pt="Grátis" data-en="Free">Grátis</span>
+          </div>
+          <p class="provsteps" data-pt-html="Entre%20com%20a%20conta%20Google%20%E2%86%92%20%3Cb%3ECreate%20API%20key%3C%2Fb%3E%20%E2%86%92%20copie.%20Tem%20tier%20gr%C3%A1tis." data-en-html="Sign%20in%20with%20Google%20%E2%86%92%20%3Cb%3ECreate%20API%20key%3C%2Fb%3E%20%E2%86%92%20copy.%20Has%20a%20free%20tier.">Entre com a conta Google → <b>Create API key</b> → copie. Tem tier grátis.</p>
+          <div class="provfoot">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer">aistudio.google.com/app/apikey</a>
+            <code>AIza…</code>
+          </div>
+        </div>
+        <div class="provcard" style="--pc:#10a37f">
+          <div class="provhead">
+            <span class="provdot"></span>
+            <span class="provname">OpenAI</span>
+            
+          </div>
+          <p class="provsteps" data-pt-html="Entre%20na%20conta%20%E2%86%92%20%3Cb%3ECreate%20new%20secret%20key%3C%2Fb%3E%20%E2%86%92%20copie%20a%20chave." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20new%20secret%20key%3C%2Fb%3E%20%E2%86%92%20copy%20the%20key.">Entre na conta → <b>Create new secret key</b> → copie a chave.</p>
+          <div class="provfoot">
+            <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer">platform.openai.com/api-keys</a>
+            <code>sk-…</code>
+          </div>
+        </div>
+        <div class="provcard" style="--pc:#d97757">
+          <div class="provhead">
+            <span class="provdot"></span>
+            <span class="provname">Anthropic</span>
+            
+          </div>
+          <p class="provsteps" data-pt-html="Entre%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copie." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copy.">Entre → <b>Create Key</b> → copie.</p>
+          <div class="provfoot">
+            <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">console.anthropic.com/settings/keys</a>
+            <code>sk-ant-…</code>
+          </div>
+        </div>
+        <div class="provcard" style="--pc:#6467f2">
+          <div class="provhead">
+            <span class="provdot"></span>
+            <span class="provname">OpenRouter</span>
+            
+          </div>
+          <p class="provsteps" data-pt-html="Entre%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copie.%20Uma%20chave%20%E2%86%92%20v%C3%A1rios%20modelos." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copy.%20One%20key%20%E2%86%92%20many%20models.">Entre → <b>Create Key</b> → copie. Uma chave → vários modelos.</p>
+          <div class="provfoot">
+            <a href="https://openrouter.ai/keys" target="_blank" rel="noreferrer">openrouter.ai/keys</a>
+            <code>sk-or-…</code>
+          </div>
+        </div>
+      </div>
     </div>
-    <figure class="shot"><img src="/guia/img/en/02-transcription-model.png" data-pt="/guia/img/pt/02-transcription-model.png" data-en="/guia/img/en/02-transcription-model.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/50-get-key.png" data-pt="/guia/img/pt/50-get-key.png" data-en="/guia/img/en/50-get-key.png" data-pt-alt="Link “Obter chave” destacado no card do provedor" data-en-alt="“Get key” link highlighted on the provider card" alt="Link “Obter chave” destacado no card do provedor" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
       <span class="num">03</span>
-      <h3 data-pt="Escolha o modelo de análise" data-en="Choose the analysis model">Escolha o modelo de análise</h3>
-      <p class="lead" data-pt-html="Na%20aba%20%3Cb%3EAn%C3%A1lise%3C%2Fb%3E%2C%20escolha%20o%20modelo%20que%20gera%20o%20%3Cb%3Evocabul%C3%A1rio%2C%20a%20tradu%C3%A7%C3%A3o%20e%20as%20respostas%20do%20professor%3C%2Fb%3E.%20Cada%20modelo%20mostra%20um%20selo%3A%20R%C3%A1pido%2C%20Preciso%20ou%20Barato." data-en-html="In%20the%20%3Cb%3EAnalysis%3C%2Fb%3E%20tab%2C%20choose%20the%20model%20that%20powers%20%3Cb%3Evocabulary%2C%20translation%20and%20the%20tutor%E2%80%99s%20answers%3C%2Fb%3E.%20Each%20model%20shows%20a%20badge%3A%20Fast%2C%20Accurate%20or%20Cheap.">Na aba <b>Análise</b>, escolha o modelo que gera o <b>vocabulário, a tradução e as respostas do professor</b>. Cada modelo mostra um selo: Rápido, Preciso ou Barato.</p>
+      <h3 data-pt="Cole no Soaken e salve" data-en="Paste it into Soaken and save">Cole no Soaken e salve</h3>
+      <p class="lead" data-pt-html="De%20volta%20ao%20Soaken%2C%20%3Cb%3Ecole%20a%20chave%3C%2Fb%3E%20no%20campo%20e%20clique%20em%20%3Cb%3ESalvar%3C%2Fb%3E.%20O%20provedor%20passa%20a%20mostrar%20%3Cb%3EConectado%3C%2Fb%3E%20%E2%80%94%20e%20%C3%A9%20s%C3%B3%20isso%2C%20a%20configura%C3%A7%C3%A3o%20acabou." data-en-html="Back%20in%20Soaken%2C%20%3Cb%3Epaste%20the%20key%3C%2Fb%3E%20into%20the%20field%20and%20click%20%3Cb%3ESave%3C%2Fb%3E.%20The%20provider%20flips%20to%20%3Cb%3EConnected%3C%2Fb%3E%20%E2%80%94%20and%20that%E2%80%99s%20it%2C%20setup%20is%20done.">De volta ao Soaken, <b>cole a chave</b> no campo e clique em <b>Salvar</b>. O provedor passa a mostrar <b>Conectado</b> — e é só isso, a configuração acabou.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/03-analysis-model.png" data-pt="/guia/img/pt/03-analysis-model.png" data-en="/guia/img/en/03-analysis-model.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/51-paste-key.png" data-pt="/guia/img/pt/51-paste-key.png" data-en="/guia/img/en/51-paste-key.png" data-pt-alt="Campo de chave aberto no card do provedor, com o botão Salvar" data-en-alt="Key field open on the provider card, with the Save button" alt="Campo de chave aberto no card do provedor, com o botão Salvar" loading="lazy"></figure>
   </section>
-  <section class="step">
-    <div class="step-body">
-      <span class="num">04</span>
-      <h3 data-pt="O guia dentro do app" data-en="The in-app guide">O guia dentro do app</h3>
-      <p class="lead" data-pt-html="O%20bot%C3%A3o%20%3Cb%3EGuia%3C%2Fb%3E%20(no%20topo%20das%20Configura%C3%A7%C3%B5es)%20abre%20o%20guia%20embutido%2C%20explicando%20cada%20funcionalidade%20e%20cada%20ajuste%20%E2%80%94%20sempre%20%C3%A0%20m%C3%A3o." data-en-html="The%20%3Cb%3EGuide%3C%2Fb%3E%20button%20(top%20of%20Settings)%20opens%20the%20built-in%20guide%2C%20explaining%20every%20feature%20and%20setting%20%E2%80%94%20always%20at%20hand.">O botão <b>Guia</b> (no topo das Configurações) abre o guia embutido, explicando cada funcionalidade e cada ajuste — sempre à mão.</p>
-    </div>
-    <figure class="shot"><img src="/guia/img/en/04-guide-button.png" data-pt="/guia/img/pt/04-guide-button.png" data-en="/guia/img/en/04-guide-button.png" alt="" loading="lazy" /></figure>
   </section>
-  </div>
-  <div class="chapter" id="chkeys">
+
+  <section class="chapter" id="chmodels">
     <div class="chap-head">
-      <span class="chap-k">03</span>
-      <h2 data-pt="Pegar as chaves" data-en="Getting the keys">Pegar as chaves</h2>
+      <span class="chap-k">04</span>
+      <h2 data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</h2>
     </div>
-    <p class="intro" data-pt-html="Cada%20provedor%20te%20d%C3%A1%20uma%20chave%20no%20site%20dele%20%E2%80%94%20algumas%20%3Cb%3Egr%C3%A1tis%3C%2Fb%3E.%20Voc%C3%AA%20pega%20l%C3%A1%2C%20copia%20e%20cola%20no%20Soaken%20em%20%3Cb%3EAdicionar%20%E2%86%92%20colar%20%E2%86%92%20Salvar%3C%2Fb%3E.%20Onde%20pegar%20cada%20uma%3A" data-en-html="Each%20provider%20gives%20you%20a%20key%20on%20its%20own%20site%20%E2%80%94%20some%20%3Cb%3Efree%3C%2Fb%3E.%20Grab%20it%20there%2C%20copy%20it%2C%20and%20paste%20it%20into%20Soaken%20via%20%3Cb%3EAdd%20%E2%86%92%20paste%20%E2%86%92%20Save%3C%2Fb%3E.%20Where%20to%20get%20each%20one%3A">Cada provedor te dá uma chave no site dele — algumas <b>grátis</b>. Você pega lá, copia e cola no Soaken em <b>Adicionar → colar → Salvar</b>. Onde pegar cada uma:</p>
-    
-  <div class="provgrid">
-    
-      <div class="provcard" style="--pc:#10a37f">
-        <div class="provhead">
-          <span class="provdot"></span>
-          <span class="provname">OpenAI</span>
-          
-        </div>
-        <p class="provsteps" data-pt-html="Entre%20na%20conta%20%E2%86%92%20%3Cb%3ECreate%20new%20secret%20key%3C%2Fb%3E%20%E2%86%92%20copie%20a%20chave." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20new%20secret%20key%3C%2Fb%3E%20%E2%86%92%20copy%20the%20key.">Entre na conta → <b>Create new secret key</b> → copie a chave.</p>
-        <div class="provfoot">
-          <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer">platform.openai.com/api-keys</a>
-          <code>sk-…</code>
-        </div>
-      </div>
-      <div class="provcard" style="--pc:#4285f4">
-        <div class="provhead">
-          <span class="provdot"></span>
-          <span class="provname">Google Gemini</span>
-          <span class="provfree" data-pt="Grátis" data-en="Free">Grátis</span>
-        </div>
-        <p class="provsteps" data-pt-html="Entre%20com%20a%20conta%20Google%20%E2%86%92%20%3Cb%3ECreate%20API%20key%3C%2Fb%3E%20%E2%86%92%20copie.%20Tem%20tier%20gr%C3%A1tis." data-en-html="Sign%20in%20with%20Google%20%E2%86%92%20%3Cb%3ECreate%20API%20key%3C%2Fb%3E%20%E2%86%92%20copy.%20Has%20a%20free%20tier.">Entre com a conta Google → <b>Create API key</b> → copie. Tem tier grátis.</p>
-        <div class="provfoot">
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer">aistudio.google.com/app/apikey</a>
-          <code>AIza…</code>
-        </div>
-      </div>
-      <div class="provcard" style="--pc:#f55036">
-        <div class="provhead">
-          <span class="provdot"></span>
-          <span class="provname">Groq</span>
-          <span class="provfree" data-pt="Grátis" data-en="Free">Grátis</span>
-        </div>
-        <p class="provsteps" data-pt-html="Entre%20%E2%86%92%20%3Cb%3ECreate%20API%20Key%3C%2Fb%3E%20%E2%86%92%20copie.%20Gr%C3%A1tis%20pra%20come%C3%A7ar%2C%20sem%20cart%C3%A3o." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20API%20Key%3C%2Fb%3E%20%E2%86%92%20copy.%20Free%20to%20start%2C%20no%20card.">Entre → <b>Create API Key</b> → copie. Grátis pra começar, sem cartão.</p>
-        <div class="provfoot">
-          <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer">console.groq.com/keys</a>
-          <code>gsk_…</code>
-        </div>
-      </div>
-      <div class="provcard" style="--pc:#d97757">
-        <div class="provhead">
-          <span class="provdot"></span>
-          <span class="provname">Anthropic</span>
-          
-        </div>
-        <p class="provsteps" data-pt-html="Entre%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copie." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copy.">Entre → <b>Create Key</b> → copie.</p>
-        <div class="provfoot">
-          <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">console.anthropic.com/settings/keys</a>
-          <code>sk-ant-…</code>
-        </div>
-      </div>
-      <div class="provcard" style="--pc:#6467f2">
-        <div class="provhead">
-          <span class="provdot"></span>
-          <span class="provname">OpenRouter</span>
-          
-        </div>
-        <p class="provsteps" data-pt-html="Entre%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copie.%20Uma%20chave%20%E2%86%92%20v%C3%A1rios%20modelos." data-en-html="Sign%20in%20%E2%86%92%20%3Cb%3ECreate%20Key%3C%2Fb%3E%20%E2%86%92%20copy.%20One%20key%20%E2%86%92%20many%20models.">Entre → <b>Create Key</b> → copie. Uma chave → vários modelos.</p>
-        <div class="provfoot">
-          <a href="https://openrouter.ai/keys" target="_blank" rel="noreferrer">openrouter.ai/keys</a>
-          <code>sk-or-…</code>
-        </div>
-      </div>
-  </div>
-    
-    
+    <p class="intro" data-pt-html="Com%20a%20chave%20conectada%2C%20o%20Soaken%20j%C3%A1%20funciona.%20Se%20quiser%20afinar%2C%20d%C3%A1%20pra%20escolher%20%3Cb%3Equal%20modelo%20faz%20o%20qu%C3%AA%3C%2Fb%3E%20%E2%80%94%20s%C3%B3%20aparecem%20os%20modelos%20dos%20provedores%20que%20voc%C3%AA%20configurou." data-en-html="With%20the%20key%20connected%2C%20Soaken%20already%20works.%20If%20you%20want%20to%20fine-tune%20it%2C%20you%20can%20choose%20%3Cb%3Ewhich%20model%20does%20what%3C%2Fb%3E%20%E2%80%94%20only%20models%20from%20providers%20you%20configured%20show%20up.">Com a chave conectada, o Soaken já funciona. Se quiser afinar, dá pra escolher <b>qual modelo faz o quê</b> — só aparecem os modelos dos provedores que você configurou.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
-      <h3 data-pt="Onde colar no Soaken" data-en="Where to paste in Soaken">Onde colar no Soaken</h3>
-      <p class="lead" data-pt-html="Em%20%3Cb%3EConfigura%C3%A7%C3%B5es%3C%2Fb%3E%2C%20clique%20em%20%3Cb%3EAdicionar%3C%2Fb%3E%20no%20provedor%2C%20%3Cb%3Ecole%20a%20chave%3C%2Fb%3E%20no%20campo%20e%20clique%20em%20%3Cb%3ESalvar%3C%2Fb%3E.%20O%20link%20%3Cb%3EObter%20chave%3C%2Fb%3E%20abre%20o%20site%20do%20provedor%20direto." data-en-html="In%20%3Cb%3ESettings%3C%2Fb%3E%2C%20click%20%3Cb%3EAdd%3C%2Fb%3E%20on%20the%20provider%2C%20%3Cb%3Epaste%20the%20key%3C%2Fb%3E%20in%20the%20field%20and%20click%20%3Cb%3ESave%3C%2Fb%3E.%20The%20%3Cb%3EGet%20key%3C%2Fb%3E%20link%20opens%20the%20provider%E2%80%99s%20site%20directly.">Em <b>Configurações</b>, clique em <b>Adicionar</b> no provedor, <b>cole a chave</b> no campo e clique em <b>Salvar</b>. O link <b>Obter chave</b> abre o site do provedor direto.</p>
+      <h3 data-pt="O modelo de transcrição" data-en="The transcription model">O modelo de transcrição</h3>
+      <p class="lead" data-pt-html="Em%20%3Cb%3EModelos%20por%20tarefa%20%E2%86%92%20Transcri%C3%A7%C3%A3o%3C%2Fb%3E%2C%20escolha%20qual%20modelo%20transforma%20a%20%3Cb%3Efala%20em%20texto%3C%2Fb%3E.%20%3Cb%3EWhisper%20Large%20v3%3C%2Fb%3E%20(Groq)%20%C3%A9%20o%20mais%20preciso%20pras%20legendas." data-en-html="In%20%3Cb%3EModels%20per%20task%20%E2%86%92%20Transcription%3C%2Fb%3E%2C%20choose%20which%20model%20turns%20%3Cb%3Espeech%20into%20text%3C%2Fb%3E.%20%3Cb%3EWhisper%20Large%20v3%3C%2Fb%3E%20(Groq)%20is%20the%20most%20accurate%20for%20captions.">Em <b>Modelos por tarefa → Transcrição</b>, escolha qual modelo transforma a <b>fala em texto</b>. <b>Whisper Large v3</b> (Groq) é o mais preciso pras legendas.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/51-paste-key.png" data-pt="/guia/img/pt/51-paste-key.png" data-en="/guia/img/en/51-paste-key.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/02-transcription-model.png" data-pt="/guia/img/pt/02-transcription-model.png" data-en="/guia/img/en/02-transcription-model.png" data-pt-alt="Aba Transcrição das Configurações com a lista de modelos" data-en-alt="Transcription tab in Settings with the model list" alt="Aba Transcrição das Configurações com a lista de modelos" loading="lazy"></figure>
   </section>
+  <section class="step">
+    <div class="step-body">
+      <span class="num">02</span>
+      <h3 data-pt="O modelo de análise" data-en="The analysis model">O modelo de análise</h3>
+      <p class="lead" data-pt-html="Na%20aba%20%3Cb%3EAn%C3%A1lise%3C%2Fb%3E%2C%20escolha%20o%20modelo%20que%20gera%20o%20%3Cb%3Evocabul%C3%A1rio%2C%20a%20tradu%C3%A7%C3%A3o%20e%20as%20respostas%20do%20professor%3C%2Fb%3E.%20Cada%20modelo%20mostra%20um%20selo%3A%20R%C3%A1pido%2C%20Preciso%20ou%20Barato." data-en-html="In%20the%20%3Cb%3EAnalysis%3C%2Fb%3E%20tab%2C%20choose%20the%20model%20that%20powers%20%3Cb%3Evocabulary%2C%20translation%20and%20the%20tutor%E2%80%99s%20answers%3C%2Fb%3E.%20Each%20model%20shows%20a%20badge%3A%20Fast%2C%20Accurate%20or%20Cheap.">Na aba <b>Análise</b>, escolha o modelo que gera o <b>vocabulário, a tradução e as respostas do professor</b>. Cada modelo mostra um selo: Rápido, Preciso ou Barato.</p>
+    </div>
+    <figure class="shot"><img src="/guia/img/en/03-analysis-model.png" data-pt="/guia/img/pt/03-analysis-model.png" data-en="/guia/img/en/03-analysis-model.png" data-pt-alt="Aba Análise das Configurações com os selos Rápido, Preciso e Barato" data-en-alt="Analysis tab in Settings with the Fast, Accurate and Cheap badges" alt="Aba Análise das Configurações com os selos Rápido, Preciso e Barato" loading="lazy"></figure>
+  </section>
+  <section class="step">
+    <div class="step-body">
+      <span class="num">03</span>
+      <h3 data-pt="O guia dentro do app" data-en="The in-app guide">O guia dentro do app</h3>
+      <p class="lead" data-pt-html="O%20bot%C3%A3o%20%3Cb%3EGuia%3C%2Fb%3E%20(no%20topo%20das%20Configura%C3%A7%C3%B5es)%20abre%20o%20guia%20embutido%2C%20explicando%20cada%20funcionalidade%20e%20cada%20ajuste%20%E2%80%94%20sempre%20%C3%A0%20m%C3%A3o%2C%20sem%20precisar%20voltar%20aqui." data-en-html="The%20%3Cb%3EGuide%3C%2Fb%3E%20button%20(top%20of%20Settings)%20opens%20the%20built-in%20guide%2C%20explaining%20every%20feature%20and%20setting%20%E2%80%94%20always%20at%20hand%2C%20no%20need%20to%20come%20back%20here.">O botão <b>Guia</b> (no topo das Configurações) abre o guia embutido, explicando cada funcionalidade e cada ajuste — sempre à mão, sem precisar voltar aqui.</p>
+    </div>
+    <figure class="shot"><img src="/guia/img/en/04-guide-button.png" data-pt="/guia/img/pt/04-guide-button.png" data-en="/guia/img/en/04-guide-button.png" data-pt-alt="Botão Guia no topo da tela de Configurações" data-en-alt="Guide button at the top of the Settings screen" alt="Botão Guia no topo da tela de Configurações" loading="lazy"></figure>
+  </section>
+  </section>
+
+  <div class="part">
+    <span class="part-k" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
+    <span class="part-note" data-pt="Dá play no que você já assiste — o resto acontece sozinho." data-en="Hit play on what you already watch — the rest happens on its own.">Dá play no que você já assiste — o resto acontece sozinho.</span>
   </div>
-  <div class="chapter" id="ch2">
+
+  <section class="chapter" id="chlive">
     <div class="chap-head">
-      <span class="chap-k">04</span>
+      <span class="chap-k">05</span>
       <h2 data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</h2>
     </div>
     <p class="intro" data-pt-html="O%20Soaken%20escuta%20%3Cb%3Equalquer%20%C3%A1udio%20do%20PC%3C%2Fb%3E%20%E2%80%94%20v%C3%ADdeos%2C%20s%C3%A9ries%2C%20filmes%2C%20chamadas.%20%C3%89%20s%C3%B3%20dar%20play%3A%20enquanto%20o%20v%C3%ADdeo%20toca%2C%20cada%20frase%20falada%20%C3%A9%20%3Cb%3Etranscrita%20na%20hora%3C%2Fb%3E%20e%20vira%20material%20de%20estudo.%20No%20exemplo%2C%20este%20anime%20no%20YouTube%20(Solo%20Leveling)." data-en-html="Soaken%20listens%20to%20%3Cb%3Eany%20audio%20on%20your%20PC%3C%2Fb%3E%20%E2%80%94%20videos%2C%20shows%2C%20movies%2C%20calls.%20Just%20hit%20play%3A%20while%20the%20video%20runs%2C%20each%20spoken%20line%20is%20%3Cb%3Etranscribed%20instantly%3C%2Fb%3E%20into%20study%20material.%20In%20this%20example%2C%20this%20anime%20on%20YouTube%20(Solo%20Leveling).">O Soaken escuta <b>qualquer áudio do PC</b> — vídeos, séries, filmes, chamadas. É só dar play: enquanto o vídeo toca, cada frase falada é <b>transcrita na hora</b> e vira material de estudo. No exemplo, este anime no YouTube (Solo Leveling).</p>
-    
-    
     <div class="correlate">
       <figure class="cor">
-        <div class="cor-frame video"><img src="/guia/img/yt-solo.jpg" alt="" loading="lazy"/></div>
+        <div class="cor-frame video"><img src="/guia/img/yt-solo.jpg" data-pt-alt="Um episódio de anime tocando no YouTube" data-en-alt="An anime episode playing on YouTube" alt="Um episódio de anime tocando no YouTube" loading="lazy"></div>
         <figcaption data-pt="O vídeo que você assiste" data-en="The video you watch">O vídeo que você assiste</figcaption>
       </figure>
       <div class="cor-arrow" aria-hidden="true">→</div>
       <figure class="cor">
-        <div class="cor-frame"><img src="/guia/img/en/20-tb-clean.png" data-pt="/guia/img/pt/20-tb-clean.png" data-en="/guia/img/en/20-tb-clean.png" alt="" loading="lazy"/></div>
+        <div class="cor-frame"><img src="/guia/img/en/20-tb-clean.png" data-pt="/guia/img/pt/20-tb-clean.png" data-en="/guia/img/en/20-tb-clean.png" data-pt-alt="Tutor Board do Soaken com a frase do vídeo já transcrita e traduzida" data-en-alt="Soaken Tutor Board with the line from the video already transcribed and translated" alt="Tutor Board do Soaken com a frase do vídeo já transcrita e traduzida" loading="lazy"></div>
         <figcaption data-pt="O Soaken captura a legenda e já traduz" data-en="Soaken captures the caption and translates it">O Soaken captura a legenda e já traduz</figcaption>
       </figure>
     </div>
-    
-  </div>
-  <div class="chapter" id="ch3">
+  </section>
+
+  <section class="chapter" id="chboard">
     <div class="chap-head">
-      <span class="chap-k">05</span>
+      <span class="chap-k">06</span>
       <h2 data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</h2>
     </div>
-    
-    
-    
-    
+    <p class="intro" data-pt-html="%C3%89%20aqui%20que%20a%20frase%20capturada%20vira%20aula%3A%20texto%2C%20leitura%2C%20tradu%C3%A7%C3%A3o%2C%20vocabul%C3%A1rio%20e%20v%C3%A1rios%20jeitos%20de%20praticar%20a%20mesma%20frase." data-en-html="This%20is%20where%20the%20captured%20sentence%20becomes%20a%20lesson%3A%20text%2C%20reading%2C%20translation%2C%20vocabulary%20and%20several%20ways%20to%20drill%20the%20same%20line.">É aqui que a frase capturada vira aula: texto, leitura, tradução, vocabulário e vários jeitos de praticar a mesma frase.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
       <h3 data-pt="A frase capturada" data-en="The captured sentence">A frase capturada</h3>
       <p class="lead" data-pt-html="Cada%20frase%20que%20o%20app%20ouve%20vira%20um%20card%3A%20o%20texto%20original%2C%20a%20leitura%20em%20%3Cb%3Eromaji%3C%2Fb%3E%20(e%20furigana%20no%20japon%C3%AAs)%20e%20a%20tradu%C3%A7%C3%A3o.%20Voc%C3%AA%20bate%20o%20olho%20e%20j%C3%A1%20entende." data-en-html="Each%20sentence%20the%20app%20hears%20becomes%20a%20card%3A%20the%20original%20text%2C%20the%20%3Cb%3Eromaji%3C%2Fb%3E%20reading%20(furigana%20for%20Japanese)%20and%20the%20translation.%20One%20glance%20and%20you%20get%20it.">Cada frase que o app ouve vira um card: o texto original, a leitura em <b>romaji</b> (e furigana no japonês) e a tradução. Você bate o olho e já entende.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/10-tb-sentence.png" data-pt="/guia/img/pt/10-tb-sentence.png" data-en="/guia/img/en/10-tb-sentence.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/10-tb-sentence.png" data-pt="/guia/img/pt/10-tb-sentence.png" data-en="/guia/img/en/10-tb-sentence.png" data-pt-alt="Card do Tutor Board com a frase original, a leitura e a tradução" data-en-alt="Tutor Board card with the original sentence, its reading and the translation" alt="Card do Tutor Board com a frase original, a leitura e a tradução" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -214,7 +289,7 @@
       <h3 data-pt="Vocabulário com áudio" data-en="Vocabulary with audio">Vocabulário com áudio</h3>
       <p class="lead" data-pt-html="As%20palavras%20novas%20da%20frase%20aparecem%20em%20chips.%20Toque%20no%20%3Cb%3Ealto-falante%20%F0%9F%94%8A%3C%2Fb%3E%20pra%20ouvir%20a%20pron%C3%BAncia%20de%20cada%20uma." data-en-html="The%20new%20words%20from%20the%20sentence%20show%20up%20as%20chips.%20Tap%20the%20%3Cb%3Espeaker%20%F0%9F%94%8A%3C%2Fb%3E%20to%20hear%20each%20one%E2%80%99s%20pronunciation.">As palavras novas da frase aparecem em chips. Toque no <b>alto-falante 🔊</b> pra ouvir a pronúncia de cada uma.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/11-tb-vocab.png" data-pt="/guia/img/pt/11-tb-vocab.png" data-en="/guia/img/en/11-tb-vocab.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/11-tb-vocab.png" data-pt="/guia/img/pt/11-tb-vocab.png" data-en="/guia/img/en/11-tb-vocab.png" data-pt-alt="Chips de vocabulário com botão de áudio em cada palavra" data-en-alt="Vocabulary chips with an audio button on each word" alt="Chips de vocabulário com botão de áudio em cada palavra" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -222,7 +297,7 @@
       <h3 data-pt="Pratique a pronúncia" data-en="Practice your pronunciation">Pratique a pronúncia</h3>
       <p class="lead" data-pt-html="Em%20%3Cb%3EPraticar%3C%2Fb%3E%20voc%C3%AA%20grava%20voc%C3%AA%20mesmo%20falando%20a%20frase%20e%20recebe%20uma%20%3Cb%3Enota%20de%20pron%C3%BAncia%3C%2Fb%3E%20%E2%80%94%20o%20app%20compara%20sua%20voz%20com%20o%20%C3%A1udio%20original%20e%20o%20TTS." data-en-html="Hit%20%3Cb%3EPractice%3C%2Fb%3E%20to%20record%20yourself%20saying%20the%20sentence%20and%20get%20a%20%3Cb%3Epronunciation%20score%3C%2Fb%3E%20%E2%80%94%20it%20compares%20your%20voice%20to%20the%20original%20audio%20and%20the%20TTS.">Em <b>Praticar</b> você grava você mesmo falando a frase e recebe uma <b>nota de pronúncia</b> — o app compara sua voz com o áudio original e o TTS.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/12-tb-practice.png" data-pt="/guia/img/pt/12-tb-practice.png" data-en="/guia/img/en/12-tb-practice.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/12-tb-practice.png" data-pt="/guia/img/pt/12-tb-practice.png" data-en="/guia/img/en/12-tb-practice.png" data-pt-alt="Painel Praticar com a gravação e a nota de pronúncia" data-en-alt="Practice panel with the recording and the pronunciation score" alt="Painel Praticar com a gravação e a nota de pronúncia" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -230,7 +305,7 @@
       <h3 data-pt="Dizer com naturalidade" data-en="Say it naturally">Dizer com naturalidade</h3>
       <p class="lead" data-pt-html="Fale%20(ou%20digite)%20um%20pensamento%20na%20%3Cb%3Esua%3C%2Fb%3E%20l%C3%ADngua%20e%20veja%20como%20um%20nativo%20diria%20%E2%80%94%20literal%20%E2%86%92%20natural%20%E2%86%92%20casual%2C%20com%20%C3%A1udio.%20Ensina%20a%20%3Cb%3En%C3%A3o%20traduzir%20ao%20p%C3%A9%20da%20letra%3C%2Fb%3E." data-en-html="Speak%20(or%20type)%20a%20thought%20in%20%3Cb%3Eyour%3C%2Fb%3E%20language%20and%20see%20how%20a%20native%20would%20say%20it%20%E2%80%94%20literal%20%E2%86%92%20natural%20%E2%86%92%20casual%2C%20with%20audio.%20Teaches%20you%20%3Cb%3Enot%20to%20translate%20word%20for%20word%3C%2Fb%3E.">Fale (ou digite) um pensamento na <b>sua</b> língua e veja como um nativo diria — literal → natural → casual, com áudio. Ensina a <b>não traduzir ao pé da letra</b>.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/13-tb-natural.png" data-pt="/guia/img/pt/13-tb-natural.png" data-en="/guia/img/en/13-tb-natural.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/13-tb-natural.png" data-pt="/guia/img/pt/13-tb-natural.png" data-en="/guia/img/en/13-tb-natural.png" data-pt-alt="Painel “Dizer com naturalidade” com as versões literal, natural e casual" data-en-alt="“Say it naturally” panel with the literal, natural and casual versions" alt="Painel “Dizer com naturalidade” com as versões literal, natural e casual" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -238,7 +313,7 @@
       <h3 data-pt="Esconder até 100% — de memória" data-en="Hide until 100% — from memory">Esconder até 100% — de memória</h3>
       <p class="lead" data-pt-html="Toque%20na%20frase%20pra%20%3Cb%3Eescond%C3%AA-la%3C%2Fb%3E%20e%20repita%20de%20cabe%C3%A7a.%20Quando%20voc%C3%AA%20chega%20a%20%3Cb%3E100%25%3C%2Fb%3E%2C%20o%20card%20oculta%20o%20texto%20e%20voc%C3%AA%20recita%20%3Cb%3Esem%20espiar%3C%2Fb%3E%20%E2%80%94%20o%20teste%20de%20verdade%20da%20reten%C3%A7%C3%A3o." data-en-html="Tap%20the%20sentence%20to%20%3Cb%3Ehide%20it%3C%2Fb%3E%20and%20repeat%20from%20memory.%20Once%20you%20reach%20%3Cb%3E100%25%3C%2Fb%3E%2C%20the%20card%20conceals%20the%20text%20and%20you%20recite%20it%20%3Cb%3Ewithout%20peeking%3C%2Fb%3E%20%E2%80%94%20the%20real%20test%20of%20retention.">Toque na frase pra <b>escondê-la</b> e repita de cabeça. Quando você chega a <b>100%</b>, o card oculta o texto e você recita <b>sem espiar</b> — o teste de verdade da retenção.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/14-recall-hidden.png" data-pt="/guia/img/pt/14-recall-hidden.png" data-en="/guia/img/en/14-recall-hidden.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/14-recall-hidden.png" data-pt="/guia/img/pt/14-recall-hidden.png" data-en="/guia/img/en/14-recall-hidden.png" data-pt-alt="Card com o texto da frase oculto para recitação de memória" data-en-alt="Card with the sentence text hidden for recall from memory" alt="Card com o texto da frase oculto para recitação de memória" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -246,25 +321,23 @@
       <h3 data-pt="Repita só um trecho" data-en="Repeat just a segment">Repita só um trecho</h3>
       <p class="lead" data-pt-html="Ligue%20o%20%3Cb%3ESegment%3C%2Fb%3E%20e%20toque%20na%20%3Cb%3Eprimeira%3C%2Fb%3E%20e%20na%20%3Cb%3E%C3%BAltima%3C%2Fb%3E%20palavra%20do%20trecho%20%E2%80%94%20o%20app%20repete%20s%C3%B3%20aquele%20peda%C3%A7o%20em%20%3Cb%3Eloop%3C%2Fb%3E.%20%C3%93timo%20pra%20domar%20a%20parte%20dif%C3%ADcil%20da%20frase." data-en-html="Turn%20on%20%3Cb%3ESegment%3C%2Fb%3E%20and%20tap%20the%20%3Cb%3Efirst%3C%2Fb%3E%20and%20%3Cb%3Elast%3C%2Fb%3E%20word%20of%20the%20chunk%20%E2%80%94%20the%20app%20loops%20just%20that%20part.%20Great%20for%20taming%20the%20tricky%20bit%20of%20a%20sentence.">Ligue o <b>Segment</b> e toque na <b>primeira</b> e na <b>última</b> palavra do trecho — o app repete só aquele pedaço em <b>loop</b>. Ótimo pra domar a parte difícil da frase.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/15-segment-pick.png" data-pt="/guia/img/pt/15-segment-pick.png" data-en="/guia/img/en/15-segment-pick.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/15-segment-pick.png" data-pt="/guia/img/pt/15-segment-pick.png" data-en="/guia/img/en/15-segment-pick.png" data-pt-alt="Modo Segment com a primeira e a última palavra do trecho selecionadas" data-en-alt="Segment mode with the first and last word of the chunk selected" alt="Modo Segment com a primeira e a última palavra do trecho selecionadas" loading="lazy"></figure>
   </section>
-  </div>
-  <div class="chapter" id="ch4">
+  </section>
+
+  <section class="chapter" id="chpron">
     <div class="chap-head">
-      <span class="chap-k">06</span>
+      <span class="chap-k">07</span>
       <h2 data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</h2>
     </div>
-    
-    
-    
-    
+    <p class="intro" data-pt-html="Um%20treino%20separado%2C%20sem%20depender%20de%20v%C3%ADdeo%3A%20voc%C3%AA%20l%C3%AA%20frases%20em%20voz%20alta%20e%20a%20IA%20%3Cb%3Eouve%20o%20seu%20som%3C%2Fb%3E%20pra%20dizer%20o%20que%20melhorar." data-en-html="A%20separate%20drill%20that%20needs%20no%20video%3A%20you%20read%20sentences%20aloud%20and%20the%20AI%20%3Cb%3Elistens%20to%20your%20sound%3C%2Fb%3E%20to%20tell%20you%20what%20to%20improve.">Um treino separado, sem depender de vídeo: você lê frases em voz alta e a IA <b>ouve o seu som</b> pra dizer o que melhorar.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
       <h3 data-pt="Teste sua pronúncia" data-en="Test your pronunciation">Teste sua pronúncia</h3>
       <p class="lead" data-pt-html="No%20%3Cb%3EIn%C3%ADcio%20%E2%86%92%20Testar%20minha%20pron%C3%BAncia%3C%2Fb%3E%2C%20voc%C3%AA%20l%C3%AA%20uma%20frase%20em%20voz%20alta%20e%20recebe%20um%20%3Cb%3Escore%20real%20de%20fala%20%2B%20entona%C3%A7%C3%A3o%3C%2Fb%3E.%20O%20diferencial%3A%20a%20IA%20%3Cb%3Eouve%20o%20seu%20som%3C%2Fb%3E%2C%20n%C3%A3o%20s%C3%B3%20compara%20o%20texto." data-en-html="In%20%3Cb%3EHome%20%E2%86%92%20Test%20my%20pronunciation%3C%2Fb%3E%2C%20read%20a%20sentence%20aloud%20and%20get%20a%20%3Cb%3Ereal%20speech%20%2B%20intonation%20score%3C%2Fb%3E.%20The%20edge%3A%20the%20AI%20%3Cb%3Elistens%20to%20your%20sound%3C%2Fb%3E%2C%20not%20just%20the%20text.">No <b>Início → Testar minha pronúncia</b>, você lê uma frase em voz alta e recebe um <b>score real de fala + entonação</b>. O diferencial: a IA <b>ouve o seu som</b>, não só compara o texto.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/30-pron-speak.png" data-pt="/guia/img/pt/30-pron-speak.png" data-en="/guia/img/en/30-pron-speak.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/30-pron-speak.png" data-pt="/guia/img/pt/30-pron-speak.png" data-en="/guia/img/en/30-pron-speak.png" data-pt-alt="Tela de teste de pronúncia com a frase e o botão de gravar" data-en-alt="Pronunciation test screen with the sentence and the record button" alt="Tela de teste de pronúncia com a frase e o botão de gravar" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -272,25 +345,23 @@
       <h3 data-pt="Foco + fluxo contínuo" data-en="Focus + continuous flow">Foco + fluxo contínuo</h3>
       <p class="lead" data-pt-html="Cada%20frase%20mostra%20o%20%3Cb%3Efoco%3C%2Fb%3E%20(ex.%3A%20sons%20%E2%80%9Cr%E2%80%9D%20e%20%E2%80%9Cth%E2%80%9D).%20Depois%20da%20tentativa%2C%20o%20app%20%3Cb%3Ej%C3%A1%20manda%20a%20pr%C3%B3xima%20frase%20automaticamente%3C%2Fb%3E%20%E2%80%94%20voc%C3%AA%20treina%20uma%20atr%C3%A1s%20da%20outra%2C%20sem%20parar%20pra%20clicar." data-en-html="Each%20sentence%20shows%20its%20%3Cb%3Efocus%3C%2Fb%3E%20(e.g.%20%E2%80%9Cr%E2%80%9D%20and%20%E2%80%9Cth%E2%80%9D%20sounds).%20After%20each%20try%2C%20the%20app%20%3Cb%3Ejumps%20to%20the%20next%20sentence%20automatically%3C%2Fb%3E%20%E2%80%94%20you%20drill%20one%20after%20another%2C%20no%20clicking%20to%20continue.">Cada frase mostra o <b>foco</b> (ex.: sons “r” e “th”). Depois da tentativa, o app <b>já manda a próxima frase automaticamente</b> — você treina uma atrás da outra, sem parar pra clicar.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/31-pron-focus.png" data-pt="/guia/img/pt/31-pron-focus.png" data-en="/guia/img/en/31-pron-focus.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/31-pron-focus.png" data-pt="/guia/img/pt/31-pron-focus.png" data-en="/guia/img/en/31-pron-focus.png" data-pt-alt="Frase de treino com o foco de sons destacado e a nota da tentativa" data-en-alt="Drill sentence with the sound focus highlighted and the attempt score" alt="Frase de treino com o foco de sons destacado e a nota da tentativa" loading="lazy"></figure>
   </section>
-  </div>
-  <div class="chapter" id="ch5">
+  </section>
+
+  <section class="chapter" id="chsrs">
     <div class="chap-head">
-      <span class="chap-k">07</span>
+      <span class="chap-k">08</span>
       <h2 data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</h2>
     </div>
-    
-    
-    
-    
+    <p class="intro" data-pt-html="O%20que%20voc%C3%AA%20captura%20n%C3%A3o%20some%3A%20volta%20em%20flashcards%2C%20no%20intervalo%20certo%20pra%20mem%C3%B3ria%20fixar." data-en-html="What%20you%20capture%20doesn%E2%80%99t%20vanish%3A%20it%20comes%20back%20as%20flashcards%2C%20spaced%20right%20for%20memory%20to%20stick.">O que você captura não some: volta em flashcards, no intervalo certo pra memória fixar.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
       <h3 data-pt="Repetição espaçada" data-en="Spaced repetition">Repetição espaçada</h3>
       <p class="lead" data-pt-html="As%20palavras%20e%20frases%20%C3%BAteis%20viram%20%3Cb%3Eflashcards%3C%2Fb%3E%20que%20voltam%20%3Cb%3Eno%20momento%20certo%3C%2Fb%3E%20pra%20fixar%20na%20mem%C3%B3ria.%20Clique%20em%20%3Cb%3EMostrar%20resposta%3C%2Fb%3E%20pra%20testar%20se%20voc%C3%AA%20lembra%20%E2%80%94%20e%20d%C3%A1%20pra%20%3Cb%3EFalar%3C%2Fb%3E%20a%20palavra%20pra%20treinar%20a%20pron%C3%BAncia." data-en-html="Useful%20words%20and%20phrases%20become%20%3Cb%3Eflashcards%3C%2Fb%3E%20that%20come%20back%20%3Cb%3Eat%20the%20right%20time%3C%2Fb%3E%20to%20lock%20them%20into%20memory.%20Click%20%3Cb%3EShow%20answer%3C%2Fb%3E%20to%20test%20yourself%20%E2%80%94%20and%20you%20can%20%3Cb%3ESpeak%3C%2Fb%3E%20the%20word%20to%20practice%20pronunciation.">As palavras e frases úteis viram <b>flashcards</b> que voltam <b>no momento certo</b> pra fixar na memória. Clique em <b>Mostrar resposta</b> pra testar se você lembra — e dá pra <b>Falar</b> a palavra pra treinar a pronúncia.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/40-review-card.png" data-pt="/guia/img/pt/40-review-card.png" data-en="/guia/img/en/40-review-card.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/40-review-card.png" data-pt="/guia/img/pt/40-review-card.png" data-en="/guia/img/en/40-review-card.png" data-pt-alt="Flashcard de revisão com o botão Mostrar resposta" data-en-alt="Review flashcard with the Show answer button" alt="Flashcard de revisão com o botão Mostrar resposta" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -298,25 +369,23 @@
       <h3 data-pt="Diga como foi" data-en="Rate how it went">Diga como foi</h3>
       <p class="lead" data-pt-html="Marque%20%3Cb%3EErrei%20%C2%B7%20Dif%C3%ADcil%20%C2%B7%20F%C3%A1cil%3C%2Fb%3E.%20O%20app%20usa%20isso%20pra%20%3Cb%3Eagendar%20a%20pr%C3%B3xima%20revis%C3%A3o%3C%2Fb%3E%3A%20quanto%20melhor%20voc%C3%AA%20lembra%2C%20mais%20espa%C3%A7ado%20ela%20fica%20%E2%80%94%20quanto%20mais%20erra%2C%20mais%20cedo%20ela%20volta." data-en-html="Tap%20%3Cb%3EWrong%20%C2%B7%20Hard%20%C2%B7%20Easy%3C%2Fb%3E.%20The%20app%20uses%20it%20to%20%3Cb%3Eschedule%20the%20next%20review%3C%2Fb%3E%3A%20the%20better%20you%20remember%2C%20the%20further%20out%20it%20goes%20%E2%80%94%20the%20more%20you%20miss%2C%20the%20sooner%20it%20returns.">Marque <b>Errei · Difícil · Fácil</b>. O app usa isso pra <b>agendar a próxima revisão</b>: quanto melhor você lembra, mais espaçado ela fica — quanto mais erra, mais cedo ela volta.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/41-review-grade.png" data-pt="/guia/img/pt/41-review-grade.png" data-en="/guia/img/en/41-review-grade.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/41-review-grade.png" data-pt="/guia/img/pt/41-review-grade.png" data-en="/guia/img/en/41-review-grade.png" data-pt-alt="Botões Errei, Difícil e Fácil abaixo da resposta do flashcard" data-en-alt="Wrong, Hard and Easy buttons below the flashcard answer" alt="Botões Errei, Difícil e Fácil abaixo da resposta do flashcard" loading="lazy"></figure>
   </section>
-  </div>
-  <div class="chapter" id="ch6">
+  </section>
+
+  <section class="chapter" id="chhome">
     <div class="chap-head">
-      <span class="chap-k">08</span>
-      <h2 data-pt="Início & Séries" data-en="Home & Series">Início & Séries</h2>
+      <span class="chap-k">09</span>
+      <h2 data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início & Séries</h2>
     </div>
-    
-    
-    
-    
+    <p class="intro" data-pt-html="A%20tela%20que%20junta%20tudo%3A%20quanto%20voc%C3%AA%20j%C3%A1%20estudou%2C%20o%20que%20est%C3%A1%20pra%20revisar%20e%20onde%20voc%C3%AA%20parou%20em%20cada%20s%C3%A9rie." data-en-html="The%20screen%20that%20ties%20it%20together%3A%20how%20much%20you%E2%80%99ve%20studied%2C%20what%E2%80%99s%20due%20for%20review%20and%20where%20you%20left%20off%20in%20each%20series.">A tela que junta tudo: quanto você já estudou, o que está pra revisar e onde você parou em cada série.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
       <h3 data-pt="Seu progresso num relance" data-en="Your progress at a glance">Seu progresso num relance</h3>
       <p class="lead" data-pt-html="A%20tela%20%3Cb%3EIn%C3%ADcio%3C%2Fb%3E%20mostra%20suas%20%3Cb%3Esess%C3%B5es%3C%2Fb%3E%2C%20as%20%3Cb%3Efrases%3C%2Fb%3E%20capturadas%2C%20a%20%3Cb%3Esequ%C3%AAncia%3C%2Fb%3E%20(dias%20seguidos%20estudando)%20e%20quantas%20frases%20est%C3%A3o%20%3Cb%3Epra%20revisar%3C%2Fb%3E%20hoje." data-en-html="The%20%3Cb%3EHome%3C%2Fb%3E%20screen%20shows%20your%20%3Cb%3Esessions%3C%2Fb%3E%2C%20captured%20%3Cb%3Ephrases%3C%2Fb%3E%2C%20your%20%3Cb%3Estreak%3C%2Fb%3E%20(days%20in%20a%20row)%20and%20how%20many%20phrases%20are%20%3Cb%3Edue%20to%20review%3C%2Fb%3E%20today.">A tela <b>Início</b> mostra suas <b>sessões</b>, as <b>frases</b> capturadas, a <b>sequência</b> (dias seguidos estudando) e quantas frases estão <b>pra revisar</b> hoje.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/60-dash-stats.png" data-pt="/guia/img/pt/60-dash-stats.png" data-en="/guia/img/en/60-dash-stats.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/60-dash-stats.png" data-pt="/guia/img/pt/60-dash-stats.png" data-en="/guia/img/en/60-dash-stats.png" data-pt-alt="Tela Início com os números de sessões, frases, sequência e revisões" data-en-alt="Home screen with counts for sessions, phrases, streak and reviews due" alt="Tela Início com os números de sessões, frases, sequência e revisões" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -324,7 +393,7 @@
       <h3 data-pt="Histórico por série" data-en="History by series">Histórico por série</h3>
       <p class="lead" data-pt-html="Suas%20sess%C3%B5es%20ficam%20%3Cb%3Eagrupadas%20por%20s%C3%A9rie%3C%2Fb%3E%20(o%20Soaken%20detecta%20o%20que%20est%C3%A1%20tocando).%20Volte%20e%20%3Cb%3Econtinue%20de%20onde%20parou%3C%2Fb%3E%20%E2%80%94%20o%20ep.%204%20depois%20do%20ep.%203%2C%20com%20todo%20o%20vocabul%C3%A1rio%20daquele%20show%20junto." data-en-html="Your%20sessions%20are%20%3Cb%3Egrouped%20by%20series%3C%2Fb%3E%20(Soaken%20detects%20what%E2%80%99s%20playing).%20Come%20back%20and%20%3Cb%3Epick%20up%20where%20you%20left%20off%3C%2Fb%3E%20%E2%80%94%20ep.%204%20after%20ep.%203%2C%20with%20all%20of%20that%20show%E2%80%99s%20vocabulary%20together.">Suas sessões ficam <b>agrupadas por série</b> (o Soaken detecta o que está tocando). Volte e <b>continue de onde parou</b> — o ep. 4 depois do ep. 3, com todo o vocabulário daquele show junto.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/61-dash-series.png" data-pt="/guia/img/pt/61-dash-series.png" data-en="/guia/img/en/61-dash-series.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/61-dash-series.png" data-pt="/guia/img/pt/61-dash-series.png" data-en="/guia/img/en/61-dash-series.png" data-pt-alt="Sessões agrupadas por série, com episódios listados" data-en-alt="Sessions grouped by series, with episodes listed" alt="Sessões agrupadas por série, com episódios listados" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -332,25 +401,23 @@
       <h3 data-pt="Aba Sessões: sua biblioteca de aulas" data-en="Sessions tab: your lesson library">Aba Sessões: sua biblioteca de aulas</h3>
       <p class="lead" data-pt-html="A%20aba%20%3Cb%3ESess%C3%B5es%3C%2Fb%3E%20guarda%20cada%20aula%20que%20voc%C3%AA%20fez.%20%3Cb%3EBusque%3C%2Fb%3E%20por%20t%C3%ADtulo%2C%20frase%20ou%20s%C3%A9rie%2C%20%3Cb%3Efiltre%3C%2Fb%3E%20por%20idioma%20e%20toque%20em%20%3Cb%3EReabrir%3C%2Fb%3E%20pra%20continuar%20de%20onde%20parou." data-en-html="The%20%3Cb%3ESessions%3C%2Fb%3E%20tab%20keeps%20every%20lesson%20you%E2%80%99ve%20done.%20%3Cb%3ESearch%3C%2Fb%3E%20by%20title%2C%20phrase%20or%20series%2C%20%3Cb%3Efilter%3C%2Fb%3E%20by%20language%2C%20and%20tap%20%3Cb%3EReopen%3C%2Fb%3E%20to%20pick%20up%20where%20you%20left%20off.">A aba <b>Sessões</b> guarda cada aula que você fez. <b>Busque</b> por título, frase ou série, <b>filtre</b> por idioma e toque em <b>Reabrir</b> pra continuar de onde parou.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/62-sessions.png" data-pt="/guia/img/pt/62-sessions.png" data-en="/guia/img/en/62-sessions.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/62-sessions.png" data-pt="/guia/img/pt/62-sessions.png" data-en="/guia/img/en/62-sessions.png" data-pt-alt="Aba Sessões com busca, filtro de idioma e botão Reabrir" data-en-alt="Sessions tab with search, language filter and the Reopen button" alt="Aba Sessões com busca, filtro de idioma e botão Reabrir" loading="lazy"></figure>
   </section>
-  </div>
-  <div class="chapter" id="ch7">
+  </section>
+
+  <section class="chapter" id="chtutor">
     <div class="chap-head">
-      <span class="chap-k">09</span>
+      <span class="chap-k">10</span>
       <h2 data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</h2>
     </div>
-    <p class="intro" data-pt-html="Depois%20de%20capturar%20frases%20suficientes%20numa%20sess%C3%A3o%2C%20o%20%3Cb%3EProfessor%3C%2Fb%3E%20libera%3A%20uma%20conversa%20%3Cb%3Epor%20voz%3C%2Fb%3E%20baseada%20no%20que%20voc%C3%AA%20acabou%20de%20assistir.%20Ele%20%3Cb%3Efala%3C%2Fb%3E%20uma%20pergunta%2C%20voc%C3%AA%20responde%20%3Cb%3Efalando%3C%2Fb%3E%20(grava%20%E2%86%92%20transcreve)%20e%20recebe%20corre%C3%A7%C3%A3o%20na%20hora%20%E2%80%94%20como%20um%20%22language%20parent%22." data-en-html="Once%20you%E2%80%99ve%20captured%20enough%20sentences%20in%20a%20session%2C%20the%20%3Cb%3ETutor%3C%2Fb%3E%20unlocks%3A%20a%20%3Cb%3Evoice%3C%2Fb%3E%20conversation%20based%20on%20what%20you%20just%20watched.%20It%20%3Cb%3Espeaks%3C%2Fb%3E%20a%20question%2C%20you%20answer%20%3Cb%3Eout%20loud%3C%2Fb%3E%20(records%20%E2%86%92%20transcribes)%20and%20get%20instant%20correction%20%E2%80%94%20like%20a%20%E2%80%9Clanguage%20parent%E2%80%9D.">Depois de capturar frases suficientes numa sessão, o <b>Professor</b> libera: uma conversa <b>por voz</b> baseada no que você acabou de assistir. Ele <b>fala</b> uma pergunta, você responde <b>falando</b> (grava → transcreve) e recebe correção na hora — como um "language parent".</p>
-    
-    
-    
+    <p class="intro" data-pt-html="Depois%20de%20capturar%20frases%20suficientes%20numa%20sess%C3%A3o%2C%20o%20%3Cb%3EProfessor%3C%2Fb%3E%20libera%3A%20uma%20conversa%20%3Cb%3Epor%20voz%3C%2Fb%3E%20baseada%20no%20que%20voc%C3%AA%20acabou%20de%20assistir.%20Ele%20%3Cb%3Efala%3C%2Fb%3E%20uma%20pergunta%2C%20voc%C3%AA%20responde%20%3Cb%3Efalando%3C%2Fb%3E%20(grava%20%E2%86%92%20transcreve)%20e%20recebe%20corre%C3%A7%C3%A3o%20na%20hora%20%E2%80%94%20como%20um%20%E2%80%9Clanguage%20parent%E2%80%9D." data-en-html="Once%20you%E2%80%99ve%20captured%20enough%20sentences%20in%20a%20session%2C%20the%20%3Cb%3ETutor%3C%2Fb%3E%20unlocks%3A%20a%20%3Cb%3Evoice%3C%2Fb%3E%20conversation%20based%20on%20what%20you%20just%20watched.%20It%20%3Cb%3Espeaks%3C%2Fb%3E%20a%20question%2C%20you%20answer%20%3Cb%3Eout%20loud%3C%2Fb%3E%20(records%20%E2%86%92%20transcribes)%20and%20get%20instant%20correction%20%E2%80%94%20like%20a%20%E2%80%9Clanguage%20parent%E2%80%9D.">Depois de capturar frases suficientes numa sessão, o <b>Professor</b> libera: uma conversa <b>por voz</b> baseada no que você acabou de assistir. Ele <b>fala</b> uma pergunta, você responde <b>falando</b> (grava → transcreve) e recebe correção na hora — como um “language parent”.</p>
   <section class="step">
     <div class="step-body">
       <span class="num">01</span>
       <h3 data-pt="Ele puxa a conversa — e fala" data-en="It starts the chat — out loud">Ele puxa a conversa — e fala</h3>
       <p class="lead" data-pt-html="O%20professor%20abre%20com%20uma%20pergunta%20no%20%3Cb%3Eidioma%20que%20voc%C3%AA%20estuda%3C%2Fb%3E%20e%20a%20%3Cb%3Efala%20em%20voz%20alta%3C%2Fb%3E%20(toque%20no%20%F0%9F%94%8A%20pra%20reouvir).%20Embaixo%20vem%20a%20tradu%C3%A7%C3%A3o%20pra%20voc%C3%AA%20n%C3%A3o%20travar.%20Quando%20estiver%20pronto%2C%20toque%20em%20%3Cb%3EFalar%3C%2Fb%3E%20e%20responda." data-en-html="The%20tutor%20opens%20with%20a%20question%20in%20the%20%3Cb%3Elanguage%20you%E2%80%99re%20learning%3C%2Fb%3E%20and%20%3Cb%3Esays%20it%20aloud%3C%2Fb%3E%20(tap%20%F0%9F%94%8A%20to%20replay).%20The%20translation%20sits%20underneath%20so%20you%20never%20get%20stuck.%20When%20ready%2C%20tap%20%3Cb%3ESpeak%3C%2Fb%3E%20and%20answer.">O professor abre com uma pergunta no <b>idioma que você estuda</b> e a <b>fala em voz alta</b> (toque no 🔊 pra reouvir). Embaixo vem a tradução pra você não travar. Quando estiver pronto, toque em <b>Falar</b> e responda.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/70-prof-question.png" data-pt="/guia/img/pt/70-prof-question.png" data-en="/guia/img/en/70-prof-question.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/70-prof-question.png" data-pt="/guia/img/pt/70-prof-question.png" data-en="/guia/img/en/70-prof-question.png" data-pt-alt="Professor fazendo uma pergunta falada, com a tradução abaixo" data-en-alt="Tutor asking a spoken question, with the translation below" alt="Professor fazendo uma pergunta falada, com a tradução abaixo" loading="lazy"></figure>
   </section>
   <section class="step">
     <div class="step-body">
@@ -358,10 +425,18 @@
       <h3 data-pt="Correção na hora + continua" data-en="Instant correction + keeps going">Correção na hora + continua</h3>
       <p class="lead" data-pt-html="Depois%20da%20sua%20resposta%20falada%2C%20ele%20mostra%20%3Cb%3Eo%20que%20ajustar%3C%2Fb%3E%2C%20uma%20%3Cb%3Eforma%20melhor%20de%20dizer%3C%2Fb%3E%20(com%20bot%C3%A3o%20pra%20voc%C3%AA%20praticar)%20e%20exemplos%20pra%20%3Cb%3Esitua%C3%A7%C3%B5es%20parecidas%3C%2Fb%3E%20%E2%80%94%20e%20j%C3%A1%20emenda%20a%20%3Cb%3Epr%C3%B3xima%20pergunta%3C%2Fb%3E%2C%20mantendo%20a%20conversa%20fluindo." data-en-html="After%20your%20spoken%20answer%2C%20it%20shows%20%3Cb%3Ewhat%20to%20adjust%3C%2Fb%3E%2C%20a%20%3Cb%3Ebetter%20way%20to%20say%20it%3C%2Fb%3E%20(with%20a%20button%20to%20practice)%20and%20examples%20for%20%3Cb%3Esimilar%20situations%3C%2Fb%3E%20%E2%80%94%20then%20rolls%20straight%20into%20the%20%3Cb%3Enext%20question%3C%2Fb%3E%2C%20keeping%20the%20conversation%20flowing.">Depois da sua resposta falada, ele mostra <b>o que ajustar</b>, uma <b>forma melhor de dizer</b> (com botão pra você praticar) e exemplos pra <b>situações parecidas</b> — e já emenda a <b>próxima pergunta</b>, mantendo a conversa fluindo.</p>
     </div>
-    <figure class="shot"><img src="/guia/img/en/71-prof-feedback.png" data-pt="/guia/img/pt/71-prof-feedback.png" data-en="/guia/img/en/71-prof-feedback.png" alt="" loading="lazy" /></figure>
+    <figure class="shot"><img src="/guia/img/en/71-prof-feedback.png" data-pt="/guia/img/pt/71-prof-feedback.png" data-en="/guia/img/en/71-prof-feedback.png" data-pt-alt="Feedback do professor com a correção e uma forma melhor de dizer" data-en-alt="Tutor feedback with the correction and a better way to say it" alt="Feedback do professor com a correção e uma forma melhor de dizer" loading="lazy"></figure>
   </section>
-  </div>
-  <footer class="foot" data-pt="É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧" data-en="That’s it! Just hit play on what you enjoy and let Soaken turn it into study. Happy studying! 🎧">Bons estudos!</footer>
+  </section>
+
+  <footer class="foot">
+    <p data-pt="É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧" data-en="That’s it! Just hit play on what you enjoy and let Soaken turn it into study. Happy studying! 🎧">É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧</p>
+    <p class="foot-links">
+      <a href="https://bit.ly/4pxi5Wt" target="_blank" rel="noopener" data-pt="Baixar o Soaken" data-en="Download Soaken">Baixar o Soaken</a>
+      <span aria-hidden="true">·</span>
+      <a href="/" data-pt="Voltar ao site" data-en="Back to the site">Voltar ao site</a>
+    </p>
+  </footer>
 </div>
 
 <style>
@@ -377,7 +452,6 @@
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb,var(--teal) 12%,transparent),transparent 60%),var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-  .jp{font-weight:700;color:var(--teal-deep)}
 
   .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;
     padding:10px clamp(14px,4vw,28px);background:var(--nav);backdrop-filter:blur(12px);
@@ -426,7 +500,7 @@
   @media (max-width:760px){ .correlate{grid-template-columns:1fr} .cor-arrow{transform:rotate(90deg);justify-self:center;margin:2px 0} }
 
   /* Grid "como pegar cada chave" */
-  .provgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px;margin:6px 0 30px}
+  .provgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));gap:14px;margin:6px 0 30px}
   .provcard{border:1px solid var(--line);border-top:3px solid var(--pc);border-radius:14px;padding:15px 16px 13px;background:var(--panel);box-shadow:var(--shadow)}
   .provhead{display:flex;align-items:center;gap:9px;margin-bottom:8px}
   .provdot{width:11px;height:11px;border-radius:50%;background:var(--pc);flex:none}
@@ -439,21 +513,103 @@
   .provfoot a:hover{text-decoration:underline}
   .provfoot code{font-size:12px;color:var(--muted);background:var(--mint);padding:2px 7px;border-radius:6px;font-family:ui-monospace,monospace}
 
-  .foot{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;text-align:center}
+  /* Indice no topo */
+  .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(14px,2.5vw,28px);
+    margin:clamp(24px,4vw,38px) 0 0;padding:clamp(18px,2.6vw,24px);border:1px solid var(--line);
+    border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}
+  .toc-h{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal-deep);margin-bottom:10px}
+  .toc-col{min-width:0}
+  .toc-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .toc-list a{display:flex;align-items:baseline;gap:10px;padding:6px 8px;margin-left:-8px;border-radius:9px;
+    color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+  .toc-list a:hover{background:var(--mint);color:var(--teal-deep)}
+  .toc-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:12.5px;color:var(--teal);flex:none}
 
-  @media (max-width:760px){ .navlinks{display:none} }
+  /* Divisoria entre as duas partes do guia */
+  .part{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    margin:clamp(46px,8vw,84px) 0 0;padding-bottom:10px}
+  .part-k{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);
+    background:var(--mint);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
+  .part-note{color:var(--muted);font-size:14.5px}
+  .part + .chapter{margin-top:clamp(18px,3vw,26px)}
+
+  .minihead{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep);
+    margin:clamp(22px,3vw,30px) 0 12px}
+
+  /* Baixar e instalar */
+  .step-body:only-child{margin-bottom:0}
+  .btnrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:22px 0 0}
+  .dlbtn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;
+    background:var(--teal);color:#04211f;font-weight:800;font-size:15.5px;text-decoration:none;
+    box-shadow:var(--shadow);transition:transform .16s,filter .16s}
+  .dlbtn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .dlbtn:focus-visible{outline:2px solid var(--teal-deep);outline-offset:3px}
+  .btnmeta{color:var(--muted);font-size:14px;font-weight:600}
+  .callout{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 0;
+    padding:13px 16px;border-radius:14px;background:var(--mint);border:1px solid var(--line)}
+  .callout-k{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep)}
+  .callout-steps{color:var(--ink);font-size:15px}
+
+  .foot{margin-top:clamp(48px,7vw,72px);padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;text-align:center}
+  .foot p{margin:0 auto;max-width:56ch}
+  .foot-links{margin-top:14px!important;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  .foot-links a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .foot-links a:hover{text-decoration:underline}
+
+  /* Responsivo */
+  img{max-width:100%}
+  .navlinks{scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    -webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);
+    mask-image:linear-gradient(90deg,#000 90%,transparent)}
+  .navlinks::-webkit-scrollbar{display:none}
+
+  @media (max-width:760px){
+    /* em vez de sumir, o menu vira uma linha rolavel embaixo da marca */
+    .topbar{flex-wrap:wrap;gap:8px 12px;padding-bottom:0}
+    .navlinks{order:3;flex-basis:100%;margin-left:0;padding:2px 0 7px}
+    .seg{margin-left:auto}
+    .chapter{scroll-margin-top:104px}
+    .lead,.intro{max-width:none}
+    .btnrow .dlbtn{flex:1 1 100%;justify-content:center}
+    .toc{grid-template-columns:1fr;gap:20px}
+  }
+  @media (max-width:420px){
+    .brand{font-size:14px}
+    .provgrid{grid-template-columns:1fr}
+    .step{padding:22px 0}
+  }
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
 </style>
 
 <script>
   (function(){
-    var lang='en';
+    var buttons = { pt: document.getElementById('pt'), en: document.getElementById('en') };
+    // comeca no idioma do navegador; PT e o padrao do markup
+    var lang = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+
     function apply(){
-      document.querySelectorAll('[data-'+lang+']').forEach(function(el){ var v=el.getAttribute('data-'+lang); if(el.tagName==='IMG'){el.src=v;} else {el.textContent=v;} });
-      document.querySelectorAll('[data-'+lang+'-html]').forEach(function(el){ el.innerHTML=decodeURIComponent(el.getAttribute('data-'+lang+'-html')); });
-      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-' + lang + ']').forEach(function(el){
+        var v = el.getAttribute('data-' + lang);
+        if (el.tagName === 'IMG') { el.src = v; } else { el.textContent = v; }
+      });
+      document.querySelectorAll('[data-' + lang + '-html]').forEach(function(el){
+        el.innerHTML = decodeURIComponent(el.getAttribute('data-' + lang + '-html'));
+      });
+      document.querySelectorAll('img[data-' + lang + '-alt]').forEach(function(el){
+        el.alt = el.getAttribute('data-' + lang + '-alt');
+      });
+      document.documentElement.lang = lang;
+      Object.keys(buttons).forEach(function(id){
+        var on = id === lang;
+        buttons[id].classList.toggle('on', on);
+        buttons[id].setAttribute('aria-pressed', on);
+      });
     }
-    ['pt','en'].forEach(function(id){ document.getElementById(id).addEventListener('click',function(){ lang=id; document.querySelectorAll('.seg button').forEach(function(b){var on=b.id===id;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);}); apply(); }); });
+
+    Object.keys(buttons).forEach(function(id){
+      buttons[id].addEventListener('click', function(){ lang = id; apply(); });
+    });
     apply();
   })();
 </script>
