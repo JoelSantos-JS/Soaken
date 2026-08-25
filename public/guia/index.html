@@ -11,8 +11,36 @@
 </head>
 <body>
 <nav class="topbar">
-  <a class="brand" href="#top"><span class="logo">S</span> Soaken</a>
-  <div class="navlinks"><a href="#chdl" data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</a><a href="#chfirst" data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</a><a href="#chkeys" data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</a><a href="#chmodels" data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</a><a href="#chlive" data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</a><a href="#chboard" data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</a><a href="#chpron" data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</a><a href="#chsrs" data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</a><a href="#chhome" data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início & Séries</a><a href="#chtutor" data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</a></div>
+  <a class="brand" href="#top"><span class="logo">S</span><span class="nm">Soaken</span></a>
+  <div class="chapnav">
+    <button class="chapbtn" id="chapbtn" aria-expanded="false" aria-controls="chapmenu">
+      <span class="chapbtn-k" id="chapbtn-k">01</span>
+      <span class="chapbtn-t" id="chapbtn-t">Baixar e instalar</span>
+      <svg class="chev" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="chapmenu" id="chapmenu" hidden>
+      <div class="chapmenu-col">
+        <span class="chapmenu-h" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
+        <ol class="chapmenu-list">
+          <li><a href="#chdl" data-ch="chdl"><span class="chapmenu-k">01</span><span data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</span></a></li>
+          <li><a href="#chfirst" data-ch="chfirst"><span class="chapmenu-k">02</span><span data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</span></a></li>
+          <li><a href="#chkeys" data-ch="chkeys"><span class="chapmenu-k">03</span><span data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</span></a></li>
+          <li><a href="#chmodels" data-ch="chmodels"><span class="chapmenu-k">04</span><span data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</span></a></li>
+        </ol>
+      </div>
+      <div class="chapmenu-col">
+        <span class="chapmenu-h" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
+        <ol class="chapmenu-list">
+          <li><a href="#chlive" data-ch="chlive"><span class="chapmenu-k">05</span><span data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</span></a></li>
+          <li><a href="#chboard" data-ch="chboard"><span class="chapmenu-k">06</span><span data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</span></a></li>
+          <li><a href="#chpron" data-ch="chpron"><span class="chapmenu-k">07</span><span data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</span></a></li>
+          <li><a href="#chsrs" data-ch="chsrs"><span class="chapmenu-k">08</span><span data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</span></a></li>
+          <li><a href="#chhome" data-ch="chhome"><span class="chapmenu-k">09</span><span data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início &amp; Séries</span></a></li>
+          <li><a href="#chtutor" data-ch="chtutor"><span class="chapmenu-k">10</span><span data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</span></a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
   <div class="seg" role="group" aria-label="Idioma / Language">
     <button id="pt" class="on" aria-pressed="true">PT</button>
     <button id="en" aria-pressed="false">EN</button>
@@ -456,11 +484,34 @@
   .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;
     padding:10px clamp(14px,4vw,28px);background:var(--nav);backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--teal-deep);text-decoration:none;font-size:15px}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--teal-deep);text-decoration:none;font-size:15px;flex:none}
   .logo{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--teal);color:#fff;font-size:14px;box-shadow:var(--shadow)}
-  .navlinks{display:flex;gap:4px;margin-left:auto;overflow-x:auto}
-  .navlinks a{white-space:nowrap;color:var(--muted);text-decoration:none;font-weight:700;font-size:13.5px;padding:6px 11px;border-radius:999px}
-  .navlinks a:hover{color:var(--teal-deep);background:var(--mint)}
+  /* Seletor de capitulos: cabe em qualquer largura e diz onde voce esta */
+  .chapnav{position:relative;margin-left:auto;min-width:0;flex:0 1 auto}
+  .chapbtn{display:flex;align-items:center;gap:9px;width:100%;min-width:0;padding:7px 12px 7px 10px;
+    border:1px solid var(--line);border-radius:999px;background:var(--mint);color:var(--ink);
+    font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;transition:.16s}
+  .chapbtn:hover{border-color:var(--teal);color:var(--teal-deep)}
+  .chapbtn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .chapbtn-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:12px;color:var(--teal);flex:none}
+  .chapbtn-t{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:230px}
+  .chev{flex:none;color:var(--muted);transition:transform .18s}
+  .chapbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+
+  .chapmenu{position:absolute;top:calc(100% + 9px);right:0;z-index:60;
+    display:grid;grid-template-columns:repeat(2,minmax(190px,1fr));gap:18px 26px;
+    padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--panel);
+    box-shadow:0 18px 50px rgba(4,20,18,.7);max-height:min(74vh,560px);overflow-y:auto;
+    max-width:calc(100vw - 24px)}
+  .chapmenu[hidden]{display:none}
+  .chapmenu-h{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal-deep);margin-bottom:9px}
+  .chapmenu-list{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+  .chapmenu-list a{display:flex;align-items:baseline;gap:9px;padding:7px 9px;border-radius:9px;
+    color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;white-space:nowrap}
+  .chapmenu-list a:hover{background:var(--mint);color:var(--teal-deep)}
+  .chapmenu-list a[aria-current="true"]{background:var(--mint);color:var(--teal-deep)}
+  .chapmenu-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:12px;color:var(--teal);flex:none}
   .seg{display:inline-flex;background:var(--mint);border:1px solid var(--line);border-radius:999px;padding:3px;flex:none}
   .seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:800;font-size:12.5px;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.16s}
   .seg button.on{background:var(--panel);color:var(--teal-deep);box-shadow:var(--shadow)}
@@ -559,23 +610,18 @@
 
   /* Responsivo */
   img{max-width:100%}
-  .navlinks{scrollbar-width:none;-webkit-overflow-scrolling:touch;
-    -webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);
-    mask-image:linear-gradient(90deg,#000 90%,transparent)}
-  .navlinks::-webkit-scrollbar{display:none}
 
   @media (max-width:760px){
-    /* em vez de sumir, o menu vira uma linha rolavel embaixo da marca */
-    .topbar{flex-wrap:wrap;gap:8px 12px;padding-bottom:0}
-    .navlinks{order:3;flex-basis:100%;margin-left:0;padding:2px 0 7px}
-    .seg{margin-left:auto}
-    .chapter{scroll-margin-top:104px}
+    .chapmenu{position:fixed;top:58px;left:12px;right:12px;max-width:none;grid-template-columns:1fr;gap:16px}
+    .chapmenu-list a{white-space:normal}
+    .chapter{scroll-margin-top:70px}
     .lead,.intro{max-width:none}
     .btnrow .dlbtn{flex:1 1 100%;justify-content:center}
     .toc{grid-template-columns:1fr;gap:20px}
   }
   @media (max-width:420px){
-    .brand{font-size:14px}
+    .brand .nm{display:none}
+    .chapbtn{font-size:13px;padding:7px 10px 7px 9px}
     .provgrid{grid-template-columns:1fr}
     .step{padding:22px 0}
   }
@@ -605,12 +651,71 @@
         buttons[id].classList.toggle('on', on);
         buttons[id].setAttribute('aria-pressed', on);
       });
+      renderCurrent();
     }
+
+    /* ---- seletor de capitulos ---- */
+    var chapBtn = document.getElementById('chapbtn');
+    var chapMenu = document.getElementById('chapmenu');
+    var chapK = document.getElementById('chapbtn-k');
+    var chapT = document.getElementById('chapbtn-t');
+    var links = [].slice.call(chapMenu.querySelectorAll('a[data-ch]'));
+    var sections = links.map(function(a){ return document.getElementById(a.getAttribute('data-ch')); });
+    // titulos nos dois idiomas guardados aqui, e nao em data-* no <a>:
+    // apply() reescreve o textContent de tudo que tem data-pt/data-en
+    var titles = links.map(function(a){
+      var span = a.querySelector('span[data-pt]');
+      return { k: a.querySelector('.chapmenu-k').textContent, pt: span.getAttribute('data-pt'), en: span.getAttribute('data-en') };
+    });
+    var current = 0;
+
+    function renderCurrent(){
+      chapK.textContent = titles[current].k;
+      chapT.textContent = titles[current][lang];
+      links.forEach(function(el, i){
+        if (i === current) { el.setAttribute('aria-current', 'true'); }
+        else { el.removeAttribute('aria-current'); }
+      });
+    }
+
+    function openMenu(open){
+      chapMenu.hidden = !open;
+      chapBtn.setAttribute('aria-expanded', open);
+    }
+    chapBtn.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      openMenu(chapMenu.hidden);
+    });
+    chapMenu.addEventListener('click', function(ev){
+      if (ev.target.closest('a')) openMenu(false);
+    });
+    document.addEventListener('click', function(ev){
+      if (!chapMenu.hidden && !chapMenu.contains(ev.target)) openMenu(false);
+    });
+    document.addEventListener('keydown', function(ev){
+      if (ev.key === 'Escape' && !chapMenu.hidden) { openMenu(false); chapBtn.focus(); }
+    });
+
+    // acompanha a rolagem: o capitulo atual e o ultimo que ja passou pelo topo
+    var ticking = false;
+    function spy(){
+      ticking = false;
+      var i = 0;
+      for (var j = 0; j < sections.length; j++){
+        if (sections[j].getBoundingClientRect().top <= 96) i = j;
+      }
+      if (i !== current) { current = i; renderCurrent(); }
+    }
+    window.addEventListener('scroll', function(){
+      if (!ticking) { ticking = true; requestAnimationFrame(spy); }
+    }, { passive: true });
+    window.addEventListener('resize', spy, { passive: true });
 
     Object.keys(buttons).forEach(function(id){
       buttons[id].addEventListener('click', function(){ lang = id; apply(); });
     });
     apply();
+    spy();
   })();
 </script>
 </body>

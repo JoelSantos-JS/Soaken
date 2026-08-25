@@ -36,7 +36,7 @@ export default function Header() {
           <a href="/#why">{t('nav.why')}</a>
           <a href="/#pricing">{t('nav.pricing')}</a>
           <a href="/#faq">{t('nav.faq')}</a>
-          <a href="/guia/">{t('nav.guide')}</a>
+          <a href="/guia">{t('nav.guide')}</a>
         </nav>
         <div className="hdr-cta">
           <div className="lang">
