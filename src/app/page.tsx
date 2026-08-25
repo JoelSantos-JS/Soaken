@@ -1,7 +1,7 @@
 'use client';
 
 import { useI18n } from '@/lib/i18n-context';
-import { DOWNLOAD_URL } from '@/lib/config';
+import { DOWNLOAD_URL, PRO_CHECKOUT_URL } from '@/lib/config';
 import Header from '@/components/Header';
 import MockTranscript from '@/components/MockTranscript';
 import Waveform from '@/components/Waveform';
@@ -341,7 +341,7 @@ export default function Home() {
                       <li key={n}><i className="good"><CheckIcon /></i>{t(`price.pro.f${n}`)}</li>
                     ))}
                   </ul>
-                  <a className="btn btn-primary btn-block" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+                  <a className="btn btn-primary btn-block" href={PRO_CHECKOUT_URL} target="_blank" rel="noopener">
                     {t('price.pro.cta')}
                   </a>
                 </div>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav class="topbar">
-  <a class="brand" href="#top"><span class="logo">S</span><span class="nm">Soaken</span></a>
+  <a class="brand" href="/" data-pt-title="Voltar ao site do Soaken" data-en-title="Back to the Soaken site" title="Voltar ao site do Soaken"><svg class="back" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg><span class="logo">S</span><span class="nm">Soaken</span></a>
   <div class="chapnav">
     <button class="chapbtn" id="chapbtn" aria-expanded="false" aria-controls="chapmenu">
       <span class="chapbtn-k" id="chapbtn-k">01</span>
@@ -91,7 +91,7 @@
       <h3 data-pt="Baixe o instalador" data-en="Download the installer">Baixe o instalador</h3>
       <p class="lead" data-pt-html="Clique%20no%20bot%C3%A3o%20abaixo%20%E2%80%94%20o%20download%20come%C3%A7a%20na%20hora.%20O%20arquivo%20%C3%A9%20um%20%3Cb%3E.exe%3C%2Fb%3E%20e%20fica%20na%20pasta%20%3Cb%3EDownloads%3C%2Fb%3E%20do%20seu%20computador." data-en-html="Click%20the%20button%20below%20%E2%80%94%20the%20download%20starts%20right%20away.%20The%20file%20is%20an%20%3Cb%3E.exe%3C%2Fb%3E%20and%20lands%20in%20your%20%3Cb%3EDownloads%3C%2Fb%3E%20folder.">Clique no botão abaixo — o download começa na hora. O arquivo é um <b>.exe</b> e fica na pasta <b>Downloads</b> do seu computador.</p>
       <p class="btnrow">
-        <a class="dlbtn" href="https://bit.ly/4pxi5Wt" target="_blank" rel="noopener">
+        <a class="dlbtn" href="/download">
           <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10 4.6v6.9H3V5.5Zm8-1.05L21 3v8.5h-10V4.45ZM3 12.5h7v6.9l-7-.9v-6ZM11 12.5h10V21l-10-1.4v-7.1Z"/></svg>
           <span data-pt="Baixar para Windows" data-en="Download for Windows">Baixar para Windows</span>
         </a>
@@ -460,7 +460,7 @@
   <footer class="foot">
     <p data-pt="É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧" data-en="That’s it! Just hit play on what you enjoy and let Soaken turn it into study. Happy studying! 🎧">É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧</p>
     <p class="foot-links">
-      <a href="https://bit.ly/4pxi5Wt" target="_blank" rel="noopener" data-pt="Baixar o Soaken" data-en="Download Soaken">Baixar o Soaken</a>
+      <a href="/download" data-pt="Baixar o Soaken" data-en="Download Soaken">Baixar o Soaken</a>
       <span aria-hidden="true">·</span>
       <a href="/" data-pt="Voltar ao site" data-en="Back to the site">Voltar ao site</a>
     </p>
@@ -485,6 +485,10 @@
     padding:10px clamp(14px,4vw,28px);background:var(--nav);backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line)}
   .brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--teal-deep);text-decoration:none;font-size:15px;flex:none}
+  .brand:hover{color:var(--teal)}
+  .brand .back{flex:none;color:var(--muted);margin-right:-2px;transition:transform .16s,color .16s}
+  .brand:hover .back{color:var(--teal);transform:translateX(-2px)}
+  .brand:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:8px}
   .logo{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--teal);color:#fff;font-size:14px;box-shadow:var(--shadow)}
   /* Seletor de capitulos: cabe em qualquer largura e diz onde voce esta */
   .chapnav{position:relative;margin-left:auto;min-width:0;flex:0 1 auto}
