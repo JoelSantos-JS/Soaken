@@ -394,6 +394,9 @@ export default function Home() {
                   </a>
                 </div>
                 <p className="cta-meta">{t('cta.meta')}</p>
+                <p className="cta-safe">
+                  <a href="/guia#chdl">{t('cta.safe')}</a>
+                </p>
               </div>
             </Reveal>
           </div>

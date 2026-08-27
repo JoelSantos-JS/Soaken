@@ -153,6 +153,9 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.02em;l
 .who-card p{color:var(--ink-2);font-size:15px;line-height:1.55;}
 
 .cta-meta{position:relative;margin-top:18px;color:var(--muted);font-size:13.5px;}
+.cta-safe{position:relative;margin-top:10px;font-size:13.5px;}
+.cta-safe a{color:var(--muted);text-decoration:underline;text-underline-offset:3px;}
+.cta-safe a:hover{color:var(--brand);}
 
 .shot{position:relative;margin:58px auto 0;max-width:1000px;}
 .shot-frame{
