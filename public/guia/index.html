@@ -120,7 +120,7 @@
           <div class="ss">
             <div class="ss-h" data-pt="O Windows protegeu o seu PC" data-en="Windows protected your PC">O Windows protegeu o seu PC</div>
             <p class="ss-p" data-pt="O Microsoft Defender SmartScreen impediu a inicialização de um aplicativo não reconhecido." data-en="Microsoft Defender SmartScreen prevented an unrecognized app from starting.">O Microsoft Defender SmartScreen impediu a inicialização de um aplicativo não reconhecido.</p>
-            <p class="ss-app" data-pt-html="Aplicativo%3A%20%3Cb%3ESoaken-Setup-0.1.12.exe%3C%2Fb%3E%3Cbr%3EEditor%3A%20Desconhecido" data-en-html="App%3A%20%3Cb%3ESoaken-Setup-0.1.12.exe%3C%2Fb%3E%3Cbr%3EPublisher%3A%20Unknown%20publisher">Aplicativo: <b>Soaken-Setup-0.1.12.exe</b><br>Editor: Desconhecido</p>
+            <p class="ss-app" data-pt-html="Aplicativo%3A%20%3Cb%3ESoaken-Setup-0.1.14.exe%3C%2Fb%3E%3Cbr%3EEditor%3A%20Desconhecido" data-en-html="App%3A%20%3Cb%3ESoaken-Setup-0.1.14.exe%3C%2Fb%3E%3Cbr%3EPublisher%3A%20Unknown%20publisher">Aplicativo: <b>Soaken-Setup-0.1.14.exe</b><br>Editor: Desconhecido</p>
             <div class="ss-foot">
               <span class="ss-btn go marked"><span class="ss-pin">2</span><span data-pt="Executar assim mesmo" data-en="Run anyway">Executar assim mesmo</span></span>
               <span class="ss-btn" data-pt="Não executar" data-en="Don’t run">Não executar</span>
@@ -136,12 +136,6 @@
         <p class="why-p" data-pt-html="%3Cb%3EO%20aviso%20n%C3%A3o%20%C3%A9%20detec%C3%A7%C3%A3o%20de%20v%C3%ADrus.%3C%2Fb%3E%20Ele%20fala%20de%20reputa%C3%A7%C3%A3o%2C%20n%C3%A3o%20de%20amea%C3%A7a.%20Conforme%20mais%20gente%20instala%2C%20a%20tela%20some%20sozinha." data-en-html="%3Cb%3EThe%20warning%20is%20not%20a%20virus%20detection.%3C%2Fb%3E%20It%E2%80%99s%20about%20reputation%2C%20not%20threat.%20As%20more%20people%20install%20it%2C%20the%20screen%20goes%20away%20on%20its%20own."><b>O aviso não é detecção de vírus.</b> Ele fala de reputação, não de ameaça. Conforme mais gente instala, a tela some sozinha.</p>
         <p class="why-src"><a href="https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/smartscreen-reputation" target="_blank" rel="noreferrer" data-pt="Como a Microsoft explica a reputação do SmartScreen" data-en="How Microsoft explains SmartScreen reputation">Como a Microsoft explica a reputação do SmartScreen</a></p>
       </div>
-
-      <p class="minihead" data-pt="Quer conferir o arquivo?" data-en="Want to verify the file?">Quer conferir o arquivo?</p>
-      <p class="lead sm" data-pt-html="Todo%20arquivo%20tem%20uma%20%E2%80%9Cimpress%C3%A3o%20digital%E2%80%9D%20%C3%BAnica%2C%20o%20SHA-256.%20A%20da%20vers%C3%A3o%20%3Cb%3E0.1.12%3C%2Fb%3E%20%C3%A9%20esta.%20Se%20a%20do%20seu%20download%20bater%2C%20%C3%A9%20exatamente%20o%20mesmo%20arquivo%20que%20publicamos%3A" data-en-html="Every%20file%20has%20a%20unique%20%E2%80%9Cfingerprint%E2%80%9D%2C%20its%20SHA-256.%20This%20is%20the%20one%20for%20version%20%3Cb%3E0.1.12%3C%2Fb%3E.%20If%20your%20download%20matches%20it%2C%20it%E2%80%99s%20exactly%20the%20file%20we%20published%3A">Todo arquivo tem uma “impressão digital” única, o SHA-256. A da versão <b>0.1.12</b> é esta. Se a do seu download bater, é exatamente o mesmo arquivo que publicamos:</p>
-      <p class="hash">adcd711f6839a72b783a7bc62d9b258d6a6a04a8521f1f25fa7e33862b2ef1b4</p>
-      <p class="lead sm" data-pt-html="Pra%20ver%20a%20do%20seu%20arquivo%3A%20abra%20o%20%3Cb%3EPowerShell%3C%2Fb%3E%20na%20pasta%20Downloads%20e%20rode" data-en-html="To%20check%20yours%3A%20open%20%3Cb%3EPowerShell%3C%2Fb%3E%20in%20your%20Downloads%20folder%20and%20run">Pra ver a do seu arquivo: abra o <b>PowerShell</b> na pasta Downloads e rode</p>
-      <p class="cmd">Get-FileHash .\Soaken-Setup-0.1.12.exe</p>
 
       <div class="callout">
         <span class="callout-k" data-pt="Nosso compromisso" data-en="Our commitment">Nosso compromisso</span>
@@ -676,12 +670,6 @@
   .why-src a{color:var(--teal-deep);font-weight:700;text-decoration:none}
   .why-src a:hover{text-decoration:underline}
 
-  .lead.sm{font-size:16px;margin-top:0}
-  .hash,.cmd{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;line-height:1.6;
-    margin:12px 0 0;padding:12px 14px;border-radius:10px;background:var(--panel);border:1px solid var(--line);
-    color:var(--teal-deep);word-break:break-all;-webkit-user-select:all;user-select:all}
-  .cmd{color:var(--ink)}
-  .cmd::before{content:"PS> ";color:var(--muted)}
 
   .foot{margin-top:clamp(48px,7vw,72px);padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;text-align:center}
   .foot p{margin:0 auto;max-width:56ch}
