@@ -3,83 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soaken — Guia / Guide</title>
-<meta name="description" content="Guia do Soaken passo a passo: baixar, instalar, conectar sua chave de IA grátis e transformar o que você assiste em estudo de idiomas.">
+<title>Soaken — Documentação</title>
+<meta name="description" content="Documentação do Soaken: baixar, instalar, conectar sua chave de IA grátis e transformar o que você assiste em estudo de idiomas.">
 <meta name="color-scheme" content="dark">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<style>*{box-sizing:border-box}html,body{margin:0}</style>
+<style>*{box-sizing:border-box}html,body{margin:0;background:#0E2422}</style>
 </head>
 <body>
-<nav class="topbar">
-  <a class="brand" href="/" data-pt-title="Voltar ao site do Soaken" data-en-title="Back to the Soaken site" title="Voltar ao site do Soaken"><svg class="back" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg><span class="logo">S</span><span class="nm">Soaken</span></a>
-  <div class="chapnav">
-    <button class="chapbtn" id="chapbtn" aria-expanded="false" aria-controls="chapmenu">
-      <span class="chapbtn-k" id="chapbtn-k">01</span>
-      <span class="chapbtn-t" id="chapbtn-t">Baixar e instalar</span>
-      <svg class="chev" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-    </button>
-    <div class="chapmenu" id="chapmenu" hidden>
-      <div class="chapmenu-col">
-        <span class="chapmenu-h" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
-        <ol class="chapmenu-list">
-          <li><a href="#chdl" data-ch="chdl"><span class="chapmenu-k">01</span><span data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</span></a></li>
-          <li><a href="#chfirst" data-ch="chfirst"><span class="chapmenu-k">02</span><span data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</span></a></li>
-          <li><a href="#chkeys" data-ch="chkeys"><span class="chapmenu-k">03</span><span data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</span></a></li>
-          <li><a href="#chmodels" data-ch="chmodels"><span class="chapmenu-k">04</span><span data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</span></a></li>
-        </ol>
-      </div>
-      <div class="chapmenu-col">
-        <span class="chapmenu-h" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
-        <ol class="chapmenu-list">
-          <li><a href="#chlive" data-ch="chlive"><span class="chapmenu-k">05</span><span data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</span></a></li>
-          <li><a href="#chboard" data-ch="chboard"><span class="chapmenu-k">06</span><span data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</span></a></li>
-          <li><a href="#chpron" data-ch="chpron"><span class="chapmenu-k">07</span><span data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</span></a></li>
-          <li><a href="#chsrs" data-ch="chsrs"><span class="chapmenu-k">08</span><span data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</span></a></li>
-          <li><a href="#chhome" data-ch="chhome"><span class="chapmenu-k">09</span><span data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início &amp; Séries</span></a></li>
-          <li><a href="#chtutor" data-ch="chtutor"><span class="chapmenu-k">10</span><span data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</span></a></li>
-        </ol>
-      </div>
-    </div>
+<a class="skip" href="#conteudo" data-pt="Pular para o conteúdo" data-en="Skip to content">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="sidebar" aria-label="Menu">
+    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="brand" href="/" data-pt-title="Voltar ao site do Soaken" data-en-title="Back to the Soaken site" title="Voltar ao site do Soaken" aria-label="Soaken">
+    <svg class="back" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+    <span class="logo">S</span><span class="nm">Soaken</span>
+  </a>
+  <div class="busca">
+    <svg class="lupa" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm10 2-4.35-4.35"/></svg>
+    <input id="q" type="search" placeholder="Buscar na documentação" aria-label="Buscar na documentação" autocomplete="off">
+    <kbd>Ctrl K</kbd>
   </div>
   <div class="seg" role="group" aria-label="Idioma / Language">
     <button id="pt" class="on" aria-pressed="true">PT</button>
     <button id="en" aria-pressed="false">EN</button>
   </div>
-</nav>
-<div class="wrap" id="top">
-  <header class="hero">
-    <h1 data-pt="Guia de uso" data-en="How to use">Guia de uso</h1>
-    <p class="sub" data-pt="Aprenda idiomas com o que você já assiste. Um passo a passo com imagens — do download até a primeira conversa." data-en="Learn languages from what you already watch. A step-by-step with pictures — from download to your first conversation.">Aprenda idiomas com o que você já assiste. Um passo a passo com imagens — do download até a primeira conversa.</p>
-    <nav class="toc" aria-label="Índice">
-      <div class="toc-col">
-        <span class="toc-h" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
-        <ol class="toc-list">
-          <li><a href="#chdl"><span class="toc-k">01</span><span data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</span></a></li>
-          <li><a href="#chfirst"><span class="toc-k">02</span><span data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</span></a></li>
-          <li><a href="#chkeys"><span class="toc-k">03</span><span data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</span></a></li>
-          <li><a href="#chmodels"><span class="toc-k">04</span><span data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</span></a></li>
-        </ol>
-      </div>
-      <div class="toc-col">
-        <span class="toc-h" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
-        <ol class="toc-list">
-          <li><a href="#chlive"><span class="toc-k">05</span><span data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</span></a></li>
-          <li><a href="#chboard"><span class="toc-k">06</span><span data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</span></a></li>
-          <li><a href="#chpron"><span class="toc-k">07</span><span data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</span></a></li>
-          <li><a href="#chsrs"><span class="toc-k">08</span><span data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</span></a></li>
-          <li><a href="#chhome"><span class="toc-k">09</span><span data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início & Séries</span></a></li>
-          <li><a href="#chtutor"><span class="toc-k">10</span><span data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</span></a></li>
-        </ol>
-      </div>
+</header>
+
+<button class="veu" id="veu" hidden aria-label="Fechar o menu" tabindex="-1"></button>
+
+<div class="doc">
+  <aside class="sidebar" id="sidebar">
+    <nav aria-label="Documentação">
+        <div class="side-group">
+          <span class="side-h" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
+          <ul class="side-list">
+            <li><a href="#chdl" data-ch="chdl"><span class="side-k">01</span><span data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</span></a></li>
+            <li><a href="#chfirst" data-ch="chfirst"><span class="side-k">02</span><span data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</span></a></li>
+            <li><a href="#chkeys" data-ch="chkeys"><span class="side-k">03</span><span data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</span></a></li>
+            <li><a href="#chmodels" data-ch="chmodels"><span class="side-k">04</span><span data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</span></a></li>
+          </ul>
+        </div>
+        <div class="side-group">
+          <span class="side-h" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
+          <ul class="side-list">
+            <li><a href="#chlive" data-ch="chlive"><span class="side-k">05</span><span data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</span></a></li>
+            <li><a href="#chboard" data-ch="chboard"><span class="side-k">06</span><span data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</span></a></li>
+            <li><a href="#chpron" data-ch="chpron"><span class="side-k">07</span><span data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</span></a></li>
+            <li><a href="#chsrs" data-ch="chsrs"><span class="side-k">08</span><span data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</span></a></li>
+            <li><a href="#chhome" data-ch="chhome"><span class="side-k">09</span><span data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início &amp; Séries</span></a></li>
+            <li><a href="#chtutor" data-ch="chtutor"><span class="side-k">10</span><span data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</span></a></li>
+          </ul>
+        </div>
+      <p class="side-vazio" id="vazio" hidden>Nada encontrado</p>
     </nav>
-  </header>
+    <p class="side-foot"><a href="/download" data-pt="Baixar o Soaken" data-en="Download Soaken">Baixar o Soaken</a></p>
+  </aside>
 
-  <div class="part">
-    <span class="part-k" data-pt="Configuração — só na primeira vez" data-en="Setup — first time only">Configuração — só na primeira vez</span>
-    <span class="part-note" data-pt="Uns cinco minutos, do zero até a primeira frase capturada." data-en="About five minutes, from zero to your first captured sentence.">Uns cinco minutos, do zero até a primeira frase capturada.</span>
-  </div>
-
-  <section class="chapter" id="chdl">
+  <main class="content" id="conteudo">
+<section class="chapter" id="chdl">
     <div class="chap-head">
       <span class="chap-k">01</span>
       <h2 data-pt="Baixar e instalar" data-en="Download &amp; install">Baixar e instalar</h2>
@@ -154,7 +137,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chfirst">
+<section class="chapter" id="chfirst">
     <div class="chap-head">
       <span class="chap-k">02</span>
       <h2 data-pt="Primeiro acesso" data-en="First run">Primeiro acesso</h2>
@@ -178,7 +161,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chkeys">
+<section class="chapter" id="chkeys">
     <div class="chap-head">
       <span class="chap-k">03</span>
       <h2 data-pt="Sua chave de IA — grátis" data-en="Your AI key — free">Sua chave de IA — grátis</h2>
@@ -273,7 +256,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chmodels">
+<section class="chapter" id="chmodels">
     <div class="chap-head">
       <span class="chap-k">04</span>
       <h2 data-pt="Escolher os modelos" data-en="Choosing the models">Escolher os modelos</h2>
@@ -305,12 +288,7 @@
   </section>
   </section>
 
-  <div class="part">
-    <span class="part-k" data-pt="No dia a dia" data-en="Day to day">No dia a dia</span>
-    <span class="part-note" data-pt="Dá play no que você já assiste — o resto acontece sozinho." data-en="Hit play on what you already watch — the rest happens on its own.">Dá play no que você já assiste — o resto acontece sozinho.</span>
-  </div>
-
-  <section class="chapter" id="chlive">
+<section class="chapter" id="chlive">
     <div class="chap-head">
       <span class="chap-k">05</span>
       <h2 data-pt="Captura ao vivo" data-en="Live capture">Captura ao vivo</h2>
@@ -329,7 +307,7 @@
     </div>
   </section>
 
-  <section class="chapter" id="chboard">
+<section class="chapter" id="chboard">
     <div class="chap-head">
       <span class="chap-k">06</span>
       <h2 data-pt="O Tutor Board" data-en="The Tutor Board">O Tutor Board</h2>
@@ -385,7 +363,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chpron">
+<section class="chapter" id="chpron">
     <div class="chap-head">
       <span class="chap-k">07</span>
       <h2 data-pt="Pronúncia" data-en="Pronunciation">Pronúncia</h2>
@@ -409,7 +387,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chsrs">
+<section class="chapter" id="chsrs">
     <div class="chap-head">
       <span class="chap-k">08</span>
       <h2 data-pt="Revisão (SRS)" data-en="Review (SRS)">Revisão (SRS)</h2>
@@ -433,7 +411,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chhome">
+<section class="chapter" id="chhome">
     <div class="chap-head">
       <span class="chap-k">09</span>
       <h2 data-pt="Início &amp; Séries" data-en="Home &amp; Series">Início & Séries</h2>
@@ -465,7 +443,7 @@
   </section>
   </section>
 
-  <section class="chapter" id="chtutor">
+<section class="chapter" id="chtutor">
     <div class="chap-head">
       <span class="chap-k">10</span>
       <h2 data-pt="Professor (voz)" data-en="Tutor (voice)">Professor (voz)</h2>
@@ -489,74 +467,111 @@
   </section>
   </section>
 
-  <footer class="foot">
-    <p data-pt="É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧" data-en="That’s it! Just hit play on what you enjoy and let Soaken turn it into study. Happy studying! 🎧">É isso! Agora é só dar play no que você gosta e deixar o Soaken transformar em estudo. Bons estudos! 🎧</p>
-    <p class="foot-links">
-      <a href="/download" data-pt="Baixar o Soaken" data-en="Download Soaken">Baixar o Soaken</a>
-      <span aria-hidden="true">·</span>
-      <a href="/" data-pt="Voltar ao site" data-en="Back to the site">Voltar ao site</a>
-    </p>
-  </footer>
+    <nav class="pager" id="pager" aria-label="Navegação entre capítulos"></nav>
+  </main>
+
+  <aside class="rail" id="rail"></aside>
 </div>
 
 <style>
   /* Paleta do site Soaken (dark-only) */
-  :root, :root[data-theme="light"], :root[data-theme="dark"]{
+  :root{
     --bg:#0E2422; --panel:#123330; --ink:#EAF4F1; --muted:#A9C7C1;
     --line:rgba(127,227,207,.14); --teal:#33B7B0; --teal-deep:#7FE3CF;
     --mint:rgba(127,227,207,.10);
     --shadow:0 1px 2px rgba(4,20,18,.5),0 12px 34px rgba(4,20,18,.6);
-    --nav:rgba(14,36,34,.85);
+    --nav:rgba(14,36,34,.92);
+    --topo:56px;
   }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb,var(--teal) 12%,transparent),transparent 60%),var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  img{max-width:100%}
 
-  .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;
-    padding:10px clamp(14px,4vw,28px);background:var(--nav);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--teal-deep);text-decoration:none;font-size:15px;flex:none}
+  .skip{position:absolute;left:-9999px;top:0;z-index:99;padding:10px 16px;background:var(--teal);color:#04211f;font-weight:800}
+  .skip:focus{left:8px;top:8px;border-radius:8px}
+
+  /* Barra do topo */
+  .topbar{position:fixed;inset:0 0 auto 0;height:var(--topo);z-index:40;display:flex;align-items:center;gap:14px;
+    padding:0 clamp(12px,2vw,20px);background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--teal-deep);text-decoration:none;font-size:15px;flex:none}
   .brand:hover{color:var(--teal)}
-  .brand .back{flex:none;color:var(--muted);margin-right:-2px;transition:transform .16s,color .16s}
+  .brand .back{color:var(--muted);transition:transform .16s,color .16s}
   .brand:hover .back{color:var(--teal);transform:translateX(-2px)}
-  .brand:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:8px}
   .logo{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--teal);color:#fff;font-size:14px;box-shadow:var(--shadow)}
-  /* Seletor de capitulos: cabe em qualquer largura e diz onde voce esta */
-  .chapnav{position:relative;margin-left:auto;min-width:0;flex:0 1 auto}
-  .chapbtn{display:flex;align-items:center;gap:9px;width:100%;min-width:0;padding:7px 12px 7px 10px;
-    border:1px solid var(--line);border-radius:999px;background:var(--mint);color:var(--ink);
-    font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;transition:.16s}
-  .chapbtn:hover{border-color:var(--teal);color:var(--teal-deep)}
-  .chapbtn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-  .chapbtn-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:12px;color:var(--teal);flex:none}
-  .chapbtn-t{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:230px}
-  .chev{flex:none;color:var(--muted);transition:transform .18s}
-  .chapbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .menubtn{display:none;place-items:center;width:34px;height:34px;flex:none;border:1px solid var(--line);
+    border-radius:9px;background:var(--mint);color:var(--ink);cursor:pointer;padding:0}
+  .menubtn svg{pointer-events:none}
 
-  .chapmenu{position:absolute;top:calc(100% + 9px);right:0;z-index:60;
-    display:grid;grid-template-columns:repeat(2,minmax(190px,1fr));gap:18px 26px;
-    padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--panel);
-    box-shadow:0 18px 50px rgba(4,20,18,.7);max-height:min(74vh,560px);overflow-y:auto;
-    max-width:calc(100vw - 24px)}
-  .chapmenu[hidden]{display:none}
-  .chapmenu-h{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--teal-deep);margin-bottom:9px}
-  .chapmenu-list{list-style:none;margin:0;padding:0;display:grid;gap:1px}
-  .chapmenu-list a{display:flex;align-items:baseline;gap:9px;padding:7px 9px;border-radius:9px;
-    color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;white-space:nowrap}
-  .chapmenu-list a:hover{background:var(--mint);color:var(--teal-deep)}
-  .chapmenu-list a[aria-current="true"]{background:var(--mint);color:var(--teal-deep)}
-  .chapmenu-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:12px;color:var(--teal);flex:none}
+  .busca{position:relative;margin-left:auto;flex:0 1 380px;min-width:0}
+  .busca input{width:100%;height:36px;padding:0 62px 0 36px;border-radius:10px;border:1px solid var(--line);
+    background:var(--mint);color:var(--ink);font:inherit;font-size:14px}
+  .busca input::placeholder{color:var(--muted)}
+  .busca input:focus{outline:none;border-color:var(--teal);background:var(--panel)}
+  .busca .lupa{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+  .busca kbd{position:absolute;right:9px;top:50%;transform:translateY(-50%);font:inherit;font-size:11px;font-weight:700;
+    color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 6px;pointer-events:none}
+  .busca input:not(:placeholder-shown) ~ kbd{display:none}
+
   .seg{display:inline-flex;background:var(--mint);border:1px solid var(--line);border-radius:999px;padding:3px;flex:none}
-  .seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:800;font-size:12.5px;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.16s}
+  .seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:800;font-size:12.5px;
+    padding:5px 11px;border-radius:999px;cursor:pointer;transition:.16s}
   .seg button.on{background:var(--panel);color:var(--teal-deep);box-shadow:var(--shadow)}
   .seg button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 
-  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,44px) clamp(16px,4vw,32px) 80px}
-  .hero{margin-bottom:8px}
-  h1{font-size:clamp(32px,6.5vw,56px);line-height:1.03;letter-spacing:-.02em;margin:.1em 0 .12em;text-wrap:balance;font-weight:800}
-  .sub{font-size:clamp(15px,2.3vw,19px);color:var(--muted);max-width:44ch;margin:0}
+  /* Três colunas */
+  .doc{display:grid;grid-template-columns:290px minmax(0,1fr) 232px;gap:0;
+    max-width:1500px;margin:0 auto;padding-top:var(--topo)}
+
+  .sidebar{position:sticky;top:var(--topo);align-self:start;height:calc(100vh - var(--topo));
+    overflow-y:auto;padding:26px 18px 40px;border-right:1px solid var(--line);scrollbar-width:thin}
+  .side-group + .side-group{margin-top:26px}
+  .side-h{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:9px;padding:0 10px}
+  .side-list{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+  .side-list a{display:flex;align-items:baseline;gap:9px;padding:7px 10px;border-radius:8px;
+    color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;line-height:1.35}
+  .side-list a:hover{background:var(--mint);color:var(--teal-deep)}
+  .side-list a[aria-current="page"]{background:var(--mint);color:var(--teal-deep)}
+  .side-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:11.5px;color:var(--teal);flex:none}
+  .side-list li.oculto{display:none}
+  .side-group.oculto{display:none}
+  .side-vazio{color:var(--muted);font-size:14px;padding:8px 10px;margin:0}
+  .side-foot{margin:28px 10px 0;padding-top:18px;border-top:1px solid var(--line)}
+  .side-foot a{display:block;color:var(--teal-deep);text-decoration:none;font-weight:700;font-size:14px;padding:4px 0}
+  .side-foot a:hover{text-decoration:underline}
+
+  .content{min-width:0;padding:34px clamp(18px,3.4vw,54px) 90px}
+  .eyebrow{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal-deep);margin-bottom:12px}
+
+  .rail{position:sticky;top:var(--topo);align-self:start;height:calc(100vh - var(--topo));
+    overflow-y:auto;padding:34px 18px 40px}
+  .rail-h{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:10px}
+  .rail-list{list-style:none;margin:0;padding:0;display:grid;gap:2px;border-left:1px solid var(--line)}
+  .rail-list a{display:block;padding:5px 0 5px 13px;margin-left:-1px;border-left:2px solid transparent;
+    color:var(--muted);text-decoration:none;font-size:13.5px;line-height:1.4}
+  .rail-list a:hover{color:var(--ink)}
+  .rail-list a.on{color:var(--teal-deep);border-left-color:var(--teal);font-weight:700}
+  .rail:empty{display:none}
+
+  /* Um capítulo por vez */
+  .chapter{display:none}
+  .chapter.on{display:block}
+
+  /* Anterior / Próximo */
+  .pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(40px,6vw,64px);
+    padding-top:26px;border-top:1px solid var(--line)}
+  .pager a{display:flex;flex-direction:column;gap:4px;padding:14px 17px;border:1px solid var(--line);
+    border-radius:13px;background:var(--panel);text-decoration:none;transition:.16s}
+  .pager a:hover{border-color:var(--teal);background:var(--mint)}
+  .pager .rot{font-size:12px;font-weight:700;color:var(--muted)}
+  .pager .tit{font-size:15.5px;font-weight:800;color:var(--teal-deep);text-wrap:balance}
+  .pager .prox{grid-column:2;text-align:right}
+  .pager a[hidden]{display:none}
 
   .chapter{margin-top:clamp(30px,6vw,58px);scroll-margin-top:64px}
   .chap-head{display:flex;align-items:baseline;gap:14px;padding-bottom:8px;border-bottom:2px solid var(--teal);margin-bottom:6px}
@@ -601,26 +616,6 @@
   .provfoot code{font-size:12px;color:var(--muted);background:var(--mint);padding:2px 7px;border-radius:6px;font-family:ui-monospace,monospace}
 
   /* Indice no topo */
-  .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(14px,2.5vw,28px);
-    margin:clamp(24px,4vw,38px) 0 0;padding:clamp(18px,2.6vw,24px);border:1px solid var(--line);
-    border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}
-  .toc-h{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--teal-deep);margin-bottom:10px}
-  .toc-col{min-width:0}
-  .toc-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-  .toc-list a{display:flex;align-items:baseline;gap:10px;padding:6px 8px;margin-left:-8px;border-radius:9px;
-    color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
-  .toc-list a:hover{background:var(--mint);color:var(--teal-deep)}
-  .toc-k{font-variant-numeric:tabular-nums;font-weight:800;font-size:12.5px;color:var(--teal);flex:none}
-
-  /* Divisoria entre as duas partes do guia */
-  .part{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
-    margin:clamp(46px,8vw,84px) 0 0;padding-bottom:10px}
-  .part-k{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);
-    background:var(--mint);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
-  .part-note{color:var(--muted);font-size:14.5px}
-  .part + .chapter{margin-top:clamp(18px,3vw,26px)}
-
   .minihead{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep);
     margin:clamp(22px,3vw,30px) 0 12px}
 
@@ -671,39 +666,70 @@
   .why-src a:hover{text-decoration:underline}
 
 
-  .foot{margin-top:clamp(48px,7vw,72px);padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;text-align:center}
-  .foot p{margin:0 auto;max-width:56ch}
-  .foot-links{margin-top:14px!important;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
-  .foot-links a{color:var(--teal-deep);font-weight:700;text-decoration:none}
-  .foot-links a:hover{text-decoration:underline}
 
-  /* Responsivo */
-  img{max-width:100%}
+  /* Ajustes do capítulo dentro da coluna de conteúdo */
+  .chapter{margin-top:0;scroll-margin-top:calc(var(--topo) + 12px)}
+  .chap-head{border-bottom:0;padding-bottom:0;margin-bottom:4px;gap:12px}
+  .chap-head h2{font-size:clamp(30px,4.6vw,44px);line-height:1.08}
+  .chap-k{font-size:17px}
+  .step{scroll-margin-top:calc(var(--topo) + 16px);padding:clamp(22px,3vw,30px) 0}
+  .content .step h3{font-size:clamp(20px,2.4vw,25px);margin:.55em 0 .3em}
+  .content .lead{font-size:16.5px}
+  .content .intro{font-size:17px;max-width:70ch;margin:14px 0 4px}
 
-  @media (max-width:760px){
-    .chapmenu{position:fixed;top:58px;left:12px;right:12px;max-width:none;grid-template-columns:1fr;gap:16px}
-    .chapmenu-list a{white-space:normal}
-    .chapter{scroll-margin-top:70px}
-    .lead,.intro{max-width:none}
-    .btnrow .dlbtn{flex:1 1 100%;justify-content:center}
-    .toc{grid-template-columns:1fr;gap:20px}
+  @media (max-width:1180px){
+    .doc{grid-template-columns:280px minmax(0,1fr)}
+    .rail{display:none}
   }
-  @media (max-width:420px){
+  @media (max-width:900px){
+    .doc{grid-template-columns:minmax(0,1fr)}
+    .menubtn{display:grid}
+    .sidebar{position:fixed;top:var(--topo);left:0;width:min(320px,86vw);z-index:35;
+      background:var(--bg);box-shadow:0 20px 60px rgba(4,20,18,.6);
+      transform:translateX(-102%);transition:transform .2s;will-change:transform}
+    .sidebar.aberta{transform:none}
+    .veu{position:fixed;inset:var(--topo) 0 0;z-index:30;background:rgba(4,20,18,.6);border:0;padding:0}
+    .veu[hidden]{display:none}
+    .busca{flex:1 1 auto}
+    .busca kbd{display:none}
+  }
+  @media (max-width:560px){
     .brand .nm{display:none}
-    .chapbtn{font-size:13px;padding:7px 10px 7px 9px}
-    .provgrid{grid-template-columns:1fr}
-    .step{padding:22px 0}
+    .pager{grid-template-columns:1fr}
+    .pager .prox{grid-column:1}
   }
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
 </style>
 
 <script>
   (function(){
-    var buttons = { pt: document.getElementById('pt'), en: document.getElementById('en') };
-    // comeca no idioma do navegador; PT e o padrao do markup
     var lang = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+    var botoes = { pt: document.getElementById('pt'), en: document.getElementById('en') };
 
-    function apply(){
+    var caps    = [].slice.call(document.querySelectorAll('.chapter'));
+    var links   = [].slice.call(document.querySelectorAll('.side-list a[data-ch]'));
+    var railBox = document.getElementById('rail');
+    var pager   = document.getElementById('pager');
+    var atual   = 0;
+
+    var textos = {
+      nesta:  { pt: 'Nesta página',  en: 'On this page' },
+      ant:    { pt: 'Anterior',      en: 'Previous' },
+      prox:   { pt: 'Próximo',       en: 'Next' },
+      nada:   { pt: 'Nada encontrado', en: 'No matches' }
+    };
+
+    /* dá um id a cada passo, para o índice lateral apontar */
+    caps.forEach(function(c){
+      [].slice.call(c.querySelectorAll('.step')).forEach(function(s, i){
+        s.id = c.id + '-p' + (i + 1);
+      });
+    });
+
+    function titulo(el){ return el.getAttribute('data-' + lang) || el.textContent; }
+
+    /* ---- tradução ---- */
+    function traduzir(){
       document.querySelectorAll('[data-' + lang + ']').forEach(function(el){
         var v = el.getAttribute('data-' + lang);
         if (el.tagName === 'IMG') { el.src = v; } else { el.textContent = v; }
@@ -714,77 +740,132 @@
       document.querySelectorAll('img[data-' + lang + '-alt]').forEach(function(el){
         el.alt = el.getAttribute('data-' + lang + '-alt');
       });
+      document.querySelectorAll('[data-' + lang + '-title]').forEach(function(el){
+        el.title = el.getAttribute('data-' + lang + '-title');
+      });
       document.documentElement.lang = lang;
-      Object.keys(buttons).forEach(function(id){
+      Object.keys(botoes).forEach(function(id){
         var on = id === lang;
-        buttons[id].classList.toggle('on', on);
-        buttons[id].setAttribute('aria-pressed', on);
+        botoes[id].classList.toggle('on', on);
+        botoes[id].setAttribute('aria-pressed', on);
       });
-      renderCurrent();
+      document.getElementById('q').placeholder = lang === 'pt' ? 'Buscar na documentação' : 'Search the docs';
     }
 
-    /* ---- seletor de capitulos ---- */
-    var chapBtn = document.getElementById('chapbtn');
-    var chapMenu = document.getElementById('chapmenu');
-    var chapK = document.getElementById('chapbtn-k');
-    var chapT = document.getElementById('chapbtn-t');
-    var links = [].slice.call(chapMenu.querySelectorAll('a[data-ch]'));
-    var sections = links.map(function(a){ return document.getElementById(a.getAttribute('data-ch')); });
-    // titulos nos dois idiomas guardados aqui, e nao em data-* no <a>:
-    // apply() reescreve o textContent de tudo que tem data-pt/data-en
-    var titles = links.map(function(a){
-      var span = a.querySelector('span[data-pt]');
-      return { k: a.querySelector('.chapmenu-k').textContent, pt: span.getAttribute('data-pt'), en: span.getAttribute('data-en') };
-    });
-    var current = 0;
-
-    function renderCurrent(){
-      chapK.textContent = titles[current].k;
-      chapT.textContent = titles[current][lang];
-      links.forEach(function(el, i){
-        if (i === current) { el.setAttribute('aria-current', 'true'); }
-        else { el.removeAttribute('aria-current'); }
+    /* ---- índice da direita ---- */
+    function montarRail(){
+      var c = caps[atual];
+      var passos = [].slice.call(c.querySelectorAll('.step h3'));
+      if (!passos.length) { railBox.innerHTML = ''; return; }
+      var html = '<span class="rail-h">' + textos.nesta[lang] + '</span><ul class="rail-list">';
+      passos.forEach(function(h){
+        html += '<li><a href="#' + h.closest('.step').id + '">' + titulo(h) + '</a></li>';
       });
+      railBox.innerHTML = html + '</ul>';
     }
 
-    function openMenu(open){
-      chapMenu.hidden = !open;
-      chapBtn.setAttribute('aria-expanded', open);
+    /* ---- anterior / próximo ---- */
+    function montarPager(){
+      var a = caps[atual - 1], b = caps[atual + 1];
+      function cartao(c, tipo){
+        if (!c) return '';
+        var h2 = c.querySelector('.chap-head h2');
+        return '<a class="' + (tipo === 'ant' ? 'ant' : 'prox') + '" href="#' + c.id + '">' +
+               '<span class="rot">' + textos[tipo][lang] + '</span>' +
+               '<span class="tit">' + titulo(h2) + '</span></a>';
+      }
+      pager.innerHTML = cartao(a, 'ant') + cartao(b, 'prox');
     }
-    chapBtn.addEventListener('click', function(ev){
-      ev.stopPropagation();
-      openMenu(chapMenu.hidden);
-    });
-    chapMenu.addEventListener('click', function(ev){
-      if (ev.target.closest('a')) openMenu(false);
-    });
-    document.addEventListener('click', function(ev){
-      if (!chapMenu.hidden && !chapMenu.contains(ev.target)) openMenu(false);
+
+    /* ---- troca de capítulo ---- */
+    function abrir(id, rolar){
+      var i = caps.findIndex(function(c){ return c.id === id; });
+      if (i < 0) i = 0;
+      atual = i;
+      caps.forEach(function(c, n){ c.classList.toggle('on', n === i); });
+      links.forEach(function(a){
+        var on = a.getAttribute('data-ch') === caps[i].id;
+        if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      });
+      montarRail(); montarPager(); marcarRail();
+      if (rolar) window.scrollTo(0, 0);
+      fechar();
+    }
+
+    /* ---- marca o passo visível no índice ---- */
+    var railLinks = [];
+    function marcarRail(){ railLinks = [].slice.call(railBox.querySelectorAll('a')); }
+    var pendente = false;
+    window.addEventListener('scroll', function(){
+      if (pendente || !railLinks.length) return;
+      pendente = true;
+      requestAnimationFrame(function(){
+        pendente = false;
+        var passos = [].slice.call(caps[atual].querySelectorAll('.step'));
+        var i = 0;
+        passos.forEach(function(s, n){ if (s.getBoundingClientRect().top <= 120) i = n; });
+        railLinks.forEach(function(a, n){ a.classList.toggle('on', n === i); });
+      });
+    }, { passive: true });
+
+    /* ---- busca ---- */
+    var q = document.getElementById('q');
+    var vazio = document.getElementById('vazio');
+    q.addEventListener('input', function(){
+      var t = q.value.trim().toLowerCase();
+      var achou = 0;
+      links.forEach(function(a){
+        var c = caps[caps.findIndex(function(x){ return x.id === a.getAttribute('data-ch'); })];
+        var alvo = a.textContent + ' ' + [].slice.call(c.querySelectorAll('h3, h2, .lead, .intro'))
+          .map(function(e){ return e.textContent; }).join(' ');
+        var bate = !t || alvo.toLowerCase().indexOf(t) >= 0;
+        a.parentNode.classList.toggle('oculto', !bate);
+        if (bate) achou++;
+      });
+      document.querySelectorAll('.side-group').forEach(function(g){
+        var vis = g.querySelectorAll('.side-list li:not(.oculto)').length;
+        g.classList.toggle('oculto', vis === 0);
+      });
+      vazio.textContent = textos.nada[lang];
+      vazio.hidden = achou > 0;
     });
     document.addEventListener('keydown', function(ev){
-      if (ev.key === 'Escape' && !chapMenu.hidden) { openMenu(false); chapBtn.focus(); }
+      if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === 'k') { ev.preventDefault(); q.focus(); q.select(); }
+      if (ev.key === 'Escape' && document.activeElement === q) { q.value = ''; q.dispatchEvent(new Event('input')); q.blur(); }
     });
 
-    // acompanha a rolagem: o capitulo atual e o ultimo que ja passou pelo topo
-    var ticking = false;
-    function spy(){
-      ticking = false;
-      var i = 0;
-      for (var j = 0; j < sections.length; j++){
-        if (sections[j].getBoundingClientRect().top <= 96) i = j;
-      }
-      if (i !== current) { current = i; renderCurrent(); }
+    /* ---- gaveta no celular ---- */
+    var lateral = document.getElementById('sidebar');
+    var veu = document.getElementById('veu');
+    var botaoMenu = document.getElementById('menubtn');
+    function fechar(){ lateral.classList.remove('aberta'); veu.hidden = true; botaoMenu.setAttribute('aria-expanded', 'false'); }
+    botaoMenu.addEventListener('click', function(){
+      var abre = !lateral.classList.contains('aberta');
+      lateral.classList.toggle('aberta', abre);
+      veu.hidden = !abre;
+      botaoMenu.setAttribute('aria-expanded', abre);
+    });
+    veu.addEventListener('click', fechar);
+
+    /* ---- navegação por hash ---- */
+    function daHash(rolar){
+      var h = (location.hash || '').replace('#', '');
+      var passo = h.indexOf('-p') > 0 ? h : null;
+      var alvo = passo ? h.split('-p')[0] : h;
+      abrir(alvo || caps[0].id, rolar && !passo);
+      if (passo) { var el = document.getElementById(passo); if (el) el.scrollIntoView(); }
     }
-    window.addEventListener('scroll', function(){
-      if (!ticking) { ticking = true; requestAnimationFrame(spy); }
-    }, { passive: true });
-    window.addEventListener('resize', spy, { passive: true });
+    window.addEventListener('hashchange', function(){ daHash(true); });
 
-    Object.keys(buttons).forEach(function(id){
-      buttons[id].addEventListener('click', function(){ lang = id; apply(); });
+    Object.keys(botoes).forEach(function(id){
+      botoes[id].addEventListener('click', function(){
+        lang = id; traduzir(); montarRail(); montarPager(); marcarRail();
+        q.dispatchEvent(new Event('input'));
+      });
     });
-    apply();
-    spy();
+
+    traduzir();
+    daHash(false);
   })();
 </script>
 </body>
