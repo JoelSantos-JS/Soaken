@@ -1,21 +1,48 @@
 'use client';
 
+import { useState, type CSSProperties } from 'react';
 import { useI18n } from '@/lib/i18n-context';
 import { DOWNLOAD_URL, PRO_CHECKOUT_URL } from '@/lib/config';
 import Header from '@/components/Header';
-import MockTranscript from '@/components/MockTranscript';
-import Waveform from '@/components/Waveform';
+import Logo from '@/components/Logo';
+import FloatingBar from '@/components/FloatingBar';
 import Reveal from '@/components/Reveal';
 
+// Cores do sublinhado térmico: o quanto a palavra é rara pra você.
+const HEAT = { known: '#6F827D', common: '#C7D6D2', useful: '#E6B15A', rare: '#F1895A' } as const;
+
+const HEAT_WORDS: [string, keyof typeof HEAT][] = [
+  ['I', 'known'], ["didn't", 'known'], ['see', 'common'], ['that', 'known'], ['coming', 'useful'],
+];
+
+// Paths dos ícones (traço), separados por "|".
+const D = {
+  play: 'M7 4v16l13-8z',
+  mic: 'M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z|M19 10v1a7 7 0 0 1-14 0v-1|M12 18v4',
+  globe: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z|M3 12h18|M12 3c2.6 3 2.6 15 0 18|M12 3c-2.6 3-2.6 15 0 18',
+  brain: 'M9.5 3A3.5 3.5 0 0 0 6 6.5 3 3 0 0 0 4 9.5c0 1 .5 1.9 1.2 2.4A3 3 0 0 0 5 14a3 3 0 0 0 2.5 3A3 3 0 0 0 12 19V5a2 2 0 0 0-2.5-2z|M14.5 3A3.5 3.5 0 0 1 18 6.5a3 3 0 0 1 2 3c0 1-.5 1.9-1.2 2.4A3 3 0 0 1 19 14a3 3 0 0 1-2.5 3A3 3 0 0 1 12 19',
+  chart: 'M5 20V12|M12 20V5|M19 20v-5',
+  loop: 'M4 10a8 8 0 0 1 13-5l3 2|M20 14a8 8 0 0 1-13 5l-3-2|M20 4v5h-5|M4 20v-5h5',
+  cloud: 'M7 18h9.5a4 4 0 0 0 .3-8A6 6 0 0 0 5.5 11.5 3.3 3.3 0 0 0 7 18z',
+  lock: 'M5 11h14v10H5z|M8.5 11V8a3.5 3.5 0 0 1 7 0v3',
+  bolt: 'M13 2 4.5 13H11l-1 9 8.5-11H12l1-9z',
+};
+
+const STEPS = [
+  { n: '01', d: D.play },
+  { n: '02', d: D.globe },
+  { n: '03', d: D.mic },
+];
+
 const FEATURES = [
-  { ic: '⚡', bg: '#F3E0D4', k: 1 },
-  { ic: '🗣️', bg: '#D4EAE8', k: 2 },
-  { ic: '🌍', bg: '#E4EEF7', k: 3 },
-  { ic: '🧠', bg: '#ECE5F8', k: 4 },
-  { ic: '📈', bg: '#F3E0D4', k: 5 },
-  { ic: '🔁', bg: '#ECE5F8', k: 6 },
-  { ic: '☁️', bg: '#E4EEF7', k: 7 },
-  { ic: '🔒', bg: '#D4EAE8', k: 8 },
+  { k: 1, d: D.bolt, ink: '#E1B05A' },
+  { k: 2, d: D.mic, ink: '#3ABEB8' },
+  { k: 3, d: D.globe, ink: '#7FA7E8' },
+  { k: 4, d: D.brain, ink: '#A98BE8' },
+  { k: 5, d: D.chart, ink: '#F0958F' },
+  { k: 6, d: D.loop, ink: '#8FD3A6' },
+  { k: 7, d: D.cloud, ink: '#7FA7E8' },
+  { k: 8, d: D.lock, ink: '#93B1A9' },
 ];
 
 const LANGS = [
@@ -29,413 +56,351 @@ const LANGS = [
   { cc: 'it', k: 'Italiano', en: 'Italian', soon: true },
 ];
 
-function XIcon() {
+function Ic({ d, stroke = 'currentColor', size = 17 }: { d: string; stroke?: string; size?: number }) {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">
-      <path d="M18 6 6 18M6 6l12 12" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      {d.split('|').map((p) => <path key={p} d={p} />)}
     </svg>
   );
 }
 
-function CheckIcon() {
+function Check({ size = 15 }: { size?: number }) {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 6 9 17l-5-5" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#3ABEB8" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}>
+      <path d="M5 12.5 10 17l9-10" />
     </svg>
   );
 }
 
-function WindowsIcon() {
+function WindowsIcon({ size = 17 }: { size?: number }) {
   return (
-    <svg className="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M3 4.6 11 3.49v7.92H3V4.6Zm9-1.25L21 2v9.41h-9V3.35ZM3 12.59h8v7.92L3 19.4v-6.81Zm9 0h9V22l-9-1.25v-8.16Z" />
-    </svg>
-  );
-}
-
-function PlayIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M7 4v16l13-8z" />
-    </svg>
-  );
-}
-
-function TextIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 7h16M4 12h10M4 17h7" />
-    </svg>
-  );
-}
-
-function MicIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
-      <path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4" />
     </svg>
   );
 }
 
 export default function Home() {
   const { t, lang } = useI18n();
+  const [open, setOpen] = useState(0);
 
   return (
     <>
       <Header />
 
-      <main id="top">
+      <main>
         {/* HERO */}
-        <section className="hero">
-          <div className="hero-glow" />
-          <div className="hero-grain" />
+        <section id="top" className="hero">
+          <div className="hero-bg" />
+          <div className="hero-scan" />
           <div className="wrap hero-in">
-            <span className="eyebrow">{t('hero.badge')}</span>
-            <h1>
-              <span>{t('hero.h1a')}</span>
-              <span className="em">{t('hero.h1em')}</span>
-              <span>{t('hero.h1b')}</span>
-            </h1>
-            <p className="lead">{t('hero.lead')}</p>
-            <div className="hero-cta">
-              <a className="btn btn-primary btn-lg" href={DOWNLOAD_URL} target="_blank" rel="noopener">
-                <WindowsIcon />
-                <span>{t('hero.cta')}</span>
-              </a>
-              <a className="btn btn-ghost btn-lg" href="#how">
-                {t('hero.cta2')}
-              </a>
-            </div>
-            <div className="hero-meta">
-              <span>{t('hero.m1')}</span><span className="d" />
-              <span>{t('hero.m2')}</span><span className="d" />
-              <span>{t('hero.m3')}</span>
-            </div>
-            <p className="hero-note">{t('hero.note')}</p>
-
-            <div className="shot reveal">
-              <div className="shot-frame">
-                <div className="shot-scene">
-                  <div className="shot-sub">{t('hero.sub')}</div>
-                  <MockTranscript />
-                </div>
+            <div style={{ minWidth: 0 }}>
+              <div className="pill-kicker">
+                <span className="dot" />
+                <span>{t('hero.kicker')}</span>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* WAVEFORM */}
-        <section className="capture" id="capture">
-          <div className="wrap">
-            <div className="cap-head">
-              <span className="eyebrow">{t('cap.eyebrow')}</span>
-              <h2 className="h2" style={{ marginTop: 14 }}>{t('cap.h2')}</h2>
-            </div>
-            <Reveal><Waveform /></Reveal>
-            <div className="wave-cap" dangerouslySetInnerHTML={{ __html: t('cap.note') }} />
-          </div>
-        </section>
-
-        {/* PROBLEM */}
-        <section className="section" id="problem">
-          <div className="wrap narrow">
-            <span className="eyebrow">{t('prob.eyebrow')}</span>
-            <h2 className="h2" style={{ marginTop: 14, maxWidth: '18ch' }}>{t('prob.h2')}</h2>
-            <p className="prose" dangerouslySetInnerHTML={{ __html: t('prob.p1') }} />
-            <p className="prose big" dangerouslySetInnerHTML={{ __html: t('prob.p2') }} />
-          </div>
-        </section>
-
-        {/* SOLUTION */}
-        <section className="section sol-sec" id="solution">
-          <div className="wrap narrow">
-            <span className="eyebrow">{t('sol.eyebrow')}</span>
-            <h2 className="h2" style={{ marginTop: 14, maxWidth: '20ch' }}>{t('sol.h2')}</h2>
-            <p className="prose" dangerouslySetInnerHTML={{ __html: t('sol.p1') }} />
-            <p className="prose accent" dangerouslySetInnerHTML={{ __html: t('sol.p2') }} />
-          </div>
-        </section>
-
-        {/* HOW */}
-        <section className="section" id="how">
-          <div className="wrap">
-            <div style={{ textAlign: 'center', maxWidth: '30ch', margin: '0 auto' }}>
-              <span className="eyebrow">{t('how.eyebrow')}</span>
-              <h2 className="h2" style={{ marginTop: 14 }}>{t('how.h2')}</h2>
-            </div>
-            <p className="lead" style={{ textAlign: 'center', maxWidth: '50ch', margin: '16px auto 0' }}>
-              {t('how.lead')}
-            </p>
-            <div className="steps">
-              <Reveal>
-                <div className="step">
-                  <div className="ic"><PlayIcon /></div>
-                  <div className="n">01</div>
-                  <h3>{t('how.s1t')}</h3>
-                  <p>{t('how.s1d')}</p>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="step">
-                  <div className="ic"><TextIcon /></div>
-                  <div className="n">02</div>
-                  <h3>{t('how.s2t')}</h3>
-                  <p>{t('how.s2d')}</p>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="step">
-                  <div className="ic"><MicIcon /></div>
-                  <div className="n">03</div>
-                  <h3>{t('how.s3t')}</h3>
-                  <p>{t('how.s3d')}</p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* PAPER BLOCK */}
-        <div className="paper-block">
-          <section className="section paper-sec" id="features">
-            <div className="wrap">
-              <div style={{ textAlign: 'center', maxWidth: '34ch', margin: '0 auto' }}>
-                <span className="eyebrow dark">{t('feat.eyebrow')}</span>
-                <h2 className="h2" style={{ marginTop: 14, color: 'var(--paper-ink)' }}>
-                  {t('feat.h2')}
-                </h2>
+              <h1 className="hero-h1">
+                <span>{t('hero.h1a')}</span>
+                <span className="em">{t('hero.h1b')}</span>
+              </h1>
+              <p className="hero-sub">{t('hero.sub')}</p>
+              <div className="hero-cta">
+                <a className="btn btn-primary btn-lg" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+                  <WindowsIcon />
+                  <span>{t('hero.cta')}</span>
+                </a>
+                <a className="btn btn-ghost btn-lg" href="#how">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M10 8.5l6 3.5-6 3.5z" /></svg>
+                  <span>{t('hero.cta2')}</span>
+                </a>
               </div>
-              <p className="lead" style={{ textAlign: 'center', maxWidth: '52ch', margin: '16px auto 0', color: 'var(--paper-muted)' }}>
-                {t('feat.lead')}
-              </p>
-              <div className="feat-grid">
-                {FEATURES.map((f) => (
-                  <div key={f.k} className="feat reveal">
-                    <div className="ic" style={{ background: f.bg }}>{f.ic}</div>
-                    <h3>{t(`feat.${f.k}t`)}</h3>
-                    <p>{t(`feat.${f.k}d`)}</p>
+              <div className="hero-badges">
+                {[1, 2, 3].map((n) => (
+                  <div key={n}>
+                    <Check size={14} />
+                    <span>{t(`hero.b${n}`)}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </section>
 
-          {/* WHY */}
-          <section className="section paper-sec" id="why" style={{ paddingTop: 0 }}>
-            <div className="wrap">
-              <div style={{ textAlign: 'center', maxWidth: '30ch', margin: '0 auto' }}>
-                <span className="eyebrow dark">{t('why.eyebrow')}</span>
-                <h2 className="h2" style={{ marginTop: 14, color: 'var(--paper-ink)' }}>
-                  {t('why.h2')}
-                </h2>
+            <div className="hero-bar">
+              <div className="hero-bar-float">
+                <div className="hero-bar-glow" />
+                <FloatingBar />
               </div>
-              <div className="compare">
-                <div className="cmp-head">
-                  <span />
-                  <span className="cmp-col-a">{t('why.col1')}</span>
-                  <span className="cmp-col-b">
-                    <img src="/icon/soaken-128.png" alt="" />
-                    {t('why.col2')}
-                  </span>
+            </div>
+          </div>
+          <p className="wrap hero-foot">{t('hero.foot')}</p>
+        </section>
+
+        {/* PROBLEMA + COMO FUNCIONA */}
+        <section id="how" className="wrap sec">
+          <div className="kicker">{t('prob.kicker')}</div>
+          <h2 className="h2" style={{ maxWidth: 780 }}>{t('prob.title')}</h2>
+          <div className="grid" style={{ '--min': '300px', gap: 16, marginTop: 34 } as CSSProperties}>
+            <div className="card-before">
+              <div className="tag">{t('prob.beforeTag')}</div>
+              <p>{t('prob.before')}</p>
+            </div>
+            <div className="card-after">
+              <div className="tag">{t('prob.afterTag')}</div>
+              <p>{t('prob.after')}</p>
+            </div>
+          </div>
+
+          <Reveal>
+            <div className="grid" style={{ '--min': '210px', gap: 16, marginTop: 44 } as CSSProperties}>
+              {STEPS.map((s, i) => (
+                <div key={s.n} className="step">
+                  <div className="n">{s.n}</div>
+                  <div className="ic"><Ic d={s.d} stroke="#3ABEB8" /></div>
+                  <div className="t">{t(`how.${i + 1}t`)}</div>
+                  <div className="d">{t(`how.${i + 1}d`)}</div>
                 </div>
-                {[1, 2, 3, 4].map((n) => (
-                  <div key={n} className="cmp-row">
-                    <span className="cmp-l">{t(`why.r${n}l`)}</span>
-                    <span className="cmp-a">
-                      <i className="bad"><XIcon /></i>
-                      {t(`why.r${n}a`)}
-                    </span>
-                    <span className="cmp-b">
-                      <i className="good"><CheckIcon /></i>
-                      {t(`why.r${n}b`)}
-                    </span>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        {/* SUBLINHADO TÉRMICO */}
+        <section className="band">
+          <div className="wrap sec heat">
+            <div style={{ minWidth: 0 }}>
+              <div className="kicker">{t('heat.kicker')}</div>
+              <h2 className="h2 sm">{t('heat.title')}</h2>
+              <p className="body" style={{ maxWidth: 460 }}>{t('heat.body')}</p>
+              <div className="heat-legend">
+                {(Object.keys(HEAT) as (keyof typeof HEAT)[]).map((k) => (
+                  <div key={k}>
+                    <span style={{ background: HEAT[k] }} />
+                    <span>{t(`heat.${k}`)}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </section>
-        </div>
+            <div className="heat-card">
+              <div className="heat-words">
+                {HEAT_WORDS.map(([w, h]) => (
+                  <span key={w} style={{ borderBottomColor: HEAT[h] }}>{w}</span>
+                ))}
+              </div>
+              <div className="heat-gloss">{t('heat.gloss')}</div>
+              <div className="heat-foot">
+                <div className="heat-cta">
+                  <Ic d={D.mic} size={15} />
+                  <span>{t('heat.cta')}</span>
+                </div>
+                <div className="heat-score">
+                  <div className="ring"><div><span>87</span></div></div>
+                  <span>{t('heat.score')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {/* WHO */}
-        <section className="section" id="who">
-          <div className="wrap" style={{ textAlign: 'center' }}>
-            <span className="eyebrow">{t('who.eyebrow')}</span>
-            <h2 className="h2" style={{ marginTop: 14 }}>{t('who.h2')}</h2>
-            <div className="who-cards">
+        {/* RECURSOS */}
+        <section id="features" className="wrap sec">
+          <div className="kicker">{t('feat.kicker')}</div>
+          <h2 className="h2" style={{ maxWidth: 760 }}>{t('feat.title')}</h2>
+          <Reveal>
+            <div className="grid" style={{ '--min': '258px', gap: 14, marginTop: 34 } as CSSProperties}>
+              {FEATURES.map((f) => (
+                <div key={f.k} className="feat">
+                  <div
+                    className="ic"
+                    style={{
+                      background: `color-mix(in oklab, ${f.ink} 15%, rgba(21,38,35,.8))`,
+                      borderColor: `color-mix(in oklab, ${f.ink} 42%, transparent)`,
+                      color: f.ink,
+                    }}
+                  >
+                    <Ic d={f.d} stroke={f.ink} />
+                  </div>
+                  <div className="t">{t(`feat.${f.k}t`)}</div>
+                  <div className="d">{t(`feat.${f.k}d`)}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        {/* POR QUE SOAKEN */}
+        <section id="why" className="band">
+          <div className="wrap sec">
+            <div className="kicker">{t('why.kicker')}</div>
+            <h2 className="h2 md">{t('why.title')}</h2>
+            <div className="cmp">
+              <div className="cmp-row head">
+                <span />
+                <span className="o">{t('why.colOther')}</span>
+                <span className="s"><Logo size={26} /><span>Soaken</span></span>
+              </div>
+              {[1, 2, 3, 4].map((n) => (
+                <div key={n} className="cmp-row">
+                  <span className="l">{t(`why.r${n}l`)}</span>
+                  <span className="o">{t(`why.r${n}a`)}</span>
+                  <span className="s">{t(`why.r${n}b`)}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid" style={{ '--min': '210px', gap: 14, marginTop: 34 } as CSSProperties}>
               {[1, 2, 3].map((n) => (
-                <Reveal key={n}>
-                  <div className="who-card">
-                    <h3>{t(`who.${n}t`)}</h3>
-                    <p>{t(`who.${n}d`)}</p>
-                  </div>
-                </Reveal>
+                <div key={n} className="persona">
+                  <div className="t">{t(`who.${n}t`)}</div>
+                  <div className="d">{t(`who.${n}d`)}</div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* LANGUAGES */}
-        <section className="section" id="langs">
-          <div className="wrap" style={{ textAlign: 'center' }}>
-            <span className="eyebrow">{t('langs.eyebrow')}</span>
-            <h2 className="h2" style={{ marginTop: 14 }}>{t('langs.h2')}</h2>
-            <div className="langs">
-              {LANGS.map((l) => (
-                <span key={l.cc} className={`langchip${l.soon ? ' soon' : ''}`}>
-                  <img
-                    className="flagimg"
-                    src={`https://flagcdn.com/w40/${l.cc}.png`}
-                    srcSet={`https://flagcdn.com/w80/${l.cc}.png 2x`}
-                    width="26"
-                    height="19"
-                    alt=""
-                    loading="lazy"
-                  />
-                  {lang === 'pt' ? l.k : l.en}
-                  {l.soon && <span className="tag">{t('langs.soon')}</span>}
-                </span>
-              ))}
-            </div>
+        {/* IDIOMAS */}
+        <section id="langs" className="wrap sec">
+          <div className="langs-head">
+            <h2 className="h2 sm" style={{ margin: 0 }}>{t('langs.title')}</h2>
+            <span>{t('langs.sub')}</span>
+          </div>
+          <div className="langs">
+            {LANGS.map((l) => (
+              <div key={l.cc} className={`langchip${l.soon ? ' soon' : ''}`}>
+                <img
+                  className="flag"
+                  src={`https://flagcdn.com/w40/${l.cc}.png`}
+                  srcSet={`https://flagcdn.com/w80/${l.cc}.png 2x`}
+                  width="24"
+                  height="18"
+                  alt=""
+                  loading="lazy"
+                />
+                <span className="nm">{lang === 'pt' ? l.k : l.en}</span>
+                {l.soon && <span className="tag">{t('langs.soon')}</span>}
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* PRICING */}
-        <section className="section" id="pricing">
-          <div className="wrap">
-            <div style={{ textAlign: 'center', maxWidth: '34ch', margin: '0 auto' }}>
-              <span className="eyebrow">{t('pricing.eyebrow')}</span>
-              <h2 className="h2" style={{ marginTop: 14 }}>{t('pricing.h2')}</h2>
-            </div>
-            <p className="lead" style={{ textAlign: 'center', maxWidth: '54ch', margin: '16px auto 0' }}>
-              {t('pricing.lead')}
-            </p>
-            <div className="price-grid">
-              <Reveal>
-                <div className="price-card">
-                  <div className="price-name">{t('price.free.name')}</div>
-                  <div className="price-val">
-                    {t('price.free.val')}<span className="price-per">{t('price.free.per')}</span>
-                  </div>
-                  <p className="price-desc">{t('price.free.desc')}</p>
-                  <ul className="price-feats">
-                    {[1, 2, 3, 4, 5].map((n) => (
-                      <li key={n}><i className="good"><CheckIcon /></i>{t(`price.free.f${n}`)}</li>
-                    ))}
-                  </ul>
-                  <a className="btn btn-ghost btn-block" href={DOWNLOAD_URL} target="_blank" rel="noopener">
-                    {t('price.free.cta')}
-                  </a>
+        {/* PREÇOS */}
+        <section id="pricing" className="band top-only">
+          <div className="wrap sec">
+            <div className="kicker">{t('pricing.kicker')}</div>
+            <h2 className="h2">{t('pricing.title')}</h2>
+            <p className="body" style={{ maxWidth: 620, marginTop: 14 }}>{t('pricing.sub')}</p>
+            <div className="grid" style={{ '--min': '300px', gap: 16, marginTop: 32, alignItems: 'start' } as CSSProperties}>
+              <div className="plan">
+                <div className="name">{t('price.free.name')}</div>
+                <div className="price">
+                  <span className="v">{t('price.free.val')}</span>
+                  <span className="per">{t('price.free.per')}</span>
                 </div>
-              </Reveal>
-              <Reveal>
-                <div className="price-card pro">
-                  <span className="price-badge">{t('price.pro.badge')}</span>
-                  <div className="price-name">{t('price.pro.name')}</div>
-                  <div className="price-val">
-                    {t('price.pro.val')}<span className="price-per">{t('price.pro.per')}</span>
-                  </div>
-                  <p className="price-desc">{t('price.pro.desc')}</p>
-                  <ul className="price-feats">
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <li key={n}><i className="good"><CheckIcon /></i>{t(`price.pro.f${n}`)}</li>
-                    ))}
-                  </ul>
-                  <a className="btn btn-primary btn-block" href={PRO_CHECKOUT_URL} target="_blank" rel="noopener">
-                    {t('price.pro.cta')}
-                  </a>
+                <div className="desc">{t('price.free.desc')}</div>
+                <div className="items">
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <div key={n}><Check /><span>{t(`price.free.f${n}`)}</span></div>
+                  ))}
                 </div>
-              </Reveal>
+                <a className="btn btn-outline btn-block" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+                  {t('price.free.cta')}
+                </a>
+              </div>
+              <div className="plan pro">
+                <span className="badge">{t('pricing.recommended')}</span>
+                <div className="name">{t('price.pro.name')}</div>
+                <div className="price">
+                  <span className="v">{t('price.pro.val')}</span>
+                  <span className="per">{t('price.pro.per')}</span>
+                </div>
+                <div className="desc">{t('price.pro.desc')}</div>
+                <div className="items">
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <div key={n}><Check /><span>{t(`price.pro.f${n}`)}</span></div>
+                  ))}
+                </div>
+                <a className="btn btn-primary btn-block" href={PRO_CHECKOUT_URL} target="_blank" rel="noopener">
+                  {t('price.pro.cta')}
+                </a>
+              </div>
             </div>
-            <p className="price-note">{t('pricing.note')}</p>
+            <div className="note">{t('pricing.note')}</div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="section" id="faq">
-          <div className="wrap">
-            <div style={{ textAlign: 'center' }}>
-              <span className="eyebrow">{t('faq.eyebrow')}</span>
-              <h2 className="h2" style={{ marginTop: 14 }}>{t('faq.h2')}</h2>
-            </div>
-            <div className="faq">
-              {[1, 2, 3, 4].map((n) => (
-                <details key={n} className="qa" open={n === 1}>
-                  <summary>
-                    {t(`faq.q${n}`)}
-                    <span className="plus" />
-                  </summary>
-                  <div className="ans">{t(`faq.a${n}`)}</div>
-                </details>
-              ))}
-            </div>
+        <section id="faq" className="wrap sec">
+          <h2 className="h2 md" style={{ margin: 0 }}>{t('faq.title')}</h2>
+          <div className="faq">
+            {[1, 2, 3, 4].map((n, i) => {
+              const isOpen = open === i;
+              return (
+                <button
+                  key={n}
+                  type="button"
+                  className={`qa${isOpen ? ' open' : ''}`}
+                  aria-expanded={isOpen}
+                  onClick={() => setOpen(isOpen ? -1 : i)}
+                >
+                  <span className="q">
+                    <span>{t(`faq.q${n}`)}</span>
+                    <span className="chev">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                    </span>
+                  </span>
+                  {isOpen && <span className="a">{t(`faq.a${n}`)}</span>}
+                </button>
+              );
+            })}
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="section" id="download">
-          <div className="wrap">
-            <Reveal>
-              <div className="cta-block">
-                <div className="cta-glow" />
-                <img
-                  src="/icon/soaken-128.png"
-                  width="76"
-                  height="76"
-                  alt=""
-                  style={{ margin: '0 auto 22px', position: 'relative', filter: 'drop-shadow(0 12px 26px rgba(51,183,176,.4))' }}
-                />
-                <h2>{t('cta.h2')}</h2>
-                <p>{t('cta.p')}</p>
-                <div className="hero-cta" style={{ marginTop: 30 }}>
-                  <a className="btn btn-primary btn-lg" href={DOWNLOAD_URL} target="_blank" rel="noopener">
-                    <WindowsIcon />
-                    <span>{t('cta.btn')}</span>
-                  </a>
-                </div>
-                <p className="cta-meta">{t('cta.meta')}</p>
-                <p className="cta-safe">
-                  <a href="/guia#chdl">{t('cta.safe')}</a>
-                </p>
-              </div>
-            </Reveal>
+        {/* CTA FINAL */}
+        <section id="download" className="final">
+          <div className="final-bg" />
+          <div className="final-in">
+            <Logo size={78} />
+            <h2>{t('cta.title')}</h2>
+            <p>{t('cta.body')}</p>
+            <a className="btn btn-primary btn-xl" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+              <WindowsIcon size={18} />
+              <span>{t('cta.btn')}</span>
+            </a>
+            <div className="meta">{t('cta.meta')}</div>
+            <a className="safe" href="/guia#chdl">{t('cta.safe')}</a>
           </div>
         </section>
       </main>
 
-      {/* FOOTER */}
+      {/* RODAPÉ */}
       <footer className="ft">
-        <div className="wrap">
-          <div className="ft-in">
-            <div>
-              <div className="logo">
-                <img src="/icon/soaken-128.png" alt="Soaken" />
-                <span className="nm">Soaken</span>
-              </div>
-              <p className="tag">{t('ft.tag')}</p>
+        <div className="wrap ft-in">
+          <div style={{ minWidth: 0 }}>
+            <div className="brand">
+              <Logo size={26} />
+              <span className="nm">Soaken</span>
             </div>
-            <div className="ft-cols">
-              <div className="ft-col">
-                <h4>{t('ft.product')}</h4>
-                <a href="#how">{t('ft.how')}</a>
-                <a href="#features">{t('ft.features')}</a>
-                <a href="#langs">{t('ft.langs')}</a>
-                <a href="#pricing">{t('nav.pricing')}</a>
-                <a href="/guia">{t('ft.guide')}</a>
-                <a href="#download">{t('ft.download')}</a>
-              </div>
-              <div className="ft-col">
-                <h4>{t('ft.company')}</h4>
-                <a href="#">{t('ft.about')}</a>
-                <a href="#">{t('ft.privacy')}</a>
-                <a href="#">{t('ft.contact')}</a>
-              </div>
-            </div>
+            <p className="tag">{t('ft.tag')}</p>
           </div>
-          <div className="ft-bot">
-            <span>{t('ft.rights')}</span>
-            <span>{t('ft.made')}</span>
+          <div className="ft-col">
+            <h4>{t('ft.product')}</h4>
+            <a href="#how">{t('ft.how')}</a>
+            <a href="#features">{t('ft.features')}</a>
+            <a href="#langs">{t('ft.langs')}</a>
+            <a href="#pricing">{t('nav.pricing')}</a>
+            <a href="/guia">{t('ft.guide')}</a>
+            <a href="#download">{t('ft.download')}</a>
           </div>
+          <div className="ft-col">
+            <h4>{t('ft.company')}</h4>
+            <a href="#">{t('ft.about')}</a>
+            <a href="#">{t('ft.privacy')}</a>
+            <a href="#">{t('ft.contact')}</a>
+          </div>
+        </div>
+        <div className="wrap ft-bot">
+          <span>{t('ft.rights')}</span>
+          <div style={{ flex: 1, minWidth: 8 }} />
+          <span className="motto">{t('hero.h1a')} {t('hero.h1b')}</span>
         </div>
       </footer>
     </>
