@@ -9,6 +9,95 @@ Categories: **Added** (new), **Changed** (behavior change),
 
 ---
 
+## [0.1.15] — 2026-09-22
+
+### Note
+- **The biggest update so far: 121 changes since 0.1.14.** The whole app has a new look, the live
+  transcript stopped losing speech, and three features that didn't exist have arrived.
+
+### Added
+- **Composer — write in your language, send it in theirs.** A window where you type in your own
+  language and the text comes out in the language you pick, with two readings: the natural one and
+  the more careful one. It works **inside another app** — on WhatsApp, Instagram, Facebook: type in
+  the field, press `Ctrl+Alt+E` and your text is replaced in place, no copy and paste.
+- **Speech chunks.** A tab of its own where the AI pulls out the pieces natives say as one ("I'm on
+  my way", "I guess so") and you practise each one. This is what makes a sentence sound natural
+  instead of assembled word by word.
+- **Gap — work it out by ear.** The app hides a word in the sentence and plays the audio. You work
+  it out by listening, not by reading.
+- **"You've seen this word in…"** When you play the example for a word you met before, you hear the
+  **real voice from the original scene**, not a synthetic voice reading the text.
+
+### Changed
+- **The whole app, redesigned in the Deep Soak look.** Home, Sessions, Review, Settings, Chunks,
+  Guide, Tutor Board, Life RPG, the floating bar and the dock.
+  - **Settings** is no longer a list of 11 sections in one long scroll: it is now **five groups with search**. And it went back to being a tab inside Home — it had become a separate window, an app inside the app.
+  - **The dock** got a minimize button, a width that fits its content, and the see-through background is gone.
+  - Transcript words now **arrive with motion** instead of blinking onto the screen.
+- **You choose what the transcript line shows:** the original, both languages, or just the translation.
+- **The side translation arrives in 1.5 s** instead of 5 s.
+- **The Review deck is now about SPEECH.** Single words are out; sentences and expressions come
+  first. Reviewing means practising how people speak, not memorising vocabulary.
+  - The old cards were not deleted — they simply stopped being served.
+- **Karaoke synced to the real audio timing**, not to a rule of thumb. The word lights up at the
+  right moment.
+- **Life RPG feels alive.**
+  - Varied scenes and an NPC that really converses — it used to solve the problem for you.
+  - Voices drawn at random per character.
+  - Scene briefing: where you are, what you came to do and who you're going to talk to.
+  - The model was chosen by measurement, not by hunch.
+- **Many voices per language**, in a picker that fits the window.
+- **Failover from Groq to Gemini** when a provider goes down.
+- **Usage and cost: one clear number**, and only for whoever pays the bill.
+- **Technical errors became messages for humans.** Instead of `Groq 429: {"error":{"message"...}}`,
+  a sentence that explains what happened — and **in the app's language**: English users were
+  reading Portuguese.
+- **Teacher — live mode** is temporarily marked **"Coming soon"** while it is reworked.
+
+### Fixed
+- **A sentence split by a pause is one sentence again.** When the video paused mid-speech, it broke
+  into two loose pieces. Now it comes back as a single sentence — with its audio attached.
+- **Pausing the video mid-sentence no longer erases what was said.**
+- **Hesitation is no longer read as the end of speech.** The cut was at 600 ms; anyone who hesitated
+  had the sentence cut in half, and the model invented the rest.
+- **Narration ends where the sentence ends.** Documentaries don't pause a second between sentences.
+- **Session glossary:** an English word inside speech in another language stops being "translated"
+  by mistake.
+- **Chinese in one script.** The same documentary came out sometimes as `说`, sometimes as `說`.
+- **Auto Practice waits for the whole turn** before suggesting. It used to answer in the middle of
+  the other person's sentence.
+- **Auto Practice redoes its suggestion** when the person keeps talking.
+- **The filter stopped swallowing real Chinese speech** — legitimate sentences were being discarded
+  as noise.
+- **Your voice choice survives an update** — it used to quietly fall back to the default.
+- **Pronunciation practice stopped recording through a filter** built to hide speech flaws. You
+  hear what you actually said.
+- **GPT-5 models unlocked.** OpenAI's new generation only exists on an API the app didn't speak —
+  which is why `GPT-5.4` showed up in the list and failed when picked. It now works in translation,
+  analysis, Teacher and RPG.
+- **The cost meter understands the new dialect** and no longer reads zero on the pricier models.
+- **Your Google profile picture** shows up in the app.
+- **Cloud backup stopped dying silently** when the token expired with the app open.
+- **Audio is guaranteed on disk before syncing.**
+- **A 4.3 MB file was re-read and reprocessed on every call.** Not anymore.
+- **The interface froze at the end of a session** reading audio that wasn't even going to be uploaded.
+
+### Note
+- **Measured against human subtitles:** 73% of sentences come out **identical**, with a 96% average
+  accuracy.
+- **Behind the scenes** — nothing you can see, but it's what holds the rest up.
+  - Tests that only passed because of the order they ran in were fixed; leaking between tests became impossible.
+  - A packaging test makes sure every external dependency travels inside the installer.
+  - Free trial: isolation locked by contract, a second provider (Deepgram) and quotas that hold up under load.
+  - An isolated base for **Jev Search**, still disconnected from the product.
+  - The Premium gateway was switched off: it returned canned text instead of real speech.
+  - A measurement baseline was created (benchmarks, evaluations, resource usage) to optimise with numbers instead of impressions.
+- **When installing:** the installer is **not digitally signed yet**. Windows will show a SmartScreen
+  warning — click **"More info" → "Run anyway"**. The certificate is on the roadmap. Anyone who
+  already has Soaken installed gets this version **automatically**.
+
+---
+
 ## [0.1.9] — 2026-07-22
 
 ### Fixed
