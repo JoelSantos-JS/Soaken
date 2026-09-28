@@ -9,6 +9,88 @@ Categorias: **Adicionado** (novo), **Alterado** (mudança de comportamento),
 
 ---
 
+## [0.1.17] — 2026-09-28
+
+### Nota
+- **Uma atualização sobre o que você vê e o que você ouve.** A legenda passou a se formar palavra
+  por palavra em vez de despejar blocos, e o áudio do card parou de mentir sobre a própria precisão.
+
+### Adicionado
+- **Tradução ao vivo da legenda.** A legenda pode mostrar a tradução enquanto a fala acontece, sem
+  criar cards nem gastar análise.
+
+### Alterado
+- **A legenda se forma enquanto a pessoa fala.** Antes o texto chegava em bloco: quinze palavras
+  surgiam de uma vez, com pausas entre elas. Agora ele entra no ritmo de quem dita, numa fila única
+  que atravessa a hipótese provisória e a frase final — confirmar o que foi dito não recomeça a
+  leitura nem despeja a frase inteira de uma vez.
+  - Funciona em **qualquer provedor**. Onde o serviço entrega o texto em pedaços (Gemini, OpenAI `gpt-4o-transcribe`), ele já chega assim; onde não entrega (Whisper do Groq), a apresentação faz o trabalho. Não custa nenhuma requisição a mais.
+  - O texto deixou de depender de uma animação para ficar legível — numa janela sem foco, palavras podiam ficar invisíveis para sempre.
+- **O card avisa quando não sabe.** Quando o reconhecedor não devolve tempo por palavra, o app
+  precisa estimar onde cada frase começa — e fazia isso **em silêncio**, tocando um trecho
+  aproximado como se fosse exato. Agora ele avisa: *"Sincronização não verificada"*, e você escolhe
+  entre o recorte aproximado ou o clipe completo.
+- **Socorro do Pro mais firme.**
+  - As marcas por palavra são preservadas nos dois formatos de resposta do gateway.
+  - O Pro reserva capacidade local para as prévias, antecipando as finais para o socorro quando ele está disponível e voltando à chave local se houver recusa ou resposta sem marcas.
+  - As novas tentativas entram no contador de requisições, que antes subestimava o consumo da cota.
+
+### Corrigido
+- **O relógio do áudio estava dois segundos deslocado.** Quando o clipe terminava em silêncio, as
+  marcas de tempo do Groq podiam ser lidas como se pertencessem ao áudio sem o contexto acústico —
+  e a frase inteira saía fora do lugar. Agora o contrato do provedor decide, em vez de um chute
+  pelo fim da última palavra.
+  - Medido numa captura real depois da correção: **92% das frases dentro de 150 ms** do lugar certo, com desvio mediano de **zero**. A mesma medição numa sessão antiga dá 5% — a diferença é a correção, não o método.
+- **Frase repetida no mesmo clipe.** Quando um clipe dizia a mesma frase duas vezes, os dois cards
+  tocavam o mesmo pedaço — o de baixo tocava o áudio do de cima. Cada card agora procura a partir
+  de onde o anterior terminou.
+- **O recorte do Loop e a seleção de palavras e trechos** deixaram de errar em frases repetidas.
+- **O fim da reprodução de um trecho não atrasa mais.**
+
+### Nota
+- **Sessões antigas** salvas sem informação sobre a origem das marcas recebem o aviso de
+  sincronização não verificada. O áudio original continua disponível.
+
+---
+
+## [0.1.16] — 2026-09-23
+
+### Nota
+- **Uma atualização de precisão.** O áudio do card do Tutor passou a tocar exatamente a frase que
+  ele mostra. Tudo aqui foi medido com vídeo em loop e bancada própria, antes e depois.
+
+### Corrigido
+- **O áudio do card agora bate com a frase.** Era o defeito mais incômodo: você clicava numa frase
+  do Tutor e ouvia outro pedaço do vídeo — ou o clipe inteiro desde o começo. Eram **quatro** causas
+  na mesma cadeia, e todas caíram. Frases picotadas caíram de **31% para 21%**, e o áudio de cada
+  card é o da frase dele.
+  - O corte do eco entre falas usava dois critérios que discordavam (palavra de um lado, milissegundo do outro). Sobrava uma palavra sem marca de tempo, e isso jogava fora as marcas **reais** de todas as outras: **33% dos clipes** tinham o recorte inventado. Agora são **0%**.
+  - Siglas como "U.S." eram lidas como fim de frase, partindo um card em dois.
+  - Frases longas eram soltas pela metade ao bater no limite de tamanho.
+  - A cauda de áudio usada para dar contexto ao reconhecedor não era descontada das marcas, e o relógio andava para trás até 1,9 s no meio do clipe. Caiu para 0,6 s.
+- **O áudio sumia dos cards antigos.** Numa sessão longa, os primeiros cards perdiam os botões
+  Original, Loop e Trecho. O arquivo sempre esteve salvo; o card é que não sabia achá-lo.
+- **Editar a chave de API quebrava o cartão** nas Configurações: o campo e o botão Salvar caíam
+  para fora da borda, por cima do cartão de baixo.
+- **Erro de serviço fora do ar** agora vira recado em português, não "503".
+
+### Alterado
+- **A transcrição escolhe pelo que importa.** O app passou a perguntar "este modelo devolve tempo
+  por palavra?" em vez de olhar o nome do provedor. Isso fechou um buraco silencioso: o GPT-4o
+  Transcribe também não devolve, e ninguém percebia — o card simplesmente perdia o recorte. Os
+  rótulos do seletor agora avisam quais modelos não têm tempo por palavra, e o Groq/Whisper aparece
+  primeiro, que é o recomendado.
+- **Aviso de atualização, com você escolhendo a hora.** Antes a nova versão entrava sozinha quando
+  você fechava o app, e o único aviso era uma notificação do Windows que some sozinha. Agora uma
+  faixa no Início mostra a versão baixada e fica lá até você decidir: **Reiniciar agora** ou depois.
+  Dispensar não cancela — ela continua entrando ao fechar.
+- **Assinantes Pro: a transcrição não trava mais no limite.** Quando a sua chave bate no teto de
+  requisições por minuto, a transcrição passa a ser atendida por uma chave do Soaken, no servidor.
+  Você não perde frase nem espera. Se essa via também estiver cheia, tudo volta ao comportamento
+  normal — nunca um erro na tela.
+
+---
+
 ## [0.1.15] — 2026-09-22
 
 ### Nota

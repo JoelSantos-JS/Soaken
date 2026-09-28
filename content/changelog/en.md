@@ -9,6 +9,88 @@ Categories: **Added** (new), **Changed** (behavior change),
 
 ---
 
+## [0.1.17] — 2026-09-28
+
+### Note
+- **An update about what you see and what you hear.** The caption now builds word by word instead
+  of dumping blocks, and the card's audio stopped lying about its own accuracy.
+
+### Added
+- **Live translation of the caption.** The caption can show the translation while the speech is
+  happening, without creating cards or spending analysis.
+
+### Changed
+- **The caption builds as the person speaks.** Text used to arrive in blocks: fifteen words showed
+  up at once, with pauses in between. Now it comes in at the pace of whoever is talking, in a
+  single queue that carries the provisional guess through to the final sentence — confirming what
+  was said doesn't restart your reading or dump the whole sentence at once.
+  - It works on **any provider**. Where the service delivers text in pieces (Gemini, OpenAI `gpt-4o-transcribe`), it already arrives that way; where it doesn't (Groq's Whisper), the presentation does the work. It costs no extra requests.
+  - The text no longer depends on an animation to be readable — in an unfocused window, words could stay invisible forever.
+- **The card tells you when it doesn't know.** When the recognizer returns no per-word timing, the
+  app has to estimate where each sentence starts — and it did that **silently**, playing an
+  approximate clip as if it were exact. Now it warns you: *"Sync not verified"*, and you choose
+  between the approximate cut or the full clip.
+- **Sturdier Pro backup.**
+  - Per-word marks are preserved in both response formats from the gateway.
+  - Pro reserves local capacity for previews, sending finals to the backup when it is available and falling back to the local key on a refusal or a response without marks.
+  - Retries now count in the request meter, which used to underestimate quota usage.
+
+### Fixed
+- **The audio clock was two seconds off.** When a clip ended in silence, Groq's timestamps could be
+  read as if they belonged to the audio without the acoustic context — and the whole sentence
+  landed in the wrong place. Now the provider's contract decides, instead of a guess based on the
+  end of the last word.
+  - Measured on a real capture after the fix: **92% of sentences within 150 ms** of the right spot, with a median deviation of **zero**. The same measurement on an old session gives 5% — the difference is the fix, not the method.
+- **A sentence repeated in the same clip.** When a clip said the same sentence twice, both cards
+  played the same piece — the bottom one played the top one's audio. Each card now searches from
+  where the previous one ended.
+- **The Loop cut and the selection of words and snippets** stopped going wrong on repeated sentences.
+- **The end of a snippet's playback is no longer delayed.**
+
+### Note
+- **Old sessions** saved without information about where the marks came from get the "sync not
+  verified" warning. The original audio is still available.
+
+---
+
+## [0.1.16] — 2026-09-23
+
+### Note
+- **An update about precision.** The Tutor card's audio now plays exactly the sentence it shows.
+  Everything here was measured with a looping video and a bench of our own, before and after.
+
+### Fixed
+- **The card's audio now matches its sentence.** This was the most annoying defect: you clicked a
+  sentence in the Tutor and heard a different piece of the video — or the whole clip from the
+  start. There were **four** causes in the same chain, and all of them fell. Chopped-up sentences
+  dropped from **31% to 21%**, and each card's audio is its own sentence.
+  - The echo trim between utterances used two criteria that disagreed (a word on one side, a millisecond on the other). One word was left without a timestamp, and that threw away the **real** marks of all the others: **33% of clips** had an invented cut. Now it's **0%**.
+  - Abbreviations like "U.S." were read as the end of a sentence, splitting a card in two.
+  - Long sentences were released halfway when they hit the size limit.
+  - The audio tail used to give the recognizer context wasn't discounted from the marks, and the clock ran backwards by up to 1.9 s in the middle of the clip. That fell to 0.6 s.
+- **Audio vanished from older cards.** In a long session, the first cards lost the Original, Loop
+  and Snippet buttons. The file was always saved; the card just didn't know how to find it.
+- **Editing the API key broke the card** in Settings: the field and the Save button fell outside
+  the border, on top of the card below.
+- **A service-down error** now becomes a message in plain language, not "503".
+
+### Changed
+- **Transcription picks by what matters.** The app now asks "does this model return per-word
+  timing?" instead of looking at the provider's name. That closed a silent hole: GPT-4o Transcribe
+  doesn't return it either, and nobody noticed — the card simply lost its cut. The picker's labels
+  now say which models have no per-word timing, and Groq/Whisper comes first, which is the
+  recommended one.
+- **Update notice, with you choosing when.** The new version used to install by itself when you
+  closed the app, and the only warning was a Windows notification that disappears on its own. Now a
+  banner on Home shows the downloaded version and stays there until you decide: **Restart now** or
+  later. Dismissing doesn't cancel it — it still installs on close.
+- **Pro subscribers: transcription no longer stalls at the limit.** When your key hits the
+  requests-per-minute ceiling, transcription is served by a Soaken key on the server. You lose no
+  sentences and you don't wait. If that route is full too, everything returns to normal behaviour —
+  never an error on screen.
+
+---
+
 ## [0.1.15] — 2026-09-22
 
 ### Note
