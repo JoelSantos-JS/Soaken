@@ -7,11 +7,11 @@ import { NextResponse } from 'next/server';
 // versões novas. Aqui a última release é consultada na API do GitHub, então
 // publicar uma versão nova basta — nada precisa ser editado neste repositório.
 
-// Link curto (shre.ink): tem precedência sobre a API. Serve para apontar o
+// Link curto (encurtador): tem precedência sobre a API. Serve para apontar o
 // download para outro destino — ou medir cliques — sem publicar o site: basta
 // trocar o destino no encurtador. Deixe como string vazia para voltar a
 // resolver a última release pela API do GitHub.
-const LINK_CURTO = 'https://shre.ink/GkTB';
+const LINK_CURTO = 'https://short-url.cc/1z230';
 
 const RELEASES_API =
   'https://api.github.com/repos/JoelSantos-JS/Soaken/releases/latest';
@@ -20,7 +20,7 @@ const RELEASES_API =
 // demorar demais, o download continua funcionando por aqui. Só precisa ser
 // atualizado se este arquivo específico sair do ar.
 const FALLBACK_URL =
-  'https://github.com/JoelSantos-JS/Soaken/releases/download/v0.1.15/Soaken-Setup-0.1.15.exe';
+  'https://github.com/JoelSantos-JS/Soaken/releases/download/v0.1.17/Soaken-Setup-0.1.17.exe';
 
 // A resposta do GitHub fica em cache por 10 minutos: são ~6 chamadas por hora,
 // bem abaixo do limite de 60/h que a API impõe a quem não se autentica.
