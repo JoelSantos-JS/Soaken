@@ -9,6 +9,93 @@ Categorias: **Adicionado** (novo), **Alterado** (mudança de comportamento),
 
 ---
 
+## [0.1.15] — 2026-09-22
+
+### Nota
+- **A maior atualização até agora: 121 mudanças desde a 0.1.14.** O app inteiro ganhou cara nova,
+  a transcrição ao vivo parou de perder fala, e chegaram três recursos que não existiam.
+
+### Adicionado
+- **Compositor — escreva no seu idioma, envie no deles.** Uma janela onde você digita em português
+  e o texto sai no idioma que escolher, com duas leituras: a natural e a mais cuidadosa. Funciona
+  **dentro de outro app** — no WhatsApp, no Instagram, no Facebook: escreve no campo, aperta
+  `Ctrl+Alt+E` e o próprio texto é substituído, sem copiar e colar.
+- **Blocos da fala.** Aba própria onde a IA separa os pedaços que os nativos falam juntos ("tô indo
+  pra casa", "acho que sim") e você pratica cada um. É o que faz a frase soar natural em vez de
+  montada palavra por palavra.
+- **Lacuna — descubra ouvindo.** O app esconde uma palavra da frase e toca o áudio. Você descobre
+  pelo ouvido, não pela leitura.
+- **"Você já viu esta palavra em…"** Ao tocar o exemplo de uma palavra que você já encontrou antes,
+  sai a **voz real da cena original**, não uma voz sintética lendo o texto.
+
+### Alterado
+- **O app inteiro, redesenhado no visual Deep Soak.** Início, Sessões, Revisão, Configurações,
+  Blocos, Guia, Tutor Board, Life RPG, a barra flutuante e o dock.
+  - **Configurações** deixou de ser uma lista de 11 seções num rolar só: agora são **cinco grupos com busca**. E voltou a ser uma aba dentro do Início — tinha virado uma janela separada, um app dentro do app.
+  - **Dock** ganhou botão de minimizar, largura que se ajusta ao conteúdo, e o fundo vazado sumiu.
+  - As palavras da transcrição agora **entram com movimento** em vez de piscar na tela.
+- **Você escolhe o que a linha da transcrição mostra:** o original, os dois idiomas, ou só a tradução.
+- **A tradução ao lado chega em 1,5 s** em vez de 5 s.
+- **O baralho da Revisão agora é de FALA.** Palavra solta saiu; frase e expressão vêm primeiro.
+  Revisar é praticar como se fala, não decorar vocabulário.
+  - Os cards antigos não foram apagados — apenas deixaram de ser servidos.
+- **Karaokê sincronizado pelo tempo real do áudio**, não por regra de três. A palavra acende na
+  hora certa.
+- **Life RPG mais vivo.**
+  - Cena variada e NPC que conversa de verdade — antes ele resolvia o problema no seu lugar.
+  - Vozes sorteadas por personagem.
+  - Briefing da cena: onde você está, o que veio fazer e com quem vai falar.
+  - Modelo escolhido por medição, não por palpite.
+- **Muitas vozes por idioma**, num seletor que cabe na janela.
+- **Failover de Groq para Gemini** quando um provedor cai.
+- **Uso e custo: um número claro**, e só para quem paga a conta.
+- **Erro técnico virou mensagem para gente.** Em vez de `Groq 429: {"error":{"message"...}}`, uma
+  frase que explica o que houve — e **no idioma do app**: quem usa em inglês lia português.
+- **Professor — modo ao vivo** temporariamente marcado como **"Em breve"** enquanto é retrabalhado.
+
+### Corrigido
+- **A frase partida pela pausa voltou a ser uma frase.** Quando o vídeo fazia uma pausa no meio de
+  uma fala, ela virava dois pedaços soltos. Agora volta a ser uma frase só — com o áudio junto.
+- **Pausar o vídeo no meio da frase não apaga mais o que foi dito.**
+- **Hesitação não é mais lida como fim de fala.** O corte era em 600 ms; quem hesitava tinha a frase
+  cortada no meio, e o modelo inventava o resto.
+- **Narração fecha onde a frase acaba.** Documentário não faz pausa de um segundo entre frases.
+- **Glossário da sessão:** palavra em inglês dentro de uma fala em outro idioma para de ser
+  "traduzida" por engano.
+- **Chinês numa escrita só.** O mesmo documentário vinha ora em `说`, ora em `說`.
+- **Auto Practice espera o turno inteiro** antes de sugerir. Antes ele respondia no meio da frase
+  da outra pessoa.
+- **Auto Practice refaz a sugestão** quando a pessoa continua falando.
+- **O filtro parou de engolir fala chinesa real** — frases legítimas estavam sendo descartadas como
+  ruído.
+- **Sua escolha de voz sobrevive à atualização** — antes ela voltava calada para o padrão.
+- **A prática de pronúncia parou de gravar através de um filtro** feito para esconder defeito de
+  fala. Você ouve o que realmente falou.
+- **Modelos GPT-5 destravados.** A geração nova da OpenAI só existe numa API que o app não falava —
+  por isso o `GPT-5.4` aparecia na lista e falhava ao ser escolhido. Agora funciona em tradução,
+  análise, Professor e RPG.
+- **O medidor de custo entende o dialeto novo** e não marca mais zero nos modelos mais caros.
+- **Foto do perfil do Google** aparece no app.
+- **O backup na nuvem parou de morrer calado** quando o token vencia com o app aberto.
+- **O áudio é garantido no disco antes de sincronizar.**
+- **Um arquivo de 4,3 MB era relido e reprocessado a cada chamada.** Agora não.
+- **A interface travava no fim da sessão** lendo áudio que nem ia subir.
+
+### Nota
+- **Medido contra legenda humana:** 73% das frases saem **idênticas**, com 96% de média de acerto.
+- **Bastidores** — sem efeito visível, mas é o que segura o resto de pé.
+  - Testes que só passavam por causa da ordem em que rodavam foram corrigidos; vazamento entre testes virou impossível.
+  - Teste de empacotamento garante que toda dependência externa viaja dentro do instalador.
+  - Teste grátis: isolamento travado por contrato, segundo provedor (Deepgram) e cotas que aguentam concorrência.
+  - Base isolada do **Jev Search**, ainda desligada do produto.
+  - Gateway Premium desligado: ele devolvia texto fixo no lugar da fala real.
+  - Base de medição criada (benchmarks, avaliações, consumo de recursos) para otimizar com número em vez de impressão.
+- **Ao instalar:** o instalador **ainda não é assinado digitalmente**. O Windows vai mostrar um
+  aviso do SmartScreen — clique em **"Mais informações" → "Executar assim mesmo"**. O certificado
+  está no plano. Quem já tem o Soaken instalado recebe esta versão **automaticamente**.
+
+---
+
 ## [0.1.9] — 2026-07-22
 
 ### Corrigido
